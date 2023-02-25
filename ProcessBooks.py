@@ -20,14 +20,14 @@ for i in brown.tagged_words(): #each word is in a tuple with its descriptor
 
 def to_file(key, file):
     with open(file, "w") as f:
-        f.write("[")
+        #f.write("[")
         for i in key:
             out = str(i)
-            f.write(out + ", ")
-        f.write("]")
+            f.write(out + " ")
+       # f.write("]")
 
 #to_file(subtuples["SB"], subTags.txt)
-to_file(sub["SB"],"Substances.txt")
+to_file(sub["SB"],"listOfWords.txt")
 #there are 152470 words with the tag NN returned by brown.tagged_words
 #print("Num words: ", x); 	
 # things that are secondary substances (ie, species)
