@@ -12,6 +12,9 @@ testing_data2 = treebank.tagged_sents()[40:60]
 
 unigram_tagger= nltk.UnigramTagger(training_data)
 
+def myunigramtagger():
+    return unigram_tagger
+
 ##________________________________________
 ##this confusion matrix shows the concurrency of the predicted and actual values. The number where predicted and actual were the same are given in <> 
 ##weirdly, it throws an error when I try to use testing_data. But I'm guessing that this is because it sees a word that it doesn't recoginize. 
