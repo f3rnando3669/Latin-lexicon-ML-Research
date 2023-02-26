@@ -41,7 +41,7 @@ print(red)
 #from there, I'll see which ones do not return NN as a tag
 
 
-def from_file(file):
+def from_file(file): #this function basically opens a file, reads and splits every line in the file, then returns a list of everything in the file
 	store = []
 	with open(file, "r") as f:
 		for line in f:
@@ -49,14 +49,29 @@ def from_file(file):
 	
 	return store	
 
-words = from_file("listOfWords.txt") #gets all the words from the file into a list of words/ 
+#decided it was easier to just do directly without having to use a function 
 
-# for i in words:
-#     tagged_word = unigram_tagger.tag(i)
-    
-    
- 
-	
+# words = from_file("listOfWords.txt") #gets all the words from the file into a list of words
 
+# with open("probwords.txt", "w") as f:
+# 	for i in words:
+# 		tagged_word = unigram_tagger.tag([i])[0]
+# 		if(tagged_word[1] == 'JJ'):
+# 			f.write(tagged_word[0] + " ")
+
+def filterfile(in_file, out_file): #this basically filters out words that appear multiple times in prob words
+    fin = open(in_file, "r")
+    fout = open(out_file, "w")
+    words = {"":0}
+    for line in fin: 
+        for word in line.split():
+            words.update({word: 0})
+    
+    for word in words:
+        fout.write(word + "\n")
+    
+# filterfile("probwords.txt", "filteredprobwords.txt") 
+
+# there's a good amount of commented out code here, but that is so there wasn't unecessary work being done with the text processing
 
 
