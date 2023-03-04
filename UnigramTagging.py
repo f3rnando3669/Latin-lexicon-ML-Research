@@ -5,9 +5,9 @@ from nltk.corpus import treebank
 
 size = int(len(brown.tagged_sents()))
 
-training_data = brown.tagged_sents()[40:size]#training data is 3000 of the brown tagged sentences
+training_data = brown.tagged_sents()[1500:size]#training data is 3000 of the brown tagged sentences
 
-testing_data = brown.tagged_sents()[0:39]
+testing_data = brown.tagged_sents()[0:3]
 testing_data2 = treebank.tagged_sents()[40:60]
 
 unigram_tagger= nltk.UnigramTagger(training_data)
@@ -35,8 +35,10 @@ print("This is the accuracy with data from the treebank corpus", acc2)
 #testing on individual words_______________________________________________________
 blue = unigram_tagger.tag(["blue"])
 red = unigram_tagger.tag(["red"])
+walk = unigram_tagger.tag("I want to go on a walk".split())
 print(blue)
 print(red)
+print(walk)
 #both colors return JJ, or adjective, as their tags
 #__________________________________________________________________________________
 #using my program in ProcessBooks, I sorted all the words associated with noun/substance into listOfWords.txt
