@@ -26,4 +26,4 @@ def to_file(keylist, file):
             out = str(i)
             f.write(out + " ")
 #the keyset of word_dict now contains all the words that were tagged in the corpora 
-to_file(word_dict.keys(), "allWords.txt")
+to_file(word_dict.keys(), "textfiles/allWords.txt")

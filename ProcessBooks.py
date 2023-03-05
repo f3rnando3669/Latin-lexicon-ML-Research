@@ -27,7 +27,7 @@ def to_file(key, file):
        # f.write("]")
 
 #to_file(subtuples["SB"], subTags.txt)
-to_file(sub["SB"],"listOfWords.txt")
+to_file(sub["SB"],"textfiles\listOfWords.txt")
 #there are 152470 words with the tag NN returned by brown.tagged_words
 #print("Num words: ", x); 	
 # things that are secondary substances (ie, species)
