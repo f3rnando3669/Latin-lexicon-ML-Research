@@ -8,9 +8,7 @@ sub = open("textfiles/substancetest.txt", "w")
 act = open("textfiles/actiontest.txt", "w")
 quant = open("textfiles/quantitytest.txt", "w")
 rel = open("textfiles/relationtest.txt", "w")
-qual.close()
-sub.close()
-act.close()
+
 
 # with open("allWords.txt", "w") as f:
 # 	for i in words:
@@ -24,12 +22,12 @@ def sort_words(text_file):
 			for word in line.split():
 				tagged_word = unigram_tagger.tag([word])[0]
 	
-				# if 'JJ' == tagged_word[1]:
-				# 	qual.write(tagged_word[0]+ " ")
-				# if 'NN' == tagged_word[1]: 
-				# 	sub.write(tagged_word[0]+ " ")
-				# if 'VB' == tagged_word[1]:
-				# 	act.write(tagged_word[0]+ " ")
+				if 'JJ' == tagged_word[1]:
+					qual.write(tagged_word[0]+ "\n")
+				if 'NN' == tagged_word[1]: 
+					sub.write(tagged_word[0]+ "\n")
+				if 'VB' == tagged_word[1]:
+					act.write(tagged_word[0]+ "\n")
 				if 'JJR' == tagged_word[1] or 'JJS' == tagged_word[1] or 'JJT' == tagged_word[1]: 
 					rel.write(tagged_word[0]+ "\n")
      
@@ -41,6 +39,16 @@ def sort_nums(text_file):
 				tagged_word = unigram_tagger.tag([word])[0]
 				if 'CD' == tagged_word[1]:
 					quant.write(tagged_word[0]+ "\n")
+     
+
 					
 sort_words("textfiles/allWords.txt")
 sort_nums("textfiles/allWords.txt")
+
+
+
+qual.close()
+sub.close()
+quant.close()
+rel.close()
+act.close()
