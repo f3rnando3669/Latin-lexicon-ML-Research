@@ -28,7 +28,7 @@ def sort_words(text_file):
 					sub.write(tagged_word[0]+ "\n")
 				if 'VB' == tagged_word[1]:
 					act.write(tagged_word[0]+ "\n")
-				if 'JJR' == tagged_word[1] or 'JJS' == tagged_word[1] or 'JJT' == tagged_word[1]: 
+				if 'JJR' == tagged_word[1] or 'JJS' == tagged_word[1] or 'JJT' == tagged_word[1] or 'OD' == tagged_word[1]: 
 					rel.write(tagged_word[0]+ "\n")
      
 
