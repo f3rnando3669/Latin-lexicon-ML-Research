@@ -1,7 +1,7 @@
 import nltk
 import spacy
 from nltk.corpus import brown
-from spacy import displacy  #I was trying to work with d
+from spacy import displacy  #I was trying to work with 
 import explacy ## found explacy in a link in the webpage that you sent over email 
 
 nlp = spacy.load("en_core_web_sm") # loading in language model
