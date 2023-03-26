@@ -7,6 +7,8 @@ sents=gutenberg.sents() #there are 98,552 sentences in the gutenberg nltk corpus
 
 nlp = spacy.load("en_core_web_sm") # loading in language model
 
+np_list_gutenberg = []
+
 # print(" ".join(sents[1]));
 
 # given a list of lists of strings, separate out the np and vp, put in a new list of lists of strings:
@@ -37,6 +39,7 @@ def get_np_vp(list):
 				np_vp[1] = vp
 				if np_vp[0] != "":
 					output.append(np_vp)
+					np_list_gutenberg.append(str(nsubj))
 	return output
 	# for item in output:
 	# 	print(item)
@@ -57,10 +60,11 @@ def get_props(list):
 	return prop_list
 		
 					
-		
-
 np_vp_list_gutenberg = get_np_vp(sents[1500:2000])
 proplist_gutenberg = get_props(np_vp_list_gutenberg)
 
 # with open('spaCY\propostion_list.pkl', 'wb') as f:
 # 	pickle.dump(proplist_gutenberg, f)
+
+with open ('spaCY\subj_substance_list.pkl', 'wb') as f:
+	pickle.dump(np_list_gutenberg, f)
