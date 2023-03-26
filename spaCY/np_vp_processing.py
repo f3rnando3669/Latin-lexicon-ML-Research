@@ -48,14 +48,15 @@ def get_np_vp(list):
 				# if token.dep_ == 'nsubj':
 
 #takes a list of lists: looks at [1] for the verbs to determine if the 
-def get_props(list):
+def get_props(list): #need to store as: (N, is/has, predicate tree) 
 	vp = ""
+    
 	prop_list = []
 	for np_vp in list:
 		vp = nlp(np_vp[1])
 		for token in vp: 
 			if token.dep_ == "ROOT" and (token.lemma_ == "be" or token.lemma_ == "have"): 
-				prop_list.append(np_vp)
+				prop_list.append([np_vp[0], str(token), vp])
 				break
 	return prop_list
 		

@@ -8,8 +8,8 @@ with open('spaCY\subj_substance_list.pkl', 'rb') as f: #this method of creating 
 	f.close()
 
 
-# for i in cur_prop_list:
-#     print(i)
-    
-for i in cur_subj_list:
+for i in cur_prop_list:
     print(i)
+    
+# for i in cur_subj_list:
+#     print(i)
