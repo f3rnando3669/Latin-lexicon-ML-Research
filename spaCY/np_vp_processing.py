@@ -66,6 +66,8 @@ proplist_gutenberg = get_props(np_vp_list_gutenberg)
 
 with open('spaCY\propostion_list.pkl', 'wb') as f:
 	pickle.dump(proplist_gutenberg, f)
+	f.close()
 
 with open ('spaCY\subj_substance_list.pkl', 'wb') as f:
 	pickle.dump(np_list_gutenberg, f)
+	f.close()
