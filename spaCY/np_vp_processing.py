@@ -60,11 +60,11 @@ def get_props(list):
 	return prop_list
 		
 					
-np_vp_list_gutenberg = get_np_vp(sents[1500:2000])
+np_vp_list_gutenberg = get_np_vp(sents[2000:5000])
 proplist_gutenberg = get_props(np_vp_list_gutenberg)
 
-# with open('spaCY\propostion_list.pkl', 'wb') as f:
-# 	pickle.dump(proplist_gutenberg, f)
+with open('spaCY\propostion_list.pkl', 'wb') as f:
+	pickle.dump(proplist_gutenberg, f)
 
 with open ('spaCY\subj_substance_list.pkl', 'wb') as f:
 	pickle.dump(np_list_gutenberg, f)
