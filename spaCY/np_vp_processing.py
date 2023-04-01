@@ -59,19 +59,40 @@ def get_props(list): #need to store as: (N, is/has, predicate tree)
 				prop_list.append([np_vp[0], str(token.lemma_), vp])
 				break
 	return prop_list
-		
+
+def get_quants(list):
+	num_list = []
+	for x in list:
+		sent= " ".join(x)
+		# print("\n", sent, "\n")
+		doc= nlp(sent)
+		for token in doc:
+			if token.pos_ == "NUM":
+				num_list.append(str(token))
+	return num_list
 					
-np_vp_list_learned = get_np_vp(sents[2000:5000])
-proplist_learned = get_props(np_vp_list_learned)
+    
+					
+# np_vp_list_learned = get_np_vp(sents[2000:5000])
+# proplist_learned = get_props(np_vp_list_learned)
+
+list_nums = get_quants(sents)
+
+
+
 
 
 # for i in proplist_learned:
 #     print(i, "\n")
 
-with open('spaCY\proposition_list.pkl', 'wb') as f:
-	pickle.dump(proplist_learned, f)
+# with open('spaCY\proposition_list.pkl', 'wb') as f:
+# 	pickle.dump(proplist_learned, f)
+# 	f.close()
+ 
+with open('spaCY\quant_list.pkl', 'wb') as f:
+	pickle.dump(list_nums, f)
 	f.close()
 
-with open ('spaCY\subj_substance_list.pkl', 'wb') as f:
-	pickle.dump(np_list_learned, f)
-	f.close()
+# with open ('spaCY\subj_substance_list.pkl', 'wb') as f:
+# 	pickle.dump(np_list_learned, f)
+# 	f.close()
