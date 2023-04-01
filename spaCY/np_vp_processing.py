@@ -1,13 +1,13 @@
 import sys
 import spacy
-from nltk.corpus import gutenberg
+from nltk.corpus import brown
 import pickle
-import explacy ## found explacy in a link in the webpage that you sent over email 
-sents=gutenberg.sents() #there are 98,552 sentences in the gutenberg nltk corpus 
+import explacy ## found explacy in a link in the webpage that you sent over email #
+sents = brown.sents(categories = "learned") #there are 98,552 sentences in the gutenberg nltk corpus 
 
 nlp = spacy.load("en_core_web_sm") # loading in language model
 
-np_list_gutenberg = []
+np_list_learned = []
 
 # print(" ".join(sents[1]));
 
@@ -39,7 +39,7 @@ def get_np_vp(list):
 				np_vp[1] = vp
 				if np_vp[0] != "":
 					output.append(np_vp)
-					np_list_gutenberg.append(str(nsubj))
+					np_list_learned.append(str(nsubj))
 	return output
 	# for item in output:
 	# 	print(item)
@@ -56,18 +56,22 @@ def get_props(list): #need to store as: (N, is/has, predicate tree)
 		vp = nlp(np_vp[1])
 		for token in vp: 
 			if token.dep_ == "ROOT" and (token.lemma_ == "be" or token.lemma_ == "have"): 
-				prop_list.append([np_vp[0], str(token), vp])
+				prop_list.append([np_vp[0], str(token.lemma_), vp])
 				break
 	return prop_list
 		
 					
-np_vp_list_gutenberg = get_np_vp(sents[2000:5000])
-proplist_gutenberg = get_props(np_vp_list_gutenberg)
+np_vp_list_learned = get_np_vp(sents[2000:5000])
+proplist_learned = get_props(np_vp_list_learned)
 
-with open('spaCY\propostion_list.pkl', 'wb') as f:
-	pickle.dump(proplist_gutenberg, f)
+
+# for i in proplist_learned:
+#     print(i, "\n")
+
+with open('spaCY\proposition_list.pkl', 'wb') as f:
+	pickle.dump(proplist_learned, f)
 	f.close()
 
 with open ('spaCY\subj_substance_list.pkl', 'wb') as f:
-	pickle.dump(np_list_gutenberg, f)
+	pickle.dump(np_list_learned, f)
 	f.close()
