@@ -1,7 +1,6 @@
 import pickle
 import sys
 
-
 def tofile(pkl, newfile):
 	with open(pkl, 'rb') as fl: 
 		lst = pickle.load(fl)

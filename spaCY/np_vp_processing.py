@@ -71,28 +71,24 @@ def get_quants(list):
 				num_list.append(str(token))
 	return num_list
 					
+def to_pkl(list, file):
+    with open(file, 'wb') as f:
+        pickle.dump(list, f)
+        f.close()
     
 					
-# np_vp_list_learned = get_np_vp(sents[2000:5000])
-# proplist_learned = get_props(np_vp_list_learned)
+np_vp_list_learned = get_np_vp(sents[2000:5000])
+proplist_learned = get_props(np_vp_list_learned)
 
-list_nums = get_quants(sents)
-
-
+#list_nums = get_quants(sents)
 
 
+for i in proplist_learned:
+    print(i, "\n")
 
-# for i in proplist_learned:
-#     print(i, "\n")
 
-# with open('spaCY\proposition_list.pkl', 'wb') as f:
-# 	pickle.dump(proplist_learned, f)
-# 	f.close()
+# to_pkl(proplist_learned, 'spaCY\proposition_list.pkl')
+# to_pkl(np_list_learned, 'spaCY\subj_substance_list.pkl')
+
+# to_pkl(list_nums, 'spaCY\quant_list.pkl')
  
-with open('spaCY\quant_list.pkl', 'wb') as f:
-	pickle.dump(list_nums, f)
-	f.close()
-
-# with open ('spaCY\subj_substance_list.pkl', 'wb') as f:
-# 	pickle.dump(np_list_learned, f)
-# 	f.close()
