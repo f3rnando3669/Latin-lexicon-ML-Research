@@ -33,6 +33,8 @@ def get_np_vp(list):
 				# print(nsubj.head, "\n")
 				for child in nsubj.head.rights:
 					for ch in child.subtree: 
+						if ch.dep_ == "nsubj":
+							break
 						vp = vp +" "+str(ch)
 				vp = str(nsubj.head) + vp
 				np_vp[0] = str(chunk)
@@ -87,8 +89,8 @@ for i in proplist_learned:
     print(i, "\n")
 
 
-# to_pkl(proplist_learned, 'spaCY\proposition_list.pkl')
-# to_pkl(np_list_learned, 'spaCY\subj_substance_list.pkl')
+to_pkl(proplist_learned, 'spaCY\proposition_list.pkl')
+to_pkl(np_list_learned, 'spaCY\subj_substance_list.pkl')
 
 # to_pkl(list_nums, 'spaCY\quant_list.pkl')
  
