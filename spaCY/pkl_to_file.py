@@ -16,7 +16,7 @@ def tofile(pkl, newfile):
 # tofile('spaCY\quant_list.pkl', 'spaCY\cur_quant_txt.txt')
 
 
-tofile('spaCY_hypernymy\_np_vp_pairs.pkl', 'spaCY_hypernymy\_np_vp_pairs.txt')
-tofile('spaCY_hypernymy\get_hype_base_lemma_sents.pkl', 'spaCY_hypernymy\get_hype_base_lemma_sents.txt')
+# tofile('spaCY_hypernymy\_np_vp_pairs.pkl', 'spaCY_hypernymy\_np_vp_pairs.txt')
+# tofile('spaCY_hypernymy\get_hype_base_lemma_sents.pkl', 'spaCY_hypernymy\get_hype_base_lemma_sents.txt')
 
-tofile()
+tofile('spaCY_hypernymy\\100_most_common.pkl', 'spaCY_hypernymy\\100_most_common.txt')

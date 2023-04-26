@@ -56,31 +56,25 @@ def notsorted(itemlist):
             j_obj = itemlist[j]
             return i_obj[1] < j_obj[1]
 
-def numer_order(item_list): #not finished with this
+def numer_order(item_list): #uses bubble sort
 	ret_dict= {}
 	while notsorted(item_list):
 		for i in range (len(item_list)):
-			iobj = [(item_list[i])].copy()
-			iobj = iobj[0]
-			for j in range ((i+1), (len(item_list))):
-				jobj = [(item_list[j])].copy()
-				jobj = jobj[0]
-				# print(iobj, jobj)
+			for j in range ((i+1), (len(item_list)-1)):
 				if item_list[i][1] < item_list[j][1]:
-					item_list[j] = iobj
-					item_list[i] = jobj
+					item_list[j], item_list[i] = item_list[i], item_list[j] 
      
 	for i in item_list:
-		# if len(ret_dict) < 100:
-		ret_dict.update({i[0]: i[1]})
+		if len(ret_dict) < 100:
+			ret_dict.update({i[0]: i[1]})
   
 	return ret_dict
         
 sortable_list = make_sortable_list(num_to_nouns)
 num_to_nouns = numer_order(sortable_list)
-# print(num_to_nouns)
 
 
+to_pkl(num_to_nouns, "spaCY_hypernymy/100_most_common.pkl")
 # for i in num_to_nouns: 
 #     print(i + " " + str(num_to_nouns[i]))
 
