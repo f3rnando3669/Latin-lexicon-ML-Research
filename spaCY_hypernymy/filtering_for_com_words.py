@@ -16,6 +16,9 @@ with open('spaCY_hypernymy\\100_most_common.pkl', 'rb') as f: #100_most_common c
 	most_common_words = list(most_common_words.keys())
 	f.close()
  
+with open('spaCY_hypernymy\_all_oneVP_pairs.pkl', 'rb') as f: 
+	pairs_one_vp = pickle.load(f)
+	f.close()
 #loading list of lemmatized words: 
  
 
@@ -58,7 +61,10 @@ def to_pkl(list, file):
         pickle.dump(list, f)
         f.close()
         
-output = filter_com_words(all_pairs)
-print(output)
+#output = filter_com_words(all_pairs)
+one_vp_filt = filter_com_words(pairs_one_vp)
 
-to_pkl(output, 'spaCY_hypernymy\_pairs_containing_common.pkl')
+print(one_vp_filt)
+
+#to_pkl(output, 'spaCY_hypernymy\_pairs_containing_common.pkl')
+to_pkl(one_vp_filt, 'spaCY_hypernymy\_NP-VPoneword.pkl' )
