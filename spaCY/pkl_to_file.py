@@ -21,5 +21,8 @@ def tofile(pkl, newfile):
 
 # tofile('spaCY_hypernymy\\100_most_common.pkl', 'spaCY_hypernymy\\100_most_common.txt')
 #tofile('spaCY_hypernymy\_pairs_containing_common.pkl', 'spaCY_hypernymy\_pairs_containing_common.txt')
-tofile('spaCY_hypernymy\_NP-VPoneword.pkl', 'spaCY_hypernymy\_NP-VPoneword.txt')
-tofile('spaCY_hypernymy\_all_oneVP_pairs.pkl', 'spaCY_hypernymy\_all_oneVP_pairs.txt')
+# tofile('spaCY_hypernymy\_NP-VPoneword.pkl', 'spaCY_hypernymy\_NP-VPoneword.txt')
+# tofile('spaCY_hypernymy\_all_oneVP_pairs.pkl', 'spaCY_hypernymy\_all_oneVP_pairs.txt')
+# tofile('spaCY_hypernymy\_all_AP_VP_pairs.pkl', 'spaCY_hypernymy\_all_AP_VP_pairs.txt')
+
+#tofile('spaCY_hypernymy\_pairs_containing_and_common.pkl', 'spaCY_hypernymy\_pairs_containing_and_common.txt')

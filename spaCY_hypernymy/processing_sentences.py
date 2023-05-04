@@ -117,20 +117,21 @@ def get_AP_VP(list,sentlist):
 
 
 
-# out = get_hyp_base(sents,be_sents)
+#ut = get_hyp_base(sents,be_sents)
 # ap_out = get_AP_VP(sents, ap_lem_sents)
+
 # one_vp = get_one_word_VP(sents)
 # out = out + ap_out
 # be_sents = be_sents + ap_lem_sents
 
 
-# def to_pkl(list, file):
-#     with open(file, 'wb') as f:
-#         pickle.dump(list, f)
-#         f.close()
+def to_pkl(list, file):
+    with open(file, 'wb') as f:
+        pickle.dump(list, f)
+        f.close()
 
 # to_pkl(one_vp, 'spaCY_hypernymy\_all_oneVP_pairs.pkl')
 # to_pkl(out, 'spaCY_hypernymy\_all_pairs.pkl')
 # to_pkl(be_sents, 'spaCY_hypernymy\get_all_lemma_sents.pkl')
 
-    
+# to_pkl(ap_out,  'spaCY_hypernymy\_all_AP_VP_pairs.pkl')

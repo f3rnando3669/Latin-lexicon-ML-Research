@@ -29,11 +29,16 @@ def lemmatize(sent):
         out.append(token.lemma_)
     return " ".join(out)
 
-#checking to see if phrase contains common word
+#checking to see if both X AND Y contain common word
+def contains_and_common_word(i):
+    for word in most_common_words:
+        return word in str(lemmatize(i[0])) and word in str(lemmatize(i[1]))
+
+#checking to see if X OR Y contain common word
 def contains_common_word(i):
     for word in most_common_words:
-        return word in str(lemmatize(i[0])) or word in str(lemmatize(i[1]))
-    
+        return word in str(lemmatize(i[0])) or word in str(lemmatize(i[1])) 
+        
 #checking if lemmatized sentence contains common word: 
 
 def contains_common_lem(i):
@@ -41,7 +46,14 @@ def contains_common_lem(i):
 		return word in str(i)
 
 #filtering functions: 
-def filter_com_words(p_vp): 
+def filter_and_com_words(p_vp): 
+    filtered_list = []
+    for i in p_vp: 
+        if contains_and_common_word(i):
+           filtered_list.append(i)
+    return filtered_list
+
+def filter_or_com_words(p_vp): 
     filtered_list = []
     for i in p_vp: 
         if contains_common_word(i):
@@ -61,10 +73,11 @@ def to_pkl(list, file):
         pickle.dump(list, f)
         f.close()
         
-#output = filter_com_words(all_pairs)
-one_vp_filt = filter_com_words(pairs_one_vp)
+# output = filter_and_com_words(all_pairs)
+# print(output)
+# one_vp_filt = filter_and_com_words(pairs_one_vp)
 
-print(one_vp_filt)
+# print(one_vp_filt)
 
-#to_pkl(output, 'spaCY_hypernymy\_pairs_containing_common.pkl')
-to_pkl(one_vp_filt, 'spaCY_hypernymy\_NP-VPoneword.pkl' )
+# to_pkl(output, 'spaCY_hypernymy\_pairs_containing_and_common.pkl')
+# to_pkl(one_vp_filt, 'spaCY_hypernymy\_NP-VPoneword.pkl' )
