@@ -17,7 +17,7 @@ public class DependencyTreeExample {
         Properties props = new Properties();
         props.setProperty("ssplit.eolonly","true");
         props.setProperty("annotators",
-                "tokenize, ssplit, pos, parse");
+                "tokenize, ssplit, pos, deparse");
         // set up pipeline
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
         // get contents from file
