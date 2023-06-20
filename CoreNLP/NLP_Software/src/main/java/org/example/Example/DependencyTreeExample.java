@@ -1,0 +1,44 @@
+package org.example.Example;
+
+import java.io.*;
+import java.util.*;
+import edu.stanford.nlp.io.*;
+import edu.stanford.nlp.ling.*;
+import edu.stanford.nlp.pipeline.*;
+import edu.stanford.nlp.util.*;
+import edu.stanford.nlp.semgraph.*;
+import edu.stanford.nlp.trees.TreeCoreAnnotations.*;
+
+public class DependencyTreeExample {
+
+    public static void main (String[] args) throws IOException {
+
+        // set up properties
+        Properties props = new Properties();
+        props.setProperty("ssplit.eolonly","true");
+        props.setProperty("annotators",
+                "tokenize, ssplit, pos, depparse");
+        // set up pipeline
+        StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+        // get contents from file
+        String content = "The ISIS has claimed responsibility for a suicide bomb blast in the Tunisian capital earlier this week.\n" +
+                         "The militant group's Amaq news agency said on Thursday.\n" +
+                         "A militant wearing an explosives belt blew himself up in Tunis.";
+        // new Scanner(new File(args[0])).useDelimiter("\\Z").next();
+        System.out.println(content);
+        // read in a product review per line
+        Annotation annotation = new Annotation(content);
+        pipeline.annotate(annotation);
+
+        List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
+        for (CoreMap sentence : sentences) {
+            System.out.println("---");
+            System.out.println("sentence: "+sentence);
+            SemanticGraph tree = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
+            System.out.println(tree.toString(SemanticGraph.OutputFormat.READABLE));
+        }
+
+
+    }
+
+}
