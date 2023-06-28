@@ -1,7 +1,6 @@
 package NLP_Pipeline;
 
 import com.robbinstony.nlp.Pipeline;
-import com.robbinstony.nlp.SentenceRecognizer;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
@@ -21,34 +20,30 @@ public class NLP_Pipeline {
 
     public static void main(String[] args) throws FileNotFoundException {
 
+        Scanner scanner = new Scanner(new File("C://Users//apeng//IdeaProjects//NLP_Pipeline//src//main//java//NLP_Pipeline//input.txt"));
 
-
-        // The following Scanner, named scanner, allows us to read the input.txt file.
-        Scanner scanner = new Scanner(new File("C://Users//apeng//IdeaProjects//NLP_Pipeline//src//main//java//NLP_Pipeline//GutenbergKingJamesBible.txt"));
-
-        // The following PrintWriter, named out, allows us to create and print in the output.txt file.
         PrintWriter out = new PrintWriter("C://Users//apeng//IdeaProjects//NLP_Pipeline//src//main//java//NLP_Pipeline//output.txt");
 
-        // The following while loop ensures that the Scanner continues to scan until it has nothing to scan.
         while(scanner.hasNextLine()){
-            // The following String, named input, is where each line from the Scanner will be stored.
             String input = scanner.nextLine();
+            System.out.println("Input: " + input);
 
             String lemmaOutput = Lemma(input);
+            System.out.println("Post-Lemma: " + lemmaOutput);
 
             String POSoutput = POS(lemmaOutput);
+            System.out.println("Post-POS: " + POSoutput);
 
             String SRoutput = SentenceRecognizer(POSoutput);
+            //System.out.println(SRoutput)    ;
 
-            String PatternMatchedOutput = PatternMatching(SRoutput);
-            // the following prints the String named lemmaOutput.
+            //String PatternMatchedOutput = PatternMatching(SRoutput);
+            //System.out.println("Post-PatternMatching: " + PatternMatchedOutput);
 
-            out.println(PatternMatchedOutput);
+            out.println("Input: " + input + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + POSoutput + "\nFinal Output: " + SRoutput);
         }
-        // The following two lines shutdown or close the scanner and output to
         scanner.close();
         out.close();
-
     }
 
     public static String SentenceRecognizer(String input){
@@ -65,7 +60,6 @@ public class NLP_Pipeline {
         return output.toString();
     }
 
-    // The following is the Lemma method that runs the input through the Lemma process of NLP.
     public static String Lemma(String SRoutput){
         CoreDocument coreDocument = new CoreDocument(SRoutput);
         stanfordCoreNLP.annotate(coreDocument);
@@ -75,14 +69,13 @@ public class NLP_Pipeline {
 
         int i = 0;
 
-        // The following for loop Lemma's each element in the array words. "i" is used to only run this as many times as needed, starting with the 0th element.
         for(CoreLabel coreLabel : coreLabelList){
             words[i] = coreLabel.lemma();
             i++;
         }
-        // The following String formats the output with spaces between words, periods are words.
+
         String output = String.join(" ", words);
-        // The following is self-explanatory. :)
+
         return output;
     }
 
@@ -107,74 +100,87 @@ public class NLP_Pipeline {
 
     public static String PatternMatching(String POSoutput){
 
+        // PatternMatching() Flaws:
+        // 1. It doesn't actually search through the given input. It is basically hard coded to find the patterns below,
+        // so it is really dumb.
+        // It should check each item in the input against the possible matching POS in a pattern sequence.
+
+        // PatternMatchingHelper(): Good idea?
+        // 1. Scans the input and hands a word at a time to a pattern matching method that will check if it starts or
+        // continues a sequence, and determine where to go from there.
+
+
             String[] alphabet = new String[]{"DT", "NN", "NNP", "VBP", "JJ"};
             int currentState = 0;
 
-            // This should split the sentence in output into individual words in an array.
             String[] words = POSoutput.split(" ");
-            //System.out.println(words.length);
 
             // C is for testing.
-            String[] C = new String[]{"DT", "NN", "NNP", "VBP", "JJ"};
+            String[] C = new String[]{"DT","NN", "NNP", "VBP", "JJ"};
 
             while(currentState != 6 && currentState != 7){
+
                 if (C[0] == alphabet[0]) {
-                    //System.out.println("Found DT!");
+                    System.out.println("Found DT!");
                     currentState = 1;
+                } else if (C[0] == alphabet[1]) {
+                    System.out.println("Found NN!");
+                    currentState = 3;
                 } else if (C[1] == alphabet[1]) {
-                    //System.out.println("Found NN!");
+                    System.out.println("Found NN!");
                     currentState = 3;
                 } else if (C[2] == alphabet[2]) {
-                    //System.out.println("Found NNP!");
+                    System.out.println("Found NNP!");
                     currentState = 4;
                 } else currentState = 7;
-                // If the first tag is "DT", set currentState to 1.
-                // Else if first tag is "NN", set currentState to 3.
-                // Else if first tag is "NNP", set currentState to 4.
+
                 if(currentState == 1){
                     if(C[1] == alphabet[1]){
-                        //System.out.println("Found NN after DT!");
+                        System.out.println("Found NN after DT!");
                         currentState = 2;
                     } else currentState = 7;
-                    // If following the "DT" is "NN", set currentState to 2.
+
                 }
                 if(currentState == 2){
                     if(C[2] == alphabet[2]){
-                        //System.out.println("Found VBP!");
+                        System.out.println("Found VBP!");
                         currentState = 5;
                     } else currentState = 7;
-                    // If the following is "VBP", set currentState to 5.
+
                 }
                 if(currentState == 3){
                     if(C[2] == alphabet[2]){
-                        //System.out.println("Found VBP!");
+                        System.out.println("Found VBP!");
+                        currentState = 5;
+                    } else if (C[1] == alphabet[2]) {
+                        System.out.println("Found VBP!");
                         currentState = 5;
                     } else currentState = 7;
-                    // If the following is "VBP", set currentState to 5.
+
                 }
                 if(currentState == 4){
                     if(C[2] == alphabet[2]){
-                        //System.out.println("Found VBP!");
+                        System.out.println("Found VBP!");
                         currentState = 5;
                     } else currentState = 7;
-                    //If the following is "VBP", set currentState to 5.
+
                 }
                 if(currentState == 5){
-                    if(C[4] == alphabet[4]){
-                        //System.out.println("Found NN or JJ!");
+                    if(C[4] == alphabet[4] || C[4] == alphabet[1]){
+                        System.out.println("Found NN or JJ!");
                         currentState = 6;
                     } else currentState = 7;
-                    // If the following is "NN" or "JJ", set currentState to 6.
                 }
             }
+
             if(currentState == 6){
-                //System.out.println("Pattern Match!");
+                System.out.println("Pattern Match!");
                 //System.out.println("The words in the sentence that are associated with the POS tags.");
             }
-            if(currentState == 7){
-                //System.out.println("No pattern found.");
-                return POSoutput;
 
+            if(currentState == 7){
+                System.out.println("No pattern found.");
+                return POSoutput;
             }
         return POSoutput;
     }
