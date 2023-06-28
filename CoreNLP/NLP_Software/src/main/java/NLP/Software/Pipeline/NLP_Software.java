@@ -7,6 +7,7 @@ import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreSentence;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.simple.Sentence;
+import edu.stanford.nlp.trees.tregex.tsurgeon.JJTTsurgeonParserState;
 //import edu.stanford.nlp.naturalli.VerbTense;
 
 import java.io.File;
@@ -26,21 +27,21 @@ public class NLP_Pipeline {
 
         while(scanner.hasNextLine()){
             String input = scanner.nextLine();
-            System.out.println("Input: " + input);
+            //System.out.println("Input: " + input);
 
             String lemmaOutput = Lemma(input);
-            System.out.println("Post-Lemma: " + lemmaOutput);
+            //System.out.println("Post-Lemma: " + lemmaOutput);
 
             String POSoutput = POS(lemmaOutput);
-            System.out.println("Post-POS: " + POSoutput);
+            //System.out.println("Post-POS: " + POSoutput);
 
             String SRoutput = SentenceRecognizer(POSoutput);
             //System.out.println(SRoutput)    ;
 
-            //String PatternMatchedOutput = PatternMatching(SRoutput);
+            String PatternMatchedOutput = PatternMatching(SRoutput);
             //System.out.println("Post-PatternMatching: " + PatternMatchedOutput);
 
-            out.println("Input: " + input + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + POSoutput + "\nFinal Output: " + SRoutput);
+            out.println("Input: " + input + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + POSoutput + "\nPatternMatching: " + PatternMatchedOutput + "\nFinal Output: " + SRoutput);
         }
         scanner.close();
         out.close();
@@ -100,89 +101,94 @@ public class NLP_Pipeline {
 
     public static String PatternMatching(String POSoutput){
 
-        // PatternMatching() Flaws:
-        // 1. It doesn't actually search through the given input. It is basically hard coded to find the patterns below,
-        // so it is really dumb.
-        // It should check each item in the input against the possible matching POS in a pattern sequence.
+        String[] myArray = new String[]{"DT", "NN", "VBP", "NN"};
+        int DTindex = Arrays.binarySearch(myArray, "DT");
+        int NNindex = Arrays.binarySearch(myArray, "NN");
+        int NN2index = Arrays.binarySearch(myArray, "NN");
+        int NNPindex = Arrays.binarySearch(myArray, "NNP");
+        int VBPindex = Arrays.binarySearch(myArray, "VBP");
+        int NN3index = Arrays.binarySearch(myArray, "NN");
+        int JJindex = Arrays.binarySearch(myArray, "JJ");
 
-        // PatternMatchingHelper(): Good idea?
-        // 1. Scans the input and hands a word at a time to a pattern matching method that will check if it starts or
-        // continues a sequence, and determine where to go from there.
 
+        int currentIndex = 0;
+        String[] alphabet = new String[]{"DT", "NN", "NNP", "VBP", "JJ"};
+        int currentState = 0;
 
-            String[] alphabet = new String[]{"DT", "NN", "NNP", "VBP", "JJ"};
-            int currentState = 0;
+        while(currentState != 7 && currentState !=8){
+             // This if is in currentState == 0 already.
+             if (DTindex >= currentIndex) {
+                 System.out.println("Found DT at " + DTindex);
+                 currentIndex = DTindex;
+                 currentState = 1;
+             } else if (NNindex >= currentIndex) {
+                 System.out.println("Found NN at " + currentIndex);
+                 currentIndex = NNindex;
+                 currentState = 3;
+             } else if (NNPindex >= currentIndex) {
+                 System.out.println("Found NNP at " + currentIndex);
+                 currentIndex = NNPindex;
+                 currentState = 4;
+             } else currentState = 8;
 
-            String[] words = POSoutput.split(" ");
+             if(currentState == 1){
+                 if(NN2index >= currentIndex){
+                     System.out.println("Found NN after DT at " + currentIndex);
+                     currentIndex = NN2index;
+                     currentState = 2;
+                 } else currentState = 8;
+             }
 
-            // C is for testing.
-            String[] C = new String[]{"DT","NN", "NNP", "VBP", "JJ"};
+             if(currentState == 2){
+                 if(VBPindex >= currentIndex){
+                     System.out.println("Found VBP at " + currentIndex);
+                     currentIndex = VBPindex;
+                     currentState = 5;
+                 } else currentState = 8;
+             }
 
-            while(currentState != 6 && currentState != 7){
-
-                if (C[0] == alphabet[0]) {
-                    System.out.println("Found DT!");
-                    currentState = 1;
-                } else if (C[0] == alphabet[1]) {
-                    System.out.println("Found NN!");
-                    currentState = 3;
-                } else if (C[1] == alphabet[1]) {
-                    System.out.println("Found NN!");
-                    currentState = 3;
-                } else if (C[2] == alphabet[2]) {
-                    System.out.println("Found NNP!");
-                    currentState = 4;
-                } else currentState = 7;
-
-                if(currentState == 1){
-                    if(C[1] == alphabet[1]){
-                        System.out.println("Found NN after DT!");
-                        currentState = 2;
-                    } else currentState = 7;
-
+             if(currentState == 3){
+                 if(VBPindex >= currentIndex){
+                     System.out.println("Found VBP at " + currentIndex);
+                     currentIndex = VBPindex;
+                     currentState = 5;
+                 } else currentState = 8;
                 }
-                if(currentState == 2){
-                    if(C[2] == alphabet[2]){
-                        System.out.println("Found VBP!");
-                        currentState = 5;
-                    } else currentState = 7;
 
-                }
-                if(currentState == 3){
-                    if(C[2] == alphabet[2]){
-                        System.out.println("Found VBP!");
-                        currentState = 5;
-                    } else if (C[1] == alphabet[2]) {
-                        System.out.println("Found VBP!");
-                        currentState = 5;
-                    } else currentState = 7;
+             if(currentState == 4){
+                 if(VBPindex >= currentIndex){
+                     System.out.println("Found VBP at " + currentIndex);
+                     currentIndex = VBPindex;
+                     currentState = 5;
+                 } else currentState = 8;
+             }
 
-                }
-                if(currentState == 4){
-                    if(C[2] == alphabet[2]){
-                        System.out.println("Found VBP!");
-                        currentState = 5;
-                    } else currentState = 7;
+             if(currentState == 5){
+                 if(NN3index >= currentIndex){
+                     System.out.println("Found NN after VBP at " + currentIndex);
+                     currentIndex = NN3index;
+                     currentState = 6;
+                 } else currentState = 8;
+             }
 
-                }
-                if(currentState == 5){
-                    if(C[4] == alphabet[4] || C[4] == alphabet[1]){
-                        System.out.println("Found NN or JJ!");
-                        currentState = 6;
-                    } else currentState = 7;
-                }
-            }
+             if(currentState == 6){
+                 if(JJindex >= currentIndex){
+                     System.out.println("Found JJ after VBP at " + currentIndex);
+                     currentIndex = JJindex;
+                     currentState = 7;
+                 } else currentState = 8;
+             }
+        }
 
-            if(currentState == 6){
-                System.out.println("Pattern Match!");
-                //System.out.println("The words in the sentence that are associated with the POS tags.");
-            }
-
-            if(currentState == 7){
-                System.out.println("No pattern found.");
-                return POSoutput;
-            }
-        return POSoutput;
+        if(currentState == 7){
+            System.out.println("Pattern Match!");
+            //System.out.println("The words in the sentence that are associated with the POS tags.");
+            return "Pattern Found";
+        } else{
+            // if(currentState == 8) is implied here.
+            System.out.println("No Pattern Found.");
+            return "No Pattern Found";
+           }
     }
 
     public static int countSentences(String input){
