@@ -100,14 +100,13 @@ public class NLP_Pipeline {
     }
 
     public static String PatternMatching(String POSoutput){
-        
+
         // To-Do:
         //   1. Use array.size like above to eliminate out of bounds exceptions.
 
-        String[] myArray = new String[]{"NN", "VBP", "JJ"};
-                                                            // myArray will be replaced with POSoutput eventually.
-                                                            // For now myArray simulates the pattern sent through
-                                                            // the PatternMatching() algorithm.
+
+        String[] myArray = new String[]{"DT", "NN", "VBP", "JJ", ""};
+
 
         int DTindex = Arrays.binarySearch(myArray, "DT"); // Beginning with DT
         int NNindex = Arrays.binarySearch(myArray, "NN"); // NN after DT
@@ -121,26 +120,27 @@ public class NLP_Pipeline {
         int currentState = 0; // Remembers our state in the FSM.
 
 
-        while(currentState != 7 && currentState !=8){
-             if (DTindex >= currentIndex) {    // By default, this if() statement operates in the zeroth state.
-                 currentIndex = DTindex;
-                 System.out.println("Currently in state: " + currentState);
-                 System.out.println("Current Index: " + currentIndex);
-                 System.out.println("Found DT at index: " + currentIndex);
-                 currentState = 1;
-             } else if (NNindex >= currentIndex) {
-                 currentIndex = NNindex;
-                 System.out.println("Currently in state: " + currentState);
-                 System.out.println("Current Index: " + currentIndex);
-                 System.out.println("Found NN at index: " + currentIndex);
-                 currentState = 3;
-             } else if (NNPindex >= currentIndex) {
-                 currentIndex = NNPindex;
-                 System.out.println("Currently in state: " + currentState);
-                 System.out.println("Current Index: " + currentIndex);
-                 System.out.println("Found NNP at index: " + currentIndex);
-                 currentState = 4;
-             } else currentState = 8;
+        while(currentState != 7 && currentState != 8) {
+            if (DTindex >= currentIndex) {    // By default, this if() statement operates in the zeroth state.
+                currentIndex = DTindex;
+                System.out.println("Currently in state: " + currentState);
+                System.out.println("Current Index: " + currentIndex);
+                System.out.println("Found DT at index: " + currentIndex);
+                currentState = 1;
+            } else if (NNindex >= currentIndex) {
+                currentIndex = NNindex;
+                System.out.println("Currently in state: " + currentState);
+                System.out.println("Current Index: " + currentIndex);
+                System.out.println("Found NN at index: " + currentIndex);
+                currentState = 3;
+            } else if (NNPindex >= currentIndex) {
+                currentIndex = NNPindex;
+                System.out.println("Currently in state: " + currentState);
+                System.out.println("Current Index: " + currentIndex);
+                System.out.println("Found NNP at index: " + currentIndex);
+                currentState = 4;
+            } else currentState = 8;
+        
 
              if(currentState == 1){
                  if(NN2index >= currentIndex){
@@ -182,18 +182,14 @@ public class NLP_Pipeline {
                  } else currentState = 8;
              }
 
-             if(currentState == 5){
-                 if(NN3index >= currentIndex){
+             if(currentState == 5) {
+                 if (NN3index >= currentIndex) {
                      currentIndex = NN3index;
                      System.out.println("Currently in state: " + currentState);
                      System.out.println("Current Index: " + currentIndex);
                      System.out.println("Found NN after VBP at index: " + currentIndex);
-                     currentState = 6;
-                 } else currentState = 8;
-             }
-
-             if(currentState == 6){
-                 if(JJindex >= currentIndex){
+                     currentState = 7;
+                 } else if (JJindex >= currentIndex) {
                      currentIndex = JJindex;
                      System.out.println("Currently in state: " + currentState);
                      System.out.println("Current Index: " + currentIndex);
@@ -202,7 +198,7 @@ public class NLP_Pipeline {
                  } else currentState = 8;
              }
         }
-
+        
         if(currentState == 7){
             System.out.println("Pattern Match!");
             //System.out.println("The words in the sentence that are associated with the POS tags.");
