@@ -102,11 +102,15 @@
         public static String PatternMatching(String POSoutput){
 
             // To-Do:
-            //   1. Check the brackets
-            //   2. Check the if and else-if statements for congruent logical thought
+            //   1. Build smarter NNindex, NN2index, and NN3index assignments for when they are not the 1st occurrence.
+            //   2. Find why JJindex is being assigned as -2.
+            //       - Could be because it never finds JJ, and returns a number < 0.
+            //       - Are we using Arrays.binarySearch() incorrectly?
+            //   3. Confirm the pattern matching works with myArray, and if so, change it to take POSoutput in a similar array.
+            //   4. ...
 
 
-            String[] myArray = new String[]{"DT", "NN", "VBP", "JJ", ""};
+            String[] myArray = new String[]{"DT", "NN", "VBP", "JJ", "FF", ""};
 
 
             int DTindex = Arrays.binarySearch(myArray, "DT"); // Beginning with DT
@@ -116,6 +120,7 @@
             int VBPindex = Arrays.binarySearch(myArray, "VBP"); // VBP after any beginning pattern
             int NN3index = Arrays.binarySearch(myArray, "NN"); // NN after VBP
             int JJindex = Arrays.binarySearch(myArray, "JJ"); // JJ after VBP
+
 
             int currentIndex = 0; // Remembers our position in the array.
             int currentState = 0; // Remembers our state in the FSM.
