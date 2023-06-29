@@ -104,15 +104,14 @@
             // To-Do:
             //   1. Build smarter NNindex, NN2index, and NN3index assignments for when they are not the 1st occurrence.
             //   2. Find why JJindex is being assigned as -2.
-            //       - Could be because it never finds JJ, and returns a number < 0.
-            //       - Are we using Arrays.binarySearch() incorrectly?
+            //       - Arrays.binarySearch() only works on a sorted array. Unfortunately, sorting the array defeats the point and ruins any possible patters.
             //   3. Confirm the pattern matching works with myArray, and if so, change it to take POSoutput in a similar array.
             //   4. ...
 
 
             String[] myArray = new String[]{"DT", "NN", "VBP", "JJ", "FF", ""};
 
-
+            // Find a new way to determine where a string is in an unsorted array.
             int DTindex = Arrays.binarySearch(myArray, "DT"); // Beginning with DT
             int NNindex = Arrays.binarySearch(myArray, "NN"); // NN after DT
             int NN2index = Arrays.binarySearch(myArray, "NN"); // Beginning with NN
