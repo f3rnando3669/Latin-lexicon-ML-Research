@@ -101,7 +101,8 @@ public class NLP_Pipeline {
 
     public static String PatternMatching(String POSoutput){
 
-        String[] myArray = new String[]{"DT", "NN", "VBP", "NN"};
+        String[] myArray = new String[]{"NN", "VBP", "JJ"};
+
         int DTindex = Arrays.binarySearch(myArray, "DT");
         int NNindex = Arrays.binarySearch(myArray, "NN");
         int NN2index = Arrays.binarySearch(myArray, "NN");
@@ -110,31 +111,30 @@ public class NLP_Pipeline {
         int NN3index = Arrays.binarySearch(myArray, "NN");
         int JJindex = Arrays.binarySearch(myArray, "JJ");
 
-
         int currentIndex = 0;
-        String[] alphabet = new String[]{"DT", "NN", "NNP", "VBP", "JJ"};
         int currentState = 0;
+
 
         while(currentState != 7 && currentState !=8){
              // This if is in currentState == 0 already.
              if (DTindex >= currentIndex) {
-                 System.out.println("Found DT at " + DTindex);
-                 currentIndex = DTindex;
+                 System.out.println("Found DT at " + currentIndex);
+                 currentIndex = DTindex + 1;
                  currentState = 1;
              } else if (NNindex >= currentIndex) {
                  System.out.println("Found NN at " + currentIndex);
-                 currentIndex = NNindex;
+                 currentIndex = NNindex + 1;
                  currentState = 3;
              } else if (NNPindex >= currentIndex) {
                  System.out.println("Found NNP at " + currentIndex);
-                 currentIndex = NNPindex;
+                 currentIndex = NNPindex + 1;
                  currentState = 4;
              } else currentState = 8;
 
              if(currentState == 1){
                  if(NN2index >= currentIndex){
                      System.out.println("Found NN after DT at " + currentIndex);
-                     currentIndex = NN2index;
+                     currentIndex = NN2index + 1;
                      currentState = 2;
                  } else currentState = 8;
              }
@@ -142,7 +142,7 @@ public class NLP_Pipeline {
              if(currentState == 2){
                  if(VBPindex >= currentIndex){
                      System.out.println("Found VBP at " + currentIndex);
-                     currentIndex = VBPindex;
+                     currentIndex = VBPindex + 1;
                      currentState = 5;
                  } else currentState = 8;
              }
@@ -150,7 +150,7 @@ public class NLP_Pipeline {
              if(currentState == 3){
                  if(VBPindex >= currentIndex){
                      System.out.println("Found VBP at " + currentIndex);
-                     currentIndex = VBPindex;
+                     currentIndex = VBPindex + 1;
                      currentState = 5;
                  } else currentState = 8;
                 }
@@ -158,7 +158,7 @@ public class NLP_Pipeline {
              if(currentState == 4){
                  if(VBPindex >= currentIndex){
                      System.out.println("Found VBP at " + currentIndex);
-                     currentIndex = VBPindex;
+                     currentIndex = VBPindex + 1;
                      currentState = 5;
                  } else currentState = 8;
              }
@@ -166,7 +166,7 @@ public class NLP_Pipeline {
              if(currentState == 5){
                  if(NN3index >= currentIndex){
                      System.out.println("Found NN after VBP at " + currentIndex);
-                     currentIndex = NN3index;
+                     currentIndex = NN3index + 1;
                      currentState = 6;
                  } else currentState = 8;
              }
@@ -174,7 +174,7 @@ public class NLP_Pipeline {
              if(currentState == 6){
                  if(JJindex >= currentIndex){
                      System.out.println("Found JJ after VBP at " + currentIndex);
-                     currentIndex = JJindex;
+                     currentIndex = JJindex + 1;
                      currentState = 7;
                  } else currentState = 8;
              }
