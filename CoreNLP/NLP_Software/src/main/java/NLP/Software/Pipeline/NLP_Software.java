@@ -100,81 +100,104 @@ public class NLP_Pipeline {
     }
 
     public static String PatternMatching(String POSoutput){
+        
+        // To-Do:
+        //   1. Use array.size like above to eliminate out of bounds exceptions.
 
         String[] myArray = new String[]{"NN", "VBP", "JJ"};
+                                                            // myArray will be replaced with POSoutput eventually.
+                                                            // For now myArray simulates the pattern sent through
+                                                            // the PatternMatching() algorithm.
 
-        int DTindex = Arrays.binarySearch(myArray, "DT");
-        int NNindex = Arrays.binarySearch(myArray, "NN");
-        int NN2index = Arrays.binarySearch(myArray, "NN");
-        int NNPindex = Arrays.binarySearch(myArray, "NNP");
-        int VBPindex = Arrays.binarySearch(myArray, "VBP");
-        int NN3index = Arrays.binarySearch(myArray, "NN");
-        int JJindex = Arrays.binarySearch(myArray, "JJ");
+        int DTindex = Arrays.binarySearch(myArray, "DT"); // Beginning with DT
+        int NNindex = Arrays.binarySearch(myArray, "NN"); // NN after DT
+        int NN2index = Arrays.binarySearch(myArray, "NN"); // Beginning with NN
+        int NNPindex = Arrays.binarySearch(myArray, "NNP"); // Beginning with NNP
+        int VBPindex = Arrays.binarySearch(myArray, "VBP"); // VBP after any beginning pattern
+        int NN3index = Arrays.binarySearch(myArray, "NN"); // NN after VBP
+        int JJindex = Arrays.binarySearch(myArray, "JJ"); // JJ after VBP
 
-        int currentIndex = 0;
-        int currentState = 0;
+        int currentIndex = 0; // Remembers our position in the array.
+        int currentState = 0; // Remembers our state in the FSM.
 
 
         while(currentState != 7 && currentState !=8){
-             // This if is in currentState == 0 already.
-             if (DTindex >= currentIndex) {
-                 System.out.println("Found DT at " + currentIndex);
-                 currentIndex = DTindex + 1;
+             if (DTindex >= currentIndex) {    // By default, this if() statement operates in the zeroth state.
+                 currentIndex = DTindex;
+                 System.out.println("Currently in state: " + currentState);
+                 System.out.println("Current Index: " + currentIndex);
+                 System.out.println("Found DT at index: " + currentIndex);
                  currentState = 1;
              } else if (NNindex >= currentIndex) {
-                 System.out.println("Found NN at " + currentIndex);
-                 currentIndex = NNindex + 1;
+                 currentIndex = NNindex;
+                 System.out.println("Currently in state: " + currentState);
+                 System.out.println("Current Index: " + currentIndex);
+                 System.out.println("Found NN at index: " + currentIndex);
                  currentState = 3;
              } else if (NNPindex >= currentIndex) {
-                 System.out.println("Found NNP at " + currentIndex);
-                 currentIndex = NNPindex + 1;
+                 currentIndex = NNPindex;
+                 System.out.println("Currently in state: " + currentState);
+                 System.out.println("Current Index: " + currentIndex);
+                 System.out.println("Found NNP at index: " + currentIndex);
                  currentState = 4;
              } else currentState = 8;
 
              if(currentState == 1){
                  if(NN2index >= currentIndex){
-                     System.out.println("Found NN after DT at " + currentIndex);
-                     currentIndex = NN2index + 1;
+                     currentIndex = NN2index;
+                     System.out.println("Currently in state: " + currentState);
+                     System.out.println("Current Index: " + currentIndex);
+                     System.out.println("Found NN after DT at index: " + currentIndex);
                      currentState = 2;
                  } else currentState = 8;
              }
 
              if(currentState == 2){
                  if(VBPindex >= currentIndex){
-                     System.out.println("Found VBP at " + currentIndex);
-                     currentIndex = VBPindex + 1;
+                     currentIndex = VBPindex;
+                     System.out.println("Currently in state: " + currentState);
+                     System.out.println("Current Index: " + currentIndex);
+                     System.out.println("Found VBP at index: " + currentIndex);
                      currentState = 5;
                  } else currentState = 8;
              }
 
              if(currentState == 3){
                  if(VBPindex >= currentIndex){
-                     System.out.println("Found VBP at " + currentIndex);
-                     currentIndex = VBPindex + 1;
+                     currentIndex = VBPindex;
+                     System.out.println("Currently in state: " + currentState);
+                     System.out.println("Current Index: " + currentIndex);
+                     System.out.println("Found VBP at index: " + currentIndex);
                      currentState = 5;
                  } else currentState = 8;
                 }
 
              if(currentState == 4){
                  if(VBPindex >= currentIndex){
-                     System.out.println("Found VBP at " + currentIndex);
-                     currentIndex = VBPindex + 1;
+                     currentIndex = VBPindex;
+                     System.out.println("Currently in state: " + currentState);
+                     System.out.println("Current Index: " + currentIndex);
+                     System.out.println("Found VBP at index: " + currentIndex);
                      currentState = 5;
                  } else currentState = 8;
              }
 
              if(currentState == 5){
                  if(NN3index >= currentIndex){
-                     System.out.println("Found NN after VBP at " + currentIndex);
-                     currentIndex = NN3index + 1;
+                     currentIndex = NN3index;
+                     System.out.println("Currently in state: " + currentState);
+                     System.out.println("Current Index: " + currentIndex);
+                     System.out.println("Found NN after VBP at index: " + currentIndex);
                      currentState = 6;
                  } else currentState = 8;
              }
 
              if(currentState == 6){
                  if(JJindex >= currentIndex){
-                     System.out.println("Found JJ after VBP at " + currentIndex);
-                     currentIndex = JJindex + 1;
+                     currentIndex = JJindex;
+                     System.out.println("Currently in state: " + currentState);
+                     System.out.println("Current Index: " + currentIndex);
+                     System.out.println("Found JJ after VBP at index: " + currentIndex);
                      currentState = 7;
                  } else currentState = 8;
              }
@@ -189,15 +212,5 @@ public class NLP_Pipeline {
             System.out.println("No Pattern Found.");
             return "No Pattern Found";
            }
-    }
-
-    public static int countSentences(String input){
-        if(input == null || input.isEmpty()){
-            return 0;
-        }
-
-        String[] sentences = input.split("[.]+");
-
-        return sentences.length;
     }
 }
