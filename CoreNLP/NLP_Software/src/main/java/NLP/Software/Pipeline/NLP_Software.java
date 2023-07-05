@@ -105,7 +105,7 @@ public class NLP_Pipeline {
         //        - Ex.  IF is_DT is true, then search for is_NN1, otherwise search for is_NN2.
         //               Always search for is_NN3, but two different ways for following NN1 vs NN2.
 
-        String[] myArray = new String[]{"DT", "NN", "VBP", "JJ"};
+        String[] myArray = new String[]{"DT", "NN", "VBP", "NN"};
 
 
         // -------------------------------------------------------------------------------------------------------------
@@ -114,8 +114,9 @@ public class NLP_Pipeline {
         int VBP_index = 0;
         if(is_VBP){
             VBP_index = locIndex(myArray, "VBP");
+            System.out.println("VBP exists in the array at: " + VBP_index);
         }
-        
+
         // Check if DT exists, if it does store its index and look for an NN with an index between DT and VBP.
         // If such an index exists, call it NN1_index.
         boolean is_DT = isPresent(myArray, "DT");
@@ -123,31 +124,41 @@ public class NLP_Pipeline {
         int NN1_index = 0;
         if(is_DT){
             DT_index = locIndex(myArray, "DT");
+            System.out.println("DT exists at: " + DT_index);
             boolean is_NN = isPresent(myArray, "NN");
             if(is_NN){
             int NN_index = locIndex(myArray, "NN");
             if(NN_index > DT_index && NN_index < VBP_index){
                 NN1_index = NN_index;
+                System.out.println("An instance of NN exists after DT (" + DT_index + ") and before VBP (" + VBP_index + ") at: " + NN1_index);
                 }
             }
         }
-        
+
         // Since DT does not exist, check if an NN exists with an index less than VBP, if so, call it NN2.
-        boolean is_NN = isPresent(myArray, "NN");
         int NN2_index = 0;
-        if(is_NN){
-            int NN_index = locIndex(myArray, "NN");
-            if(NN_index < VBP_index){
-                NN2_index = NN_index;
+        if(!is_DT) {
+            boolean is_NN = isPresent(myArray, "NN");
+            if (is_NN) {
+                int NN_index = locIndex(myArray, "NN");
+                if (NN_index < VBP_index) {
+                    NN2_index = NN_index;
+                    System.out.println("NN exists at: " + NN2_index + " which is before VBP at: " + VBP_index);
+                }
             }
         }
-        
+
         // In every case of an NN existing, check if its index is higher than VBP, if it is, call it NN3.
+        boolean is_NN = isPresent(myArray, "NN");
+        int NN_index;
         int NN3_index = 0;
         if(is_NN){
-            int NN_index = locIndex(myArray, "NN");
+            // Enters here but doesn't pass the next if statement.
+            NN_index = locIndex(myArray, "NN");
+            System.out.println("Final NNindex is " + NN_index);
             if(NN_index > VBP_index){
                 NN3_index = NN_index;
+                System.out.println("NN3 exists at: " + NN3_index + "which is after VBP at: " + VBP_index);
             }
         }
 
