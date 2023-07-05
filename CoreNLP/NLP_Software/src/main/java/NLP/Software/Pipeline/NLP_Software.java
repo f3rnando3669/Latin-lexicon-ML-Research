@@ -100,13 +100,17 @@
 
             // To-Do:
             //   1. Make is_NN2,3 and NN2,3_index smarter to they actually differentiate the NNs, if possible.
+            //   2. Store each instance of NN, and then continue the search from the index of the first NN.
+            //   3. Only look for different NNs if certain conditions have passed.
+            //        - Ex.  IF is_DT is true, then search for is_NN1, otherwise search for is_NN2. 
+            //               Always search for is_NN3, but two different ways for following NN1 vs NN2.
 
-            String[] myArray = new String[]{"NN", "VBP", "NN"};
+            String[] myArray = new String[]{"DT", "NN", "VBP", "NN"};
 
 
             // Check if the tags exist in the array.
             boolean is_DT = isPresent(myArray, "DT"); // Beginning with DT
-            boolean is_NN = isPresent(myArray, "NN"); // NN after DT
+            boolean is_NN1 = isPresent(myArray, "NN"); // NN after DT
             boolean is_NN2 = isPresent(myArray, "NN"); // Beginning with NN
             boolean is_NNP = isPresent(myArray, "NNP"); // Beginning with NNP
             boolean is_VBP = isPresent(myArray, "VBP"); // VBP after any beginning pattern
@@ -115,7 +119,7 @@
 
             // Initialize the following variables:
             int DT_index = 0;
-            int NN_index = 0;
+            int NN1_index = 0;
             int NN2_index = 0;
             int NNP_index = 0;
             int VBP_index = 0;
@@ -126,8 +130,8 @@
             if(is_DT){
                 DT_index = locIndex(myArray, "DT");
             }
-            if(is_NN){
-                NN_index = locIndex(myArray, "NN"); // NN after DT
+            if(is_NN1){
+                NN1_index = locIndex(myArray, "NN"); // NN after DT
             }
             if(is_NN2){
                 NN2_index = locIndex(myArray, "NN"); // Beginning with NN
@@ -158,8 +162,8 @@
                     //System.out.println("Found DT at index: " + currentIndex);
                     currentState = 1;
                     //System.out.println("Sending to: " + currentState);
-                } else if (NN_index >= currentIndex) {
-                    currentIndex = NN_index;
+                } else if (NN1_index >= currentIndex) {
+                    currentIndex = NN1_index;
                     //System.out.println("Currently in state: " + currentState);
                     //System.out.println("Current Index: " + currentIndex);
                     //System.out.println("Found NN at index: " + currentIndex);
