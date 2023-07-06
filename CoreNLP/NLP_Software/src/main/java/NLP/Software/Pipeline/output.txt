@@ -1,5 +1,126 @@
-hey ! my name be Sanskriti Baranwal and I have friend he name Anthony . null
-we both be live in Texas . null null
-the ISIS have claim responsibility for a suicide bomb blast in the Tunisian capital early this week . null null
-the militant group 's Amaq news agency say on Thursday . null
-a militant wear a explosive belt blow himself up in Tunis . null null
+Input: The waitress was not amused when he ordered green eggs and ham.
+Post-Lemma: the waitress be not amuse when he order green egg and ham .
+Post-POS: DT NN VB RB VB WRB PRP VBP JJ NN CC NN .
+Pattern Matching: Pattern found: DT NN VBP NN
+Pattern Matched Output: 
+
+Input: I may struggle with geography, but I'm sure I'm somewhere around here.
+Post-Lemma: I may struggle with geography , but I be sure I be somewhere around here .
+Post-POS: PRP MD VB IN NN , CC PRP VBP JJ PRP VBP RB RB RB .
+Pattern Matching: Pattern found: NN VBP JJ
+Pattern Matched Output: 
+
+Input: We should play with legos at camp.
+Post-Lemma: we should play with lego at camp .
+Post-POS: PRP MD VB IN NN IN NN .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: Dan took the deep dive down the rabbit hole.
+Post-Lemma: Dan take the deep dive down the rabbit hole .
+Post-POS: NNP VB DT JJ NN IN DT NN NN .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: Last Friday I saw a spotted striped blue worm shake hands with a legless lizard.
+Post-Lemma: last Friday I see a spotted striped blue worm shake hand with a legless lizard .
+Post-POS: JJ NNP PRP VBP DT JJ JJ JJ NN VBP NN IN DT JJ NN .
+Pattern Matching: Pattern found: DT NN VBP NN
+Pattern Matched Output: 
+
+Input: You'll see the rainbow bridge after it rains cats and dogs.
+Post-Lemma: you will see the rainbow bridge after it rain cat and dog .
+Post-POS: PRP MD VB DT NN NN IN PRP NN NN CC NN .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: The fox in the tophat whispered into the ear of the rabbit.
+Post-Lemma: the fox in the tophat whisper into the ear of the rabbit .
+Post-POS: DT NN IN DT NN NN IN DT NN IN DT NN .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: Red is greener than purple, for sure.
+Post-Lemma: Red be green than purple , for sure .
+Post-POS: NNP VB JJ IN JJ , IN JJ .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: The wake behind the boat told of the past while the open sea for told life in the unknown future.
+Post-Lemma: the wake behind the boat tell of the past while the open sea for tell life in the unknown future .
+Post-POS: DT NN IN DT NN VB IN DT NN IN DT JJ NN IN JJ NN IN DT JJ NN .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: I'm not a party animal, but I do like animal parties.
+Post-Lemma: I be not a party animal , but I do like animal party .
+Post-POS: PRP VBP RB DT NN NN , CC PRP VBP IN NN NN .
+Pattern Matching: Pattern found: DT NN VBP NN
+Pattern Matched Output: 
+
+Input: Nancy was proud that she ran a tight shipwreck.
+Post-Lemma: Nancy be proud that she run a tight shipwreck .
+Post-POS: NNP VB JJ IN PRP VBD DT JJ NN .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: Writing a list of random sentences is harder than I initially thought it would be.
+Post-Lemma: write a list of random sentence be hard than I initially think it would be .
+Post-POS: VB DT NN IN JJ NN VB RB IN PRP RB VBP PRP MD VB .
+Pattern Matching: Pattern found: NN VBP NN
+Pattern Matched Output: 
+
+Input: While all her friends were positive that Mary had a sixth sense, she knew she actually had a seventh sense.
+Post-Lemma: while all she friend be positive that Mary have a sixth sense , she know she actually have a seventh sense .
+Post-POS: IN DT PRP NN VB JJ IN NNP VBP DT JJ NN , PRP VBP PRP RB VBP DT JJ NN .
+Pattern Matching: Pattern found: DT NN VBP NN
+Pattern Matched Output: 
+
+Input: The Japanese yen for commerce is still well-known.
+Post-Lemma: the Japanese yen for commerce be still well - know .
+Post-POS: DT JJ NNS IN NN VB RB RB HYPH VB .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: He dreamed of eating green apples with worms.
+Post-Lemma: he dream of eat green apple with worm .
+Post-POS: PRP NN IN VB JJ NN IN NN .
+Pattern Matching: Pattern not found
+Pattern Matched Output: 
+
+Input: It took him a while to realize that everything he decided not to change, he was actually choosing.
+Post-Lemma: it take he a while to realize that everything he decide not to change , he be actually choose .
+Post-POS: PRP VB PRP DT NN TO VB IN NN PRP VBP RB TO VB , PRP VB RB VB .
+Pattern Matching: Pattern found: NN VBP NN
+Pattern Matched Output: 
+
+Input: He found a leprechaun in his walnut shell.
+Post-Lemma: he find a leprechaun in he walnut shell .
+Post-POS: PRP VBP DT NN IN PRP NN NN .
+Pattern Matching: Pattern found: NN VBP NN
+Pattern Matched Output: 
+
+Input: If my calculator had a history, it would be more embarrassing than my browser history.
+Post-Lemma: if my calculator have a history , it would be more embarrassing than my browser history .
+Post-POS: IN PRP$ NN VBP DT NN , PRP MD VB RBR JJ IN PRP$ NN NN .
+Pattern Matching: Pattern found: NN VBP NN
+Pattern Matched Output: 
+
+Input: Nudist colonies shun fig-leaf couture.
+Post-Lemma: nudist colony shun fig - leaf couture .
+Post-POS: JJ NN VBP NN HYPH NN FW .
+Pattern Matching: Pattern found: NN VBP NN
+Pattern Matched Output: 
+
+Input: People who insist on picking their teeth with their elbows are so annoying!
+Post-Lemma: person who insist on pick they tooth with they elbow be so annoying !
+Post-POS: NN WP VBP IN VBP PRP JJ IN PRP NN VB RB JJ .
+Pattern Matching: Pattern found: NN VBP NN
+Pattern Matched Output: 
+
+Input: A fly rely and likes a banana.
+Post-Lemma: a fly rely and like a banana .
+Post-POS: DT NN VBP CC VBP DT NN .
+Pattern Matching: Pattern found: DT NN VBP NN
+Pattern Matched Output: 
+
