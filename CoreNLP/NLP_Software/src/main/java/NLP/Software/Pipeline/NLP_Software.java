@@ -8,10 +8,9 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class NLP_Software {
+public class NLP_Software_CopyTest {
 
     public static StanfordCoreNLP stanfordCoreNLP = Pipeline.getPipeline();
 
@@ -22,6 +21,12 @@ public class NLP_Software {
 
         // Creates an output.txt file to return outputs to
         PrintWriter out = new PrintWriter("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/output.txt");
+
+        // Declare a variable to store the HashMap
+        Map<String, String> wordMap;
+
+        // Declare a variable to store the formatted HashMap contents
+        StringBuilder HashMapOutput = new StringBuilder();
 
         while (scanner.hasNextLine()) {
             // Reads each line of input
@@ -38,8 +43,15 @@ public class NLP_Software {
 
                 String patternMatchedOutput = PatternCheck(posOutput);
 
-                out.println("Input: " + sentence + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + posOutput + "\nPattern Matching: " + patternMatchedOutput + "\nPattern Matched Output: " + "\n");
+                // Call the Connect method and store the result in wordMap
+                wordMap = Connect(lemmaOutput, posOutput);
 
+                // Append each key-value pair to HashMapOutput
+                for (Map.Entry<String, String> entry : wordMap.entrySet()) {
+                    HashMapOutput.append(entry.getKey()).append(" -> ").append(entry.getValue()).append("\n");
+                }
+
+                out.println("Input: " + sentence + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + posOutput + "\nPattern Matching: " + patternMatchedOutput + "\nConnect Output:\n " + HashMapOutput + "\n");
                 // If you want to write the separated sentences to a file, uncomment the following line:
                 // out.println(separatedSentences(lemmaOutput));
             }
@@ -180,4 +192,28 @@ public class NLP_Software {
 
         return "Pattern not found";
     }
+
+    public static String[] splitIntoWords(String sentence) {
+        return sentence.split("\\s+");
+    }
+
+    public static Map<String, String> Connect(String lemmaInput, String posOutput) {
+        String[] lemmaWords = splitIntoWords(lemmaInput);
+        String[] posWords = splitIntoWords(posOutput);
+
+        // Create a LinkedHashMap to store the mapping of posWords to originalWords
+        Map<String, String> wordMap = new LinkedHashMap<>();
+
+        // Check if the arrays have the same length
+        if (lemmaWords.length == posWords.length) {
+            // Iterate over the arrays and put the elements into the LinkedHashMap
+            for (int i = 0; i < lemmaWords.length; i++) {
+                wordMap.put(lemmaWords[i], posWords[i]);
+            }
+        }
+        // Returning the LinkedHashMap
+        return wordMap;
+    }
+
+
 }
