@@ -12,21 +12,16 @@ import java.util.*;
 
 public class NLP_Software_CopyTest {
 
+    // Create a static instance of StanfordCoreNLP pipeline
     public static StanfordCoreNLP stanfordCoreNLP = Pipeline.getPipeline();
 
+    // Main method
     public static void main(String[] args) throws FileNotFoundException {
-
         // Scanner reads from input.txt
         Scanner scanner = new Scanner(new File("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/input.txt"));
 
         // Creates an output.txt file to return outputs to
         PrintWriter out = new PrintWriter("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/output.txt");
-
-        // Declare a variable to store the HashMap
-        Map<String, String> wordMap;
-
-        // Declare a variable to store the formatted HashMap contents
-        StringBuilder HashMapOutput = new StringBuilder();
 
         while (scanner.hasNextLine()) {
             // Reads each line of input
@@ -37,30 +32,44 @@ public class NLP_Software_CopyTest {
 
             // Process each sentence individually
             for (String sentence : sentences) {
+                // Declare a variable to store the formatted HashMap contents exclusive to each sentence
+                StringBuilder HashMapOutput = new StringBuilder();
+
+                // Lemmatize the sentence
                 String lemmaOutput = Lemma(sentence);
 
+                // Perform Part-of-Speech tagging on the lemmatized sentence
                 String posOutput = POS(lemmaOutput);
 
+                // Check for specific patterns in the Part-of-Speech tags
                 String patternMatchedOutput = PatternCheck(posOutput);
 
-                // Call the Connect method and store the result in wordMap
-                wordMap = Connect(lemmaOutput, posOutput);
+                // Convert the pattern string to an array
+                String[] patternArray = PatternToArray(patternMatchedOutput);
 
-                // Append each key-value pair to HashMapOutput
+                // Connect lemmas and POS tags into a map
+                Map<String, String> wordMap = Connect(lemmaOutput, posOutput);
+
+                // Find matched words based on the patterns and word map
+                String wordMatch = MatchedWords(patternArray, wordMap);
+
+                // Append each key-value pair from the word map to HashMapOutput
                 for (Map.Entry<String, String> entry : wordMap.entrySet()) {
                     HashMapOutput.append(entry.getKey()).append(" -> ").append(entry.getValue()).append("\n");
                 }
 
-                out.println("Input: " + sentence + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + posOutput + "\nPattern Matching: " + patternMatchedOutput + "\nConnect Output:\n " + HashMapOutput + "\n");
+                // Write the results to the output file
+                out.println("Input: " + sentence + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + posOutput + "\nPattern Matching: " + patternMatchedOutput + "\nConnect Output:\n" + HashMapOutput + "Matched Words: " + wordMatch + "\n");
+
                 // If you want to write the separated sentences to a file, uncomment the following line:
                 // out.println(separatedSentences(lemmaOutput));
             }
         }
         scanner.close();
         out.close();
-
     }
 
+    // Separate input into sentences
     public static String[] seperatedSentences(String input) {
         // (\\.) or a question mark (\\?) but doesn't include the period
         // or question mark in the match. This allows the split to occur
@@ -70,55 +79,41 @@ public class NLP_Software_CopyTest {
         // (spaces, tabs, newlines) immediately after the period or question mark.
     }
 
-    // Takes a string as an input
-    // Return the same string but lemmatized
+    // Lemmatize the input string
     public static String Lemma(String input) {
-
         CoreDocument coreDocument = new CoreDocument(input);
-
         stanfordCoreNLP.annotate(coreDocument);
-
         List<CoreLabel> coreLabelList = coreDocument.tokens();
-
         String[] words = new String[coreLabelList.size()];
-
         int i = 0;
         for (CoreLabel coreLabel : coreLabelList) {
             words[i] = coreLabel.lemma();
             i++;
-
         }
         return String.join(" ", words);
     }
 
-    public static String POS(String lemma_output) {
-
-        CoreDocument coreDocument = new CoreDocument(lemma_output);
-
+    // Perform Part-of-Speech tagging on the input string
+    public static String POS(String lemmaOutput) {
+        CoreDocument coreDocument = new CoreDocument(lemmaOutput);
         stanfordCoreNLP.annotate(coreDocument);
-
         List<CoreLabel> coreLabelList = coreDocument.tokens();
-
         String[] words = new String[coreLabelList.size()];
-
         int i = 0;
         for (CoreLabel coreLabel : coreLabelList) {
-
             words[i] = coreLabel.get(CoreAnnotations.PartOfSpeechAnnotation.class);
             i++;
-
         }
         return String.join(" ", words);
     }
 
+    // Check for specific patterns in the Part-of-Speech tags
     public static String PatternCheck(String POSoutput) {
         String[] words = POSoutput.split("\\s+");
-
         boolean foundDT = false;
         boolean foundNN = false;
         boolean foundVBP = false;
         boolean foundNNP = false;
-        //boolean foundJJ = false;
 
         // Pattern 1: DT NN VBP NN
         for (String word : words) {
@@ -129,7 +124,7 @@ public class NLP_Software_CopyTest {
             } else if (foundDT && foundNN && !foundVBP && word.equals("VBP")) {
                 foundVBP = true;
             } else if (foundDT && foundNN && foundVBP && word.equals("NN")) {
-                return "Pattern found: DT NN VBP NN";
+                return "DT NN VBP NN";
             }
         }
 
@@ -140,7 +135,7 @@ public class NLP_Software_CopyTest {
             } else if (foundNNP && !foundVBP && word.equals("VBP")) {
                 foundVBP = true;
             } else if (foundNNP && foundVBP && word.equals("NN")) {
-                return "Pattern found: NNP VBP NN";
+                return "NNP VBP NN";
             }
         }
 
@@ -151,7 +146,7 @@ public class NLP_Software_CopyTest {
             } else if (foundNN && !foundVBP && word.equals("VBP")) {
                 foundVBP = true;
             } else if (foundNN && foundVBP && word.equals("NN")) {
-                return "Pattern found: NN VBP NN";
+                return "NN VBP NN";
             }
         }
 
@@ -164,7 +159,7 @@ public class NLP_Software_CopyTest {
             } else if (foundDT && foundNN && !foundVBP && word.equals("VBP")) {
                 foundVBP = true;
             } else if (foundDT && foundNN && foundVBP && word.equals("JJ")) {
-                return "Pattern found: DT NN VBP JJ";
+                return "DT NN VBP JJ";
             }
         }
 
@@ -175,28 +170,30 @@ public class NLP_Software_CopyTest {
             } else if (foundNNP && !foundVBP && word.equals("VBP")) {
                 foundVBP = true;
             } else if (foundNNP && foundVBP && word.equals("JJ")) {
-                return "Pattern found: NNP VBP JJ";
+                return "NNP VBP JJ";
             }
         }
 
-        // Pattern 6: NN VBP JJ
+        // Pattern 6:NN VBP JJ
         for (String word : words) {
             if (!foundNN && word.equals("NN")) {
                 foundNN = true;
             } else if (foundNN && !foundVBP && word.equals("VBP")) {
                 foundVBP = true;
             } else if (foundNN && foundVBP && word.equals("JJ")) {
-                return "Pattern found: NN VBP JJ";
+                return "NN VBP JJ";
             }
         }
 
         return "Pattern not found";
     }
 
+    // Split a sentence into individual words
     public static String[] splitIntoWords(String sentence) {
         return sentence.split("\\s+");
     }
 
+    // Connect lemmas and POS tags into a map
     public static Map<String, String> Connect(String lemmaInput, String posOutput) {
         String[] lemmaWords = splitIntoWords(lemmaInput);
         String[] posWords = splitIntoWords(posOutput);
@@ -215,5 +212,36 @@ public class NLP_Software_CopyTest {
         return wordMap;
     }
 
+    // Convert pattern string to an array of words
+    public static String[] PatternToArray(String patternOutput) {
+        return splitIntoWords(patternOutput);
+    }
 
+    // Find matched words based on patterns and word map
+    public static String MatchedWords(String[] pattern, Map<String, String> wordMap) {
+        StringBuilder matchedWords = new StringBuilder();
+        boolean skipNext = false;
+
+        // Iterate over the pattern array
+        for (String patternWord : pattern) {
+            // Iterate over the wordMap entries
+            for (Map.Entry<String, String> entry : wordMap.entrySet()) {
+                if (skipNext) {
+                    skipNext = false;
+                    continue;
+                }
+
+                if (entry.getValue().equals(patternWord)) {
+                    // Append the matching key to the matchedWords StringBuilder
+                    matchedWords.append(entry.getKey()).append(" ");
+
+                    // Set the flag to skip the next occurrence
+                    skipNext = true;
+                    break; // Break the inner loop to move to the next pattern word
+                }
+            }
+        }
+
+        return matchedWords.toString().trim(); // Trim any trailing whitespace and return the result
+    }
 }
