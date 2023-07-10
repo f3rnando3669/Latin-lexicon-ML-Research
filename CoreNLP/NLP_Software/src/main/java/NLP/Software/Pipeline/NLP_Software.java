@@ -1,5 +1,6 @@
-package NLP.Software.Pipeline;
+package NLP_Pipeline;
 
+import com.robbinstony.nlp.Pipeline;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
@@ -10,18 +11,14 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class NLP_Software_CopyTest {
-
-    // Create a static instance of StanfordCoreNLP pipeline
+public class NLP_Pipeline {
     public static StanfordCoreNLP stanfordCoreNLP = Pipeline.getPipeline();
 
-    // Main method
     public static void main(String[] args) throws FileNotFoundException {
-        // Scanner reads from input.txt
-        Scanner scanner = new Scanner(new File("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/input.txt"));
 
-        // Creates an output.txt file to return outputs to
-        PrintWriter out = new PrintWriter("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/output.txt");
+        Scanner scanner = new Scanner(new File("C://Users//apeng//IdeaProjects//NLP_Pipeline//src//main//java//NLP_Pipeline//wiki_en_txt_snippet.txt"));
+
+        PrintWriter out = new PrintWriter("C://Users//apeng//IdeaProjects//NLP_Pipeline//src//main//java//NLP_Pipeline//output.txt");
 
         while (scanner.hasNextLine()) {
             // Reads each line of input
@@ -44,14 +41,8 @@ public class NLP_Software_CopyTest {
                 // Check for specific patterns in the Part-of-Speech tags
                 String patternMatchedOutput = PatternCheck(posOutput);
 
-                // Convert the pattern string to an array
-                String[] patternArray = PatternToArray(patternMatchedOutput);
-
                 // Connect lemmas and POS tags into a map
                 Map<String, String> wordMap = Connect(lemmaOutput, posOutput);
-
-                // Find matched words based on the patterns and word map
-                String wordMatch = MatchedWords(patternArray, wordMap);
 
                 // Append each key-value pair from the word map to HashMapOutput
                 for (Map.Entry<String, String> entry : wordMap.entrySet()) {
@@ -59,7 +50,7 @@ public class NLP_Software_CopyTest {
                 }
 
                 // Write the results to the output file
-                out.println("Input: " + sentence + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + posOutput + "\nPattern Matching: " + patternMatchedOutput + "\nConnect Output:\n" + HashMapOutput + "Matched Words: " + wordMatch + "\n");
+                out.println("Input: " + sentence + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + posOutput + "\nPattern Matching: " + patternMatchedOutput + "\nConnect Output:\n" + HashMapOutput);
 
                 // If you want to write the separated sentences to a file, uncomment the following line:
                 // out.println(separatedSentences(lemmaOutput));
@@ -113,6 +104,7 @@ public class NLP_Software_CopyTest {
         boolean foundDT = false;
         boolean foundNN = false;
         boolean foundVBP = false;
+        boolean foundVB = false;
         boolean foundNNP = false;
 
         // Pattern 1: DT NN VBP NN
@@ -128,6 +120,19 @@ public class NLP_Software_CopyTest {
             }
         }
 
+        // Pattern 1.2: DT NN VB NN
+        for (String word : words) {
+            if (!foundDT && word.equals("DT")) {
+                foundDT = true;
+            } else if (foundDT && !foundNN && word.equals("NN")) {
+                foundNN = true;
+            } else if (foundDT && foundNN && !foundVBP && word.equals("VB")) {
+                foundVBP = true;
+            } else if (foundDT && foundNN && foundVBP && word.equals("NN")) {
+                return "DT NN VB NN";
+            }
+        }
+
         // Pattern 2: NNP VBP NN
         for (String word : words) {
             if (!foundNNP && word.equals("NNP")) {
@@ -139,6 +144,17 @@ public class NLP_Software_CopyTest {
             }
         }
 
+        // Pattern 2.2: NNP VB NN
+        for (String word : words) {
+            if (!foundNNP && word.equals("NNP")) {
+                foundNNP = true;
+            } else if (foundNNP && !foundVBP && word.equals("VB")) {
+                foundVBP = true;
+            } else if (foundNNP && foundVBP && word.equals("NN")) {
+                return "NNP VB NN";
+            }
+        }
+
         // Pattern 3: NN VBP NN
         for (String word : words) {
             if (!foundNN && word.equals("NN")) {
@@ -147,6 +163,17 @@ public class NLP_Software_CopyTest {
                 foundVBP = true;
             } else if (foundNN && foundVBP && word.equals("NN")) {
                 return "NN VBP NN";
+            }
+        }
+
+        // Pattern 3.2: NN VB NN
+        for (String word : words) {
+            if (!foundNN && word.equals("NN")) {
+                foundNN = true;
+            } else if (foundNN && !foundVBP && word.equals("VB")) {
+                foundVBP = true;
+            } else if (foundNN && foundVBP && word.equals("NN")) {
+                return "NN VB NN";
             }
         }
 
@@ -163,6 +190,19 @@ public class NLP_Software_CopyTest {
             }
         }
 
+        // Pattern 4.2: DT NN VBP JJ
+        for (String word : words) {
+            if (!foundDT && word.equals("DT")) {
+                foundDT = true;
+            } else if (foundDT && !foundNN && word.equals("NN")) {
+                foundNN = true;
+            } else if (foundDT && foundNN && !foundVBP && word.equals("VB")) {
+                foundVBP = true;
+            } else if (foundDT && foundNN && foundVBP && word.equals("JJ")) {
+                return "DT NN VB JJ";
+            }
+        }
+
         // Pattern 5: NNP VBP JJ
         for (String word : words) {
             if (!foundNNP && word.equals("NNP")) {
@@ -174,6 +214,17 @@ public class NLP_Software_CopyTest {
             }
         }
 
+        // Pattern 5.2: NNP VBP JJ
+        for (String word : words) {
+            if (!foundNNP && word.equals("NNP")) {
+                foundNNP = true;
+            } else if (foundNNP && !foundVBP && word.equals("VB")) {
+                foundVBP = true;
+            } else if (foundNNP && foundVBP && word.equals("JJ")) {
+                return "NNP VB JJ";
+            }
+        }
+
         // Pattern 6:NN VBP JJ
         for (String word : words) {
             if (!foundNN && word.equals("NN")) {
@@ -182,6 +233,17 @@ public class NLP_Software_CopyTest {
                 foundVBP = true;
             } else if (foundNN && foundVBP && word.equals("JJ")) {
                 return "NN VBP JJ";
+            }
+        }
+
+        // Pattern 6.2:NN VBP JJ
+        for (String word : words) {
+            if (!foundNN && word.equals("NN")) {
+                foundNN = true;
+            } else if (foundNN && !foundVBP && word.equals("VB")) {
+                foundVBP = true;
+            } else if (foundNN && foundVBP && word.equals("JJ")) {
+                return "NN VB JJ";
             }
         }
 
@@ -198,50 +260,22 @@ public class NLP_Software_CopyTest {
         String[] lemmaWords = splitIntoWords(lemmaInput);
         String[] posWords = splitIntoWords(posOutput);
 
-        // Create a LinkedHashMap to store the mapping of posWords to originalWords
+        // Create a LinkedHashMap to store the mapping of lemmaWords to posWords
         Map<String, String> wordMap = new LinkedHashMap<>();
 
-        // Check if the arrays have the same length
-        if (lemmaWords.length == posWords.length) {
-            // Iterate over the arrays and put the elements into the LinkedHashMap
-            for (int i = 0; i < lemmaWords.length; i++) {
-                wordMap.put(lemmaWords[i], posWords[i]);
-            }
+        // Iterate over the arrays and put the elements into the LinkedHashMap
+        for (int i = 0; i < lemmaWords.length; i++) {
+            String lemma = lemmaWords[i];
+            String pos = posWords[i];
+
+            // Generate a unique key for each word by appending its index
+            String key = i + ". " + lemma;
+
+            // Put the word and its corresponding POS tag into the map
+            wordMap.put(key, pos);
         }
+        
         // Returning the LinkedHashMap
         return wordMap;
-    }
-
-    // Convert pattern string to an array of words
-    public static String[] PatternToArray(String patternOutput) {
-        return splitIntoWords(patternOutput);
-    }
-
-    // Find matched words based on patterns and word map
-    public static String MatchedWords(String[] pattern, Map<String, String> wordMap) {
-        StringBuilder matchedWords = new StringBuilder();
-        boolean skipNext = false;
-
-        // Iterate over the pattern array
-        for (String patternWord : pattern) {
-            // Iterate over the wordMap entries
-            for (Map.Entry<String, String> entry : wordMap.entrySet()) {
-                if (skipNext) {
-                    skipNext = false;
-                    continue;
-                }
-
-                if (entry.getValue().equals(patternWord)) {
-                    // Append the matching key to the matchedWords StringBuilder
-                    matchedWords.append(entry.getKey()).append(" ");
-
-                    // Set the flag to skip the next occurrence
-                    skipNext = true;
-                    break; // Break the inner loop to move to the next pattern word
-                }
-            }
-        }
-
-        return matchedWords.toString().trim(); // Trim any trailing whitespace and return the result
     }
 }
