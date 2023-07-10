@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class YetAnother {
+public class WorkInProgress {
 
     // Create a static instance of StanfordCoreNLP pipeline
     public static StanfordCoreNLP stanfordCoreNLP = Pipeline.getPipeline();
