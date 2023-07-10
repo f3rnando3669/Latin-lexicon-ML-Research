@@ -126,9 +126,9 @@ public class NLP_Pipeline {
                 foundDT = true;
             } else if (foundDT && !foundNN && word.equals("NN")) {
                 foundNN = true;
-            } else if (foundDT && foundNN && !foundVBP && word.equals("VB")) {
-                foundVBP = true;
-            } else if (foundDT && foundNN && foundVBP && word.equals("NN")) {
+            } else if (foundDT && foundNN && !foundVB && word.equals("VB")) {
+                foundVB = true;
+            } else if (foundDT && foundNN && foundVB && word.equals("NN")) {
                 return "DT NN VB NN";
             }
         }
@@ -148,9 +148,9 @@ public class NLP_Pipeline {
         for (String word : words) {
             if (!foundNNP && word.equals("NNP")) {
                 foundNNP = true;
-            } else if (foundNNP && !foundVBP && word.equals("VB")) {
-                foundVBP = true;
-            } else if (foundNNP && foundVBP && word.equals("NN")) {
+            } else if (foundNNP && !foundVB && word.equals("VB")) {
+                foundVB = true;
+            } else if (foundNNP && foundVB && word.equals("NN")) {
                 return "NNP VB NN";
             }
         }
@@ -170,9 +170,9 @@ public class NLP_Pipeline {
         for (String word : words) {
             if (!foundNN && word.equals("NN")) {
                 foundNN = true;
-            } else if (foundNN && !foundVBP && word.equals("VB")) {
-                foundVBP = true;
-            } else if (foundNN && foundVBP && word.equals("NN")) {
+            } else if (foundNN && !foundVB && word.equals("VB")) {
+                foundVB = true;
+            } else if (foundNN && foundVB && word.equals("NN")) {
                 return "NN VB NN";
             }
         }
@@ -196,9 +196,9 @@ public class NLP_Pipeline {
                 foundDT = true;
             } else if (foundDT && !foundNN && word.equals("NN")) {
                 foundNN = true;
-            } else if (foundDT && foundNN && !foundVBP && word.equals("VB")) {
-                foundVBP = true;
-            } else if (foundDT && foundNN && foundVBP && word.equals("JJ")) {
+            } else if (foundDT && foundNN && !foundVB && word.equals("VB")) {
+                foundVB = true;
+            } else if (foundDT && foundNN && foundVB && word.equals("JJ")) {
                 return "DT NN VB JJ";
             }
         }
@@ -207,9 +207,9 @@ public class NLP_Pipeline {
         for (String word : words) {
             if (!foundNNP && word.equals("NNP")) {
                 foundNNP = true;
-            } else if (foundNNP && !foundVBP && word.equals("VBP")) {
-                foundVBP = true;
-            } else if (foundNNP && foundVBP && word.equals("JJ")) {
+            } else if (foundNNP && !foundVB && word.equals("VBP")) {
+                foundVB = true;
+            } else if (foundNNP && foundVB && word.equals("JJ")) {
                 return "NNP VBP JJ";
             }
         }
@@ -229,9 +229,9 @@ public class NLP_Pipeline {
         for (String word : words) {
             if (!foundNN && word.equals("NN")) {
                 foundNN = true;
-            } else if (foundNN && !foundVBP && word.equals("VBP")) {
-                foundVBP = true;
-            } else if (foundNN && foundVBP && word.equals("JJ")) {
+            } else if (foundNN && !foundVB && word.equals("VBP")) {
+                foundVB = true;
+            } else if (foundNN && foundVB && word.equals("JJ")) {
                 return "NN VBP JJ";
             }
         }
@@ -240,9 +240,9 @@ public class NLP_Pipeline {
         for (String word : words) {
             if (!foundNN && word.equals("NN")) {
                 foundNN = true;
-            } else if (foundNN && !foundVBP && word.equals("VB")) {
-                foundVBP = true;
-            } else if (foundNN && foundVBP && word.equals("JJ")) {
+            } else if (foundNN && !foundVB && word.equals("VB")) {
+                foundVB = true;
+            } else if (foundNN && foundVB && word.equals("JJ")) {
                 return "NN VB JJ";
             }
         }
@@ -274,7 +274,7 @@ public class NLP_Pipeline {
             // Put the word and its corresponding POS tag into the map
             wordMap.put(key, pos);
         }
-        
+
         // Returning the LinkedHashMap
         return wordMap;
     }
