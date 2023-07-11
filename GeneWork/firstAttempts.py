@@ -3,14 +3,11 @@ AUTHOR: Sebastian Gutierrez-Olvera
 GITHUB: Sebas-2000
 DATE: 6/28/2023
 DATE LAST MODIFIED: 6/30/2023
-NOTE: Used for DNA transcription and translation
+NOTE: Retired code that should only be used for reference
 """
 
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-import scipy as sc
-import numpy as np
-import scikit as sk
 
 
 
@@ -120,9 +117,7 @@ def translation(mRNA):
         protein += (correctCodonChart[codon] + '-')
     return protein
 
-def matriceMath():
-    # I have no clue what this is supposed to end up doing yet
-    return
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
