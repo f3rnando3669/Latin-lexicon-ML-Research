@@ -211,4 +211,36 @@ public class WorkInProgress {
         return wordMap;
     }
 
+    // Convert pattern string to an array of words
+    public static String[] PatternToArray(String patternOutput) {
+        return splitIntoWords(patternOutput);
+    }
+
+    // Find matched words based on patterns and word map
+    public static String MatchedWords(String[] pattern, Map<String, String> wordMap) {
+        StringBuilder matchedWords = new StringBuilder();
+        boolean skipNext = false;
+
+        // Iterate over the pattern array
+        for (String patternWord : pattern) {
+            // Iterate over the wordMap entries
+            for (Map.Entry<String, String> entry : wordMap.entrySet()) {
+                if (skipNext) {
+                    skipNext = false;
+                    continue;
+                }
+
+                if (entry.getValue().equals(patternWord)) {
+                    // Append the matching key to the matchedWords StringBuilder
+                    matchedWords.append(entry.getKey()).append(" ");
+
+                    // Set the flag to skip the next occurrence
+                    skipNext = true;
+                    break; // Break the inner loop to move to the next pattern word
+                }
+            }
+        }
+
+        return matchedWords.toString().trim(); // Trim any trailing whitespace and return the result
+    }
 }
