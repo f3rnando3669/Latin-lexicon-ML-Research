@@ -43,13 +43,13 @@ public class NLP_Software_CopyTest {
                 // Perform Part-of-Speech tagging on the lemmatized sentence
                 String posOutput = POS(lemmaOutput);
 
+                Map<Integer, String> indexmap = IndexPoSConnect(posOutput);
+
                 // Check for specific patterns in the Part-of-Speech tags
-                String patternMatchedOutput = PatternCheck(posOutput);
+                String patternMatchedOutput = PatternCheck(posOutput, indexmap);
 
                 // Convert the pattern string to an array
                 String[] patternArray = PatternToArray(patternMatchedOutput);
-
-                Map<Integer, String> indexmap = IndexPoSConnect(posOutput);
 
                 // Connect lemmas and POS tags into a map
                 Map<String, String> wordMap = ConnectLemmaPOS(lemmaOutput, posOutput);
@@ -130,8 +130,11 @@ public class NLP_Software_CopyTest {
     }
 
     // Check for specific patterns in the Part-of-Speech tags
-    public static String PatternCheck(String POSoutput) {
+    public static String PatternCheck(String POSoutput, Map<Integer, String> indexMap) {
         String[] words = POSoutput.split("\\s+");
+        // Key is number/Index
+        // Value is posOutput
+        int index = 0;
         boolean foundDT = false;
         boolean foundNN = false;
         boolean foundVBP = false;
@@ -140,14 +143,27 @@ public class NLP_Software_CopyTest {
 
         // Pattern 1: DT NN VBP NN
         for (String word : words) {
-            if (!foundDT && word.equals("DT")) {
-                foundDT = true;
-            } else if (foundDT && !foundNN && word.equals("NN")) {
-                foundNN = true;
-            } else if (foundDT && foundNN && !foundVBP && word.equals("VBP")) {
-                foundVBP = true;
-            } else if (foundDT && foundNN && foundVBP && word.equals("NN")) {
-                return "DT NN VBP NN";
+            for (Map.Entry<Integer, String> entry : indexMap.entrySet()) {
+                if (entry.getValue().equals("DT")) {
+                    foundDT = true;
+                    index = entry.getKey();
+                    System.out.println(index);
+                    if (entry.getValue().equals("NN")) {
+                        foundNN = true;
+                        index = entry.getKey();
+                        System.out.println(index);
+                        if (entry.getValue().equals("VBP")) {
+                            foundVBP = true;
+                            index = entry.getKey();
+                            System.out.println();
+                            if (entry.getValue().equals("NN")) {
+                                index = entry.getKey();
+                                System.out.println(index);
+                                return "DT NN VBP NN";
+                            }
+                        }
+                    }
+                }
             }
         }
 
