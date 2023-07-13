@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class NLP_Software_CopyTest {
+public class WorkInProgress {
 
     // Create a static instance of StanfordCoreNLP pipeline
     public static StanfordCoreNLP stanfordCoreNLP = Pipeline.getPipeline();
@@ -137,46 +137,143 @@ public class NLP_Software_CopyTest {
         int index = 0;
         boolean foundDT = false;
         boolean foundNN = false;
+        boolean foundNN1 = false;
         boolean foundVBP = false;
         boolean foundVB = false;
         boolean foundNNP = false;
+        boolean foundJJ = false;
 
         // Pattern 1: DT NN VBP NN
         for (String word : words) {
             for (Map.Entry<Integer, String> entry : indexMap.entrySet()) {
-                if (entry.getValue().equals("DT")) {
+                if (entry.getValue().equals("DT") && word.equals(entry.getValue())) {
                     foundDT = true;
                     index = entry.getKey();
+                    System.out.println("Pattern 1: Found DT");
+                    System.out.println(entry.getValue());
                     System.out.println(index);
-                    if (entry.getValue().equals("NN")) {
-                        foundNN = true;
-                        index = entry.getKey();
-                        System.out.println(index);
-                        if (entry.getValue().equals("VBP")) {
-                            foundVBP = true;
-                            index = entry.getKey();
-                            System.out.println();
-                            if (entry.getValue().equals("NN")) {
-                                index = entry.getKey();
-                                System.out.println(index);
-                                return "DT NN VBP NN";
-                            }
-                        }
-                    }
+
+                }
+                if (entry.getValue().equals("NN") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundNN = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 1: Found NN");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (entry.getValue().equals("VBP") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundVBP = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 1: Found VBP");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (entry.getValue().equals("NN") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    index = entry.getKey();
+                    System.out.println("Pattern 1: Found NN again");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                    foundNN1 = true;
+                }
+                if (foundDT && foundNN && foundVBP && foundNN1) {
+                    return "DT NN VBP NN";
                 }
             }
         }
 
+        index = 0;
+        foundDT = false;
+        foundNN = false;
+        foundNN1 = false;
+        foundVBP = false;
+        foundVB = false;
+        foundNNP = false;
+        foundJJ = false;
+
         // Pattern 1.2: DT NN VB NN
         for (String word : words) {
-            if (!foundDT && word.equals("DT")) {
-                foundDT = true;
-            } else if (foundDT && !foundNN && word.equals("NN")) {
-                foundNN = true;
-            } else if (foundDT && foundNN && !foundVB && word.equals("VB")) {
-                foundVB = true;
-            } else if (foundDT && foundNN && foundVB && word.equals("NN")) {
-                return "DT NN VB NN";
+            for (Map.Entry<Integer, String> entry : indexMap.entrySet()) {
+                if (entry.getValue().equals("DT") && word.equals(entry.getValue())) {
+                    foundDT = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 1.2: Found DT");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+
+                }
+                if (entry.getValue().equals("NN") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundNN = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 1.2: Found NN");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (entry.getValue().equals("VB") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundVB = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 1.2: Found VB");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (entry.getValue().equals("NN") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    index = entry.getKey();
+                    System.out.println("Pattern 1.2: Found NN again");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                    foundNN1 = true;
+                }
+                if (foundDT && foundNN && foundVB && foundNN1) {
+                    return "DT NN VB NN";
+                }
+            }
+        }
+
+        index = 0;
+        foundDT = false;
+        foundNN = false;
+        foundNN1 = false;
+        foundVBP = false;
+        foundVB = false;
+        foundNNP = false;
+        foundJJ = false;
+
+        // Pattern 4.2: DT NN VB JJ
+        for (String word : words) {
+            for (Map.Entry<Integer, String> entry : indexMap.entrySet()) {
+                if (entry.getValue().equals("DT") && word.equals(entry.getValue())) {
+                    foundDT = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 4.2: Found DT");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+
+                }
+                if (entry.getValue().equals("NN") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundNN = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 4.2: Found NN");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (entry.getValue().equals("VB") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundVB = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 4.2: Found VBP");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (entry.getValue().equals("JJ") && word.equals(entry.getValue())) {
+                    if (entry.getKey() > index) {
+                        foundJJ = true;
+                        index = entry.getKey();
+                        System.out.println("Pattern 4.2: Found JJ");
+                        System.out.println(entry.getValue());
+                        System.out.println(index);
+                    } else return "No";
+                }
+                if (foundDT && foundNN && foundVB && foundJJ) {
+                    return "DT NN VB JJ";
+                }
             }
         }
 
@@ -237,16 +334,41 @@ public class NLP_Software_CopyTest {
             }
         }
 
-        // Pattern 4.2: DT NN VBP JJ
+        // Pattern 4.2: DT NN VB JJ
         for (String word : words) {
-            if (!foundDT && word.equals("DT")) {
-                foundDT = true;
-            } else if (foundDT && !foundNN && word.equals("NN")) {
-                foundNN = true;
-            } else if (foundDT && foundNN && !foundVB && word.equals("VB")) {
-                foundVB = true;
-            } else if (foundDT && foundNN && foundVB && word.equals("JJ")) {
-                return "DT NN VB JJ";
+            for (Map.Entry<Integer, String> entry : indexMap.entrySet()) {
+                if (entry.getValue().equals("DT") && word.equals(entry.getValue())) {
+                    foundDT = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 4.2: Found DT");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+
+                }
+                if (entry.getValue().equals("NN") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundNN = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 4.2: Found NN");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (entry.getValue().equals("VB") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundVB = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 4.2: Found VBP");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (entry.getValue().equals("JJ") && word.equals(entry.getValue()) && entry.getKey() > index) {
+                    foundJJ = true;
+                    index = entry.getKey();
+                    System.out.println("Pattern 4.2: Found JJ");
+                    System.out.println(entry.getValue());
+                    System.out.println(index);
+                }
+                if (foundDT && foundNN && foundVB && foundJJ) {
+                    return "DT NN VB JJ";
+                }
             }
         }
 
