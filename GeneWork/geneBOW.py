@@ -35,12 +35,19 @@ def FASTA_Reader(file):
     return rv
 
 
-def RNA_Check():
-    return
+def RNA_Check(strand):
+    if strand.contains("M") == False:
+        protein = translation(strand)
+        return protein
+    else:
+        return strand
 
 
 def translation(strand):
     AAseq = ""
+    for i in range(0, len(strand), 3):
+        codon = strand[i:i + 3]
+        AAseq += (codonChart[codon])
     return AAseq
 
 
