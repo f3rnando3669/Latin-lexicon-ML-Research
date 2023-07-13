@@ -2,7 +2,6 @@ import os
 import numpy as np
 import scipy as sp
 
-
 # Global Variables
 PATH = os.path.dirname(__name__)
 codonChart = {
@@ -17,25 +16,45 @@ codonChart = {
     "GAT": "D", "GAC": "D", "GAA": "E", "GAG": "E", "GGT": "G", "GGC": "G", "GGA": "G",
     "GGG": "G"
 }
+indexedTrigrams = {}
+indexedGenes = {}
+howManyGenes = 0
+
 
 def FASTA_Reader(file):
     # FASTA_file.txt -> dictionary
     # reads a FASTA file.txt and separates the Name line from the actual sequence.
     # Also joins the sequence together
     working_file = open(file, "r")
-    rv = {'geneName': working_file.readline().replace('\n',""), 'sequence': ""}
+    rv = {'geneName': working_file.readline().replace('\n', ""), 'sequence': ""}
     AAseq = ""
     for line in working_file:
-            AAseq += line.replace("\n",'')
-    rv.update({'sequence':AAseq})
+        AAseq += line.replace("\n", '')
+    rv.update({'sequence': AAseq})
+    geneIndexing(rv['geneName'], howManyGenes)
     return rv
+
 
 def RNA_Check():
     return
+
 
 def translation(strand):
     AAseq = ""
     return AAseq
 
+
+def geneIndexing(gene, indexNum):
+    # string, integer -> no return
+    # adds genes that have been read to indexing dictionary
+    indexedGenes.update({gene: indexNum})
+    global howManyGenes
+    howManyGenes += 1
+
+
+# Testing
 trial = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST1.txt"))
 print(trial)
+trial2 = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
+print(trial2)
+print(indexedGenes)
