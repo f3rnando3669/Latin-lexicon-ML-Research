@@ -16,27 +16,29 @@ codonChart = {
     "GAT": "D", "GAC": "D", "GAA": "E", "GAG": "E", "GGT": "G", "GGC": "G", "GGA": "G",
     "GGG": "G"
 }
-indexedTrigrams = {}
-indexedGenes = {}
-howManyGenes = 0
+indexed_Trigrams = {}
+indexed_Genes = {}
+geneIndex = 0
+trigramIndex = 0
 
 
 def FASTA_Reader(file):
     # FASTA_file.txt -> dictionary
     # reads a FASTA file.txt and separates the Name line from the actual sequence.
     # Also joins the sequence together
-    working_file = open(file, "r")
+    working_file = open(file, "r", encoding='utf-8-sig')
     rv = {'geneName': working_file.readline().replace('\n', ""), 'sequence': ""}
     AAseq = ""
     for line in working_file:
         AAseq += line.replace("\n", '')
     rv.update({'sequence': AAseq})
-    geneIndexing(rv['geneName'], howManyGenes)
+    geneIndexing(rv['geneName'], geneIndex)
+    working_file.close()
     return rv
 
 
 def RNA_Check(strand):
-    if strand.contains("M") == False:
+    if not strand.contains("M"):
         protein = translation(strand)
         return protein
     else:
@@ -44,6 +46,8 @@ def RNA_Check(strand):
 
 
 def translation(strand):
+    # String  -> String
+    # function that changes an RNA strand to its Amino Acid Chain
     AAseq = ""
     for i in range(0, len(strand), 3):
         codon = strand[i:i + 3]
@@ -54,14 +58,28 @@ def translation(strand):
 def geneIndexing(gene, indexNum):
     # string, integer -> no return
     # adds genes that have been read to indexing dictionary
-    indexedGenes.update({gene: indexNum})
-    global howManyGenes
-    howManyGenes += 1
+    indexed_Genes.update({gene: indexNum})
+    global geneIndex
+    geneIndex += 1
 
+def trigramScan(proteinChain):
+    for i in proteinChain:
+        tempTrigram = ""
+        print(i)
+        print((i+1))
+        print((i+2))
+        print(" ")
+    return
+
+def trigramIndexing(trig, i):
+    return
 
 # Testing
 trial = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST1.txt"))
 print(trial)
 trial2 = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
 print(trial2)
-print(indexedGenes)
+trial3 = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
+print(trial3)
+print(indexed_Genes)
+
