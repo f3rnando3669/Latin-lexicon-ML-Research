@@ -32,7 +32,7 @@ def FASTA_Reader(file):
     for line in working_file:
         AAseq += line.replace("\n", '')
     rv.update({'sequence': AAseq})
-    geneIndexing(rv['geneName'], geneIndex)
+    geneIndexing(rv['geneName'])
     working_file.close()
     return rv
 
@@ -55,19 +55,18 @@ def translation(strand):
     return AAseq
 
 
-def geneIndexing(gene, indexNum):
+def geneIndexing(gene):
     # string, integer -> no return
     # adds genes that have been read to indexing dictionary
-    indexed_Genes.update({gene: indexNum})
     global geneIndex
+    indexed_Genes.update({gene: geneIndex})
     geneIndex += 1
 
 def trigramScan(proteinChain):
-    for i in proteinChain:
+    for i in range(0, (len(proteinChain)-3)):
         tempTrigram = ""
-        print(i)
-        print((i+1))
-        print((i+2))
+        tempTrigram = proteinChain[i] + proteinChain[(i+1)] + proteinChain[(i+2)]
+        print(tempTrigram)
         print(" ")
     return
 
@@ -76,10 +75,13 @@ def trigramIndexing(trig, i):
 
 # Testing
 trial = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST1.txt"))
-print(trial)
+#print(type(trial))
 trial2 = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
-print(trial2)
+#print(trial2)
 trial3 = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
-print(trial3)
+#print(trial3)
 print(indexed_Genes)
+
+#print(trial['sequence'])
+#trigramScan(trial['sequence'])
 
