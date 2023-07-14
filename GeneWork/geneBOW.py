@@ -22,7 +22,7 @@ geneIndex = 0
 trigramIndex = 0
 
 
-def FASTA_Reader(file):
+def FASTA_reader(file):
     # FASTA_file.txt -> dictionary
     # reads a FASTA file.txt and separates the Name line from the actual sequence.
     # Also joins the sequence together
@@ -32,12 +32,14 @@ def FASTA_Reader(file):
     for line in working_file:
         AAseq += line.replace("\n", '')
     rv.update({'sequence': AAseq})
-    geneIndexing(rv['geneName'])
+    gene_indexing(rv['geneName'])
     working_file.close()
     return rv
 
 
-def RNA_Check(strand):
+def RNA_check(strand):
+    # string -> string
+    # checks if a strand contains an amino acid, if it does translate it over to a protein chain
     if not strand.contains("M"):
         protein = translation(strand)
         return protein
@@ -55,33 +57,43 @@ def translation(strand):
     return AAseq
 
 
-def geneIndexing(gene):
+def gene_indexing(gene):
     # string, integer -> no return
     # adds genes that have been read to indexing dictionary
     global geneIndex
     indexed_Genes.update({gene: geneIndex})
     geneIndex += 1
 
-def trigramScan(proteinChain):
+def trigram_scan(proteinChain):
+    # string -> no return type
+    # runs through an amino acid chain and breaks it into trigrams while indexing them in indexed_Trigrams
     for i in range(0, (len(proteinChain)-3)):
-        tempTrigram = ""
         tempTrigram = proteinChain[i] + proteinChain[(i+1)] + proteinChain[(i+2)]
-        print(tempTrigram)
-        print(" ")
-    return
+        trigram_indexing(tempTrigram)
 
-def trigramIndexing(trig, i):
-    return
+
+def trigram_indexing(trigram):
+    # string -> no return type
+    # function that adds trigrams that have not been seen to indexed_Trigrams and updates counter
+    global trigramIndex
+    if indexed_Trigrams.get(trigram) == None:
+        indexed_Trigrams.update({trigram: trigramIndex})
+        trigramIndex += 1
+    else:
+        #print("Trigram: {} already exists".format(trigram))
+        pass
+
 
 # Testing
-trial = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST1.txt"))
+trial = FASTA_reader(os.path.join(PATH, "geneSequences/SbST1.txt"))
 #print(type(trial))
-trial2 = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
+trial2 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
 #print(trial2)
-trial3 = FASTA_Reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
+trial3 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
 #print(trial3)
 print(indexed_Genes)
-
+trigram_scan(trial['sequence'])
+trigram_scan(trial2['sequence'])
 #print(trial['sequence'])
-#trigramScan(trial['sequence'])
+
 
