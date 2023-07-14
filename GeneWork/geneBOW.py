@@ -28,10 +28,10 @@ def FASTA_reader(file):
     # Also joins the sequence together
     working_file = open(file, "r", encoding='utf-8-sig')
     rv = {'geneName': working_file.readline().replace('\n', ""), 'sequence': ""}
-    AAseq = ""
+    sequence = ""
     for line in working_file:
-        AAseq += line.replace("\n", '')
-    rv.update({'sequence': AAseq})
+        sequence += line.replace("\n", '')
+    rv.update({'sequence': sequence})
     gene_indexing(rv['geneName'])
     working_file.close()
     return rv
