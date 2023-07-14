@@ -1,0 +1,39 @@
+public static String PatternCheck(Map<Integer, String> indexMap) {
+    int dtIndex = -1;
+    int nnIndex = -1;
+    int vbIndex = -1;
+    int jjIndex = -1;
+
+    for (Map.Entry<Integer, String> entry : indexMap.entrySet()) {
+        int currentIndex = entry.getKey();
+        String currentValue = entry.getValue();
+
+        if (currentValue.equals("DT")) {
+            dtIndex = currentIndex;
+            System.out.println("Pattern 4: Found DT");
+            System.out.println(currentValue);
+            System.out.println(dtIndex);
+        } else if (currentValue.equals("NN") && dtIndex != -1 && currentIndex > dtIndex) {
+            nnIndex = currentIndex;
+            System.out.println("Pattern 4: Found NN");
+            System.out.println(currentValue);
+            System.out.println(nnIndex);
+        } else if (currentValue.equals("VB") && nnIndex != -1 && currentIndex > nnIndex) {
+            vbIndex = currentIndex;
+            System.out.println("Pattern 4: Found VB");
+            System.out.println(currentValue);
+            System.out.println(vbIndex);
+        } else if (currentValue.equals("JJ") && vbIndex != -1 && currentIndex > vbIndex) {
+            jjIndex = currentIndex;
+            System.out.println("Pattern 4: Found JJ");
+            System.out.println(currentValue);
+            System.out.println(jjIndex);
+        }
+    }
+
+    if (dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && jjIndex != -1) {
+        return "DT NN VB JJ";
+    } else {
+        return "Pattern Not Found";
+    }
+}
