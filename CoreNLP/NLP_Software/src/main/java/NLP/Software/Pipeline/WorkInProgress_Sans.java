@@ -47,7 +47,7 @@ public class Yet_Another {
 
                 // Check for specific patterns in the Part-of-Speech tags
                 String patternMatchedOutput = PatternCheck(indexposmap);
-                
+
                 // Find matched words based on the patterns and word map
                 String wordMatch = MatchedWords(indexlemmamap);
 
@@ -234,6 +234,10 @@ public class Yet_Another {
         int vbpIndex = getIndexAfterValue(indexMap, nnpIndex, "VBP");
         int nnIndex = getIndexAfterValue(indexMap, vbpIndex, "NN");
 
+        if (nnpIndex != -1 && vbpIndex != -1 && nnIndex != -1){
+            indexarray = new int[]{nnpIndex, vbpIndex, nnIndex};
+        }
+
         // Check if all indices are found in the expected order
         return nnpIndex != -1 && vbpIndex != -1 && nnIndex != -1;
     }
@@ -243,6 +247,10 @@ public class Yet_Another {
         int nnpIndex = getIndexForValue(indexMap, "NNP");
         int vbIndex = getIndexAfterValue(indexMap, nnpIndex, "VB");
         int nnIndex = getIndexAfterValue(indexMap, vbIndex, "nn");
+
+        if (nnpIndex != -1 && vbIndex != -1 && nnIndex != -1){
+            indexarray = new int[]{nnpIndex, vbIndex, nnIndex};
+        }
 
         // Check if all indices are found in the expected order
         return nnpIndex != -1 && vbIndex != -1 && nnIndex != -1;
@@ -254,6 +262,10 @@ public class Yet_Another {
         int vbpIndex = getIndexAfterValue(indexMap, nnpIndex, "VBP");
         int jjIndex = getIndexAfterValue(indexMap, vbpIndex, "JJ");
 
+        if (nnpIndex != -1 && vbpIndex != -1 && jjIndex != -1){
+            indexarray = new int[]{nnpIndex, vbpIndex, jjIndex};
+        }
+
         // Check if all indices are found in the expected order
         return nnpIndex != -1 && vbpIndex != -1 && jjIndex != -1;
     }
@@ -263,6 +275,10 @@ public class Yet_Another {
         int nnpIndex = getIndexForValue(indexMap, "NNP");
         int vbIndex = getIndexAfterValue(indexMap, nnpIndex, "VB");
         int jjIndex = getIndexAfterValue(indexMap, vbIndex, "JJ");
+
+        if (nnpIndex != -1 && vbIndex != -1 && jjIndex != -1){
+            indexarray = new int[]{nnpIndex, vbIndex, jjIndex};
+        }
 
         // Check if all indices are found in the expected order
         return nnpIndex != -1 && vbIndex != -1 && jjIndex != -1;
@@ -274,6 +290,10 @@ public class Yet_Another {
         int vbpIndex = getIndexAfterValue(indexMap, nnIndex, "VBP");
         int nn2Index = getIndexAfterValue(indexMap, vbpIndex, "NN");
 
+        if (nnIndex != -1 && vbpIndex != -1 && nn2Index != -1){
+            indexarray = new int[]{nnIndex, vbpIndex, nn2Index};
+        }
+
         // Check if all indices are found in the expected order
         return nnIndex != -1 && vbpIndex != -1 && nn2Index != -1;
     }
@@ -283,6 +303,10 @@ public class Yet_Another {
         int nnIndex = getIndexForValue(indexMap, "NN");
         int vbIndex = getIndexAfterValue(indexMap, nnIndex, "VB");
         int nn2Index = getIndexAfterValue(indexMap, vbIndex, "NN");
+
+        if (nnIndex != -1 && vbIndex != -1 && nn2Index != -1){
+            indexarray = new int[]{nnIndex, vbIndex, nn2Index};
+        }
 
         // Check if all indices are found in the expected order
         return nnIndex != -1 && vbIndex != -1 && nn2Index != -1;
@@ -294,6 +318,10 @@ public class Yet_Another {
         int vbpIndex = getIndexAfterValue(indexMap, nnIndex, "VBP");
         int jjIndex = getIndexAfterValue(indexMap, vbpIndex, "JJ");
 
+        if (nnIndex != -1 && vbpIndex != -1 && jjIndex != -1){
+            indexarray = new int[]{nnIndex, vbpIndex, jjIndex};
+        }
+
         // Check if all indices are found in the expected order
         return nnIndex != -1 && vbpIndex != -1 && jjIndex != -1;
     }
@@ -303,6 +331,10 @@ public class Yet_Another {
         int nnIndex = getIndexForValue(indexMap, "NN");
         int vbpIndex = getIndexAfterValue(indexMap, nnIndex, "VBP");
         int jjIndex = getIndexAfterValue(indexMap, vbpIndex, "JJ");
+
+        if (nnIndex != -1 && vbpIndex != -1 && jjIndex != -1){
+            indexarray = new int[]{nnIndex, vbpIndex, jjIndex};
+        }
 
         // Check if all indices are found in the expected order
         return nnIndex != -1 && vbpIndex != -1 && jjIndex != -1;
@@ -343,13 +375,15 @@ public class Yet_Another {
         // StringBuilder to store the matched words
         StringBuilder matchedWords = new StringBuilder();
 
+        System.out.println(Arrays.toString(indexarray));
+
         // Iterate over the array of indices (indexarray is not shown in the provided code)
         for (int index : indexarray) {
             // Retrieve the word corresponding to the index from the indexLemmamap
             String word = indexLemmamap.get(index);
 
             // Debug print statement to display the word
-            System.out.println(word);
+            // System.out.println(word);
 
             // Check if the word is not null
             if (word != null) {
