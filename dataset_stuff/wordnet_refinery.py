@@ -92,9 +92,9 @@ for syn in wn.all_eng_synsets():
                         "word_hypernym": simple_hypernyms,
                         "word_lemma": syn.name(),
                         "hypernyms_lemmas": full_hypernyms,
-                        "categories": ""})
+                        "categories": simple_hypernyms})
     else:
         inject(simplify_name(syn.name()), simple_hypernyms, syn.name(), full_hypernyms, syn.lemmas())
 
 df = pd.DataFrame.from_dict(org_set)
-df.to_csv(r'', index=False, header=True)
+df.to_csv(r'wordsandhypernyms.csv', index=False, header=True)
