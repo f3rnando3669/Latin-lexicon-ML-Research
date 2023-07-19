@@ -2,6 +2,7 @@ import pandas as pd
 from nltk.corpus import wordnet as wn
 
 
+# get the top level category for a word
 # injects a new line in the csv file, for each derivationally_related_forms hypernym
 def inject(name, simple_hypernym, lemma, full_hypernym, lemmas):
     hypernyms = related_hypernyms(lemmas)
