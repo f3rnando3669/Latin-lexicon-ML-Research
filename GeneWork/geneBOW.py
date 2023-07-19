@@ -21,7 +21,10 @@ indexed_Genes = {}
 geneIndex = 0
 trigramIndex = 0
 
-
+def core_Process():
+    # no input -> no output
+    # this is the MAIN process for what we are doing. Built because FASTA_reader() got too big
+    return
 def FASTA_reader(file):
     # FASTA_file.txt -> dictionary
     # reads a FASTA file.txt and separates the Name line from the actual sequence.
@@ -33,9 +36,9 @@ def FASTA_reader(file):
         sequence += line.replace("\n", '')
     rv.update({'sequence': sequence})
     gene_indexing(rv['geneName'])
+    trigram_scan(rv["sequence"])
     working_file.close()
     return rv
-
 
 def RNA_check(strand):
     # string -> string
@@ -46,7 +49,6 @@ def RNA_check(strand):
     else:
         return strand
 
-
 def translation(strand):
     # String  -> String
     # function that changes an RNA strand to its Amino Acid Chain
@@ -55,7 +57,6 @@ def translation(strand):
         codon = strand[i:i + 3]
         AAseq += (codonChart[codon])
     return AAseq
-
 
 def gene_indexing(gene):
     # string, integer -> no return
@@ -71,7 +72,6 @@ def trigram_scan(proteinChain):
         tempTrigram = proteinChain[i] + proteinChain[(i+1)] + proteinChain[(i+2)]
         trigram_indexing(tempTrigram)
 
-
 def trigram_indexing(trigram):
     # string -> no return type
     # function that adds trigrams that have not been seen to indexed_Trigrams and updates counter
@@ -86,20 +86,20 @@ def trigram_indexing(trigram):
 def messing_With_Matricies():
     # no input -> no return type
     # this is just going to print out a matrix as I work on it to get accustomed
+    return
 
-def testing():
+def my_testing():
     # Testing
-    trial = FASTA_reader(os.path.join(PATH, "geneSequences/TEST_1.txt"))
-    #print(type(trial))
-    trial2 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
+    FASTA_reader(os.path.join(PATH, "geneSequences/TEST_1.txt"))
+    FASTA_reader(os.path.join(PATH, "geneSequences/TEST_2.txt"))
     #print(trial2)
     #trial3 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
     #print(trial3)
-    trigram_scan(trial['sequence'])
+    #trigram_scan(trial['sequence'])
     print(indexed_Trigrams)
+    print(indexed_Genes)
 
     #trigram_scan(trial2['sequence'])
-    print(trial['sequence'])
+    #print(trial['sequence'])
 
-
-testing()
+my_testing()
