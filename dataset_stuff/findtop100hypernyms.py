@@ -1,24 +1,27 @@
 import pandas as pd
+from math import isnan
+from collections import OrderedDict
 
 
 def get_hypernym_frequency_map(categories_list):
     frequency_map = {}
 
-    for i, hypernym in enumerate(categories_list):
-        if frequency_map.__contains__(categories_list[i]):
-            frequency_map[categories_list[i]] += 1
+    for hypernym in categories_list:
+        if hypernym == " ":
             continue
-        frequency_map[categories_list[i]] = 0
+        if frequency_map.__contains__(hypernym):
+            frequency_map[hypernym] += 1
+            continue
+        frequency_map[hypernym] = 1
 
     return frequency_map
 
 
 def sort_frequency_map(frequency_map):
-    return dict(sorted(frequency_map.items(), key=lambda item: item[1], reverse=True))
+    return OrderedDict(sorted(frequency_map.items(), key=lambda item: item[1], reverse=True))
 
 
 def write_top100(frequency_map):
-    title = ["top_words"]
     set_csv = []
 
     for i, word in enumerate(frequency_map):
@@ -32,7 +35,7 @@ def write_top100(frequency_map):
 
 
 df = pd.read_csv("wordsandhypernyms.csv")
-saved_column = df["categories"]
+saved_column = df["word_hypernym"]
 
-hypernym_frequency_map = get_hypernym_frequency_map(saved_column)
+hypernym_frequency_map = sort_frequency_map(get_hypernym_frequency_map(saved_column))
 write_top100(hypernym_frequency_map)

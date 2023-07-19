@@ -10,7 +10,7 @@ def inject(name, simple_hypernym, lemma, full_hypernym, lemmas):
     for hypernym in hypernyms:
         if len(hypernym) > 0:
             org_set.append({"word_name": name,
-                            "word_hypernym": simple_hypernym,
+                            "word_hypernym": " ",
                             "word_lemma": lemma,
                             "hypernyms_lemmas": full_hypernym,
                             "categories": hypernym})
