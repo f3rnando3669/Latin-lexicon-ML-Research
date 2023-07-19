@@ -67,7 +67,7 @@ def gene_indexing(gene):
 def trigram_scan(proteinChain):
     # string -> no return type
     # runs through an amino acid chain and breaks it into trigrams while indexing them in indexed_Trigrams
-    for i in range(0, (len(proteinChain)-3)):
+    for i in range(0, (len(proteinChain)-2)):
         tempTrigram = proteinChain[i] + proteinChain[(i+1)] + proteinChain[(i+2)]
         trigram_indexing(tempTrigram)
 
@@ -80,20 +80,26 @@ def trigram_indexing(trigram):
         indexed_Trigrams.update({trigram: trigramIndex})
         trigramIndex += 1
     else:
-        #print("Trigram: {} already exists".format(trigram))
+        print("Trigram: {} already exists".format(trigram))
         pass
 
+def messing_With_Matricies():
+    # no input -> no return type
+    # this is just going to print out a matrix as I work on it to get accustomed
 
-# Testing
-trial = FASTA_reader(os.path.join(PATH, "geneSequences/SbST1.txt"))
-#print(type(trial))
-trial2 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
-#print(trial2)
-trial3 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
-#print(trial3)
-print(indexed_Genes)
-trigram_scan(trial['sequence'])
-trigram_scan(trial2['sequence'])
-#print(trial['sequence'])
+def testing():
+    # Testing
+    trial = FASTA_reader(os.path.join(PATH, "geneSequences/TEST_1.txt"))
+    #print(type(trial))
+    trial2 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
+    #print(trial2)
+    #trial3 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
+    #print(trial3)
+    trigram_scan(trial['sequence'])
+    print(indexed_Trigrams)
+
+    #trigram_scan(trial2['sequence'])
+    print(trial['sequence'])
 
 
+testing()
