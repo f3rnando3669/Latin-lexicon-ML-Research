@@ -21,21 +21,24 @@ indexed_Genes = {}
 geneIndex = 0
 trigramIndex = 0
 
-
+def core_Process():
+    # no input -> no output
+    # this is the MAIN process for what we are doing. Built because FASTA_reader() got too big
+    return
 def FASTA_reader(file):
     # FASTA_file.txt -> dictionary
     # reads a FASTA file.txt and separates the Name line from the actual sequence.
     # Also joins the sequence together
     working_file = open(file, "r", encoding='utf-8-sig')
     rv = {'geneName': working_file.readline().replace('\n', ""), 'sequence': ""}
-    AAseq = ""
+    sequence = ""
     for line in working_file:
-        AAseq += line.replace("\n", '')
-    rv.update({'sequence': AAseq})
+        sequence += line.replace("\n", '')
+    rv.update({'sequence': sequence})
     gene_indexing(rv['geneName'])
+    trigram_scan(rv["sequence"])
     working_file.close()
     return rv
-
 
 def RNA_check(strand):
     # string -> string
@@ -46,7 +49,6 @@ def RNA_check(strand):
     else:
         return strand
 
-
 def translation(strand):
     # String  -> String
     # function that changes an RNA strand to its Amino Acid Chain
@@ -55,7 +57,6 @@ def translation(strand):
         codon = strand[i:i + 3]
         AAseq += (codonChart[codon])
     return AAseq
-
 
 def gene_indexing(gene):
     # string, integer -> no return
@@ -67,10 +68,9 @@ def gene_indexing(gene):
 def trigram_scan(proteinChain):
     # string -> no return type
     # runs through an amino acid chain and breaks it into trigrams while indexing them in indexed_Trigrams
-    for i in range(0, (len(proteinChain)-3)):
+    for i in range(0, (len(proteinChain)-2)):
         tempTrigram = proteinChain[i] + proteinChain[(i+1)] + proteinChain[(i+2)]
         trigram_indexing(tempTrigram)
-
 
 def trigram_indexing(trigram):
     # string -> no return type
@@ -83,17 +83,23 @@ def trigram_indexing(trigram):
         #print("Trigram: {} already exists".format(trigram))
         pass
 
+def messing_With_Matricies():
+    # no input -> no return type
+    # this is just going to print out a matrix as I work on it to get accustomed
+    return
 
-# Testing
-trial = FASTA_reader(os.path.join(PATH, "geneSequences/SbST1.txt"))
-#print(type(trial))
-trial2 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST2.txt"))
-#print(trial2)
-trial3 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
-#print(trial3)
-print(indexed_Genes)
-trigram_scan(trial['sequence'])
-trigram_scan(trial2['sequence'])
-#print(trial['sequence'])
+def my_testing():
+    # Testing
+    FASTA_reader(os.path.join(PATH, "geneSequences/TEST_1.txt"))
+    FASTA_reader(os.path.join(PATH, "geneSequences/TEST_2.txt"))
+    #print(trial2)
+    #trial3 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
+    #print(trial3)
+    #trigram_scan(trial['sequence'])
+    print(indexed_Trigrams)
+    print(indexed_Genes)
 
+    #trigram_scan(trial2['sequence'])
+    #print(trial['sequence'])
 
+my_testing()
