@@ -80,7 +80,7 @@ def trigram_indexing(trigram):
         indexed_Trigrams.update({trigram: trigramIndex})
         trigramIndex += 1
     else:
-        print("Trigram: {} already exists".format(trigram))
+        #print("Trigram: {} already exists".format(trigram))
         pass
 
 def messing_With_Matricies():
