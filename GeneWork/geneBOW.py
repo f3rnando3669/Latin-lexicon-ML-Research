@@ -9,10 +9,12 @@ indexed_Genes = {}
 geneIndex = 0
 trigramIndex = 0
 
-def core_Process():
-    # no input -> no output
-    # this is the MAIN process for what we are doing. Built because FASTA_reader() got too big
-    FASTA_reader()
+def core_Process(dirName):
+    # Directory Name -> no output
+    for file in os.listdir(os.path.join(PATH, dirName)):
+        if not file.startswith('.'):
+            realFile = dirName + "/" + file
+            FASTA_reader(os.path.join(PATH, realFile))
     return
 def messing_With_Matricies():
     # no input -> no return type
@@ -22,6 +24,7 @@ def messing_With_Matricies():
     working_Matrix = coo_array((3, 4), dtype=int)
 
     return
+
 def FASTA_reader(file):
     # FASTA_file.txt -> dictionary
     # reads a FASTA file.txt and separates the Name line from the actual sequence.
@@ -67,16 +70,11 @@ def trigram_indexing(trigram):
 
 def my_testing():
     # Testing
-    FASTA_reader(os.path.join(PATH, "geneSequences/TEST_1.txt"))
-    FASTA_reader(os.path.join(PATH, "geneSequences/TEST_2.txt"))
-    #print(trial2)
-    #trial3 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
-    #print(trial3)
-    #trigram_scan(trial['sequence'])
+    core_Process("geneSequences")
     print(indexed_Trigrams)
     print(indexed_Genes)
 
-    print(working_Matrix.toarray())
+    #print(working_Matrix.toarray())
 
     #trigram_scan(trial2['sequence'])
     #print(trial['sequence'])

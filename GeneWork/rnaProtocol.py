@@ -1,4 +1,6 @@
-
+"""
+Might use this code at some point as a feature of the whole.
+"""
 codonChart = {
     "TTT": "F", "TTC": "F", "TTA": "L", "TTG": "L", "TCT": "S", "TCC": "S", "TCA": "S",
     "TCG": "S", "TAT": "Y", "TAC": "Y", "TAA": "X", "TAG": "X", "TGT": "C", "TGC": "C",
