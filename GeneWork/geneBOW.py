@@ -9,21 +9,40 @@ indexed_Genes = {}
 geneIndex = 0
 trigramIndex = 0
 
+trigram_coordinates = np.array([]) #row coordinate
+gene_coordinates = np.array([]) #column coordinate
+data = np.array([])
+
+gene_matrix = coo_array((trigramIndex, geneIndex), dtype=int)
+
 def core_Process(dirName):
     # Directory Name -> no output
     for file in os.listdir(os.path.join(PATH, dirName)):
         if not file.startswith('.'):
             realFile = dirName + "/" + file
+            print("currently working on file {}".format(realFile))
             FASTA_reader(os.path.join(PATH, realFile))
+    print(trigram_coordinates)
+    print(gene_coordinates)
+    print(data)
+    matrix_factory()
     return
-def messing_With_Matricies():
+def messing_with_matricies():
     # no input -> no return type
     # this is just going to print out a matrix as I work on it to get accustomed
-    row_of_genes = np.array([])
-    column_of_proteins = np.array([])
-    working_Matrix = coo_array((3, 4), dtype=int)
+
+
+
+    working_matrix = coo_array((data, (trigram_coordinates, gene_coordinates)), shape=(4, 2))
+    print(working_matrix.toarray())
 
     return
+
+def matrix_factory():
+    # no input -> no return type
+    # prints the finalized array that we are working on
+    gene_matrix = coo_array((data, (trigram_coordinates, gene_coordinates)), shape=(trigramIndex, geneIndex))
+    print(gene_matrix.toarray())
 
 def FASTA_reader(file):
     # FASTA_file.txt -> dictionary
@@ -48,6 +67,23 @@ def gene_indexing(gene):
     global geneIndex
     indexed_Genes.update({gene: geneIndex})
     geneIndex += 1
+    # Do not know if I'll need to reshape this matrix
+    #gene_matrix._shape = (trigramIndex, geneIndex)
+
+
+def array_Update(tri_coord):
+    # int -> no return type
+    # this updates all 3 arrays that make up our matrix
+    global data, gene_coordinates, trigram_coordinates
+    data = np.insert(data, len(data),1)
+    print("I am placing {} in the data array".format(1))
+    gene_coordinates = np.append(gene_coordinates, [(geneIndex-1)])
+    print("I am placing {} in the gene_coordinates array".format((geneIndex-1)))
+    # trigram_coordinates is the only one that should be moving around a lot
+    trigram_coordinates = np.append(trigram_coordinates, [tri_coord])
+    print("I am placing {} in the trigram_coordinates array".format(tri_coord))
+    print("\n")
+    return
 
 def trigram_scan(proteinChain):
     # string -> no return type
@@ -62,21 +98,30 @@ def trigram_indexing(trigram):
     global trigramIndex
     if indexed_Trigrams.get(trigram) == None:
         indexed_Trigrams.update({trigram: trigramIndex})
+        array_Update(trigramIndex)
         trigramIndex += 1
+        # Do not know if I need to reshape the matrix here
+        # gene_matrix._shape = (trigramIndex, geneIndex)
     else:
-        #print("Trigram: {} already exists".format(trigram))
-        pass
+        print("Found a duplicate!")
+        array_Update(indexed_Trigrams.get(trigram))
+
 
 
 def my_testing():
     # Testing
-    core_Process("geneSequences")
+    core_Process("testSequences")
     print(indexed_Trigrams)
     print(indexed_Genes)
 
-    #print(working_Matrix.toarray())
+    #print(gene_matrix.toarray())
 
     #trigram_scan(trial2['sequence'])
     #print(trial['sequence'])
 
-my_testing()
+
+#my_testing()
+#messing_with_matricies()
+core_Process("testSequences")
+print(indexed_Trigrams)
+print(indexed_Genes)

@@ -113,3 +113,7 @@ if __name__ == '__main__':
     #print(transcriptionWRONG(sampleDNA))
     #print(translationOLD(transcriptionWRONG(sampleDNA)))
     print(translation(sampleRNA))
+
+
+
+take bag of words and the run naive Bayesian classifier.
