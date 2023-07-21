@@ -13,11 +13,11 @@ import java.util.*;
 public class NLP_Software {
     public static StanfordCoreNLP stanfordCoreNLP = Pipeline.getPipeline();
 
-    public static int[] indexarray = new int[5];
+    public static int[] indexarray = new int[]{};
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        Scanner scanner = new Scanner(new File("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/input.txt"));
+        Scanner scanner = new Scanner(new File("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/OpenIEoutput.txt"));
 
         PrintWriter out = new PrintWriter("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/output.txt");
 
@@ -49,7 +49,7 @@ public class NLP_Software {
                 String patternMatchedOutput = PatternCheck(indexposmap);
 
                 // Find matched words based on the patterns and word map
-                String wordMatch = MatchedWords(indexlemmamap);
+                String wordMatch = MatchedWords(patternMatchedOutput, indexlemmamap);
 
                 for (Map.Entry<Integer, String> entry : indexposmap.entrySet()) {
                     IndexPOSMapOutput.append(entry.getKey()).append(" -> ").append(entry.getValue()).append("\n");
@@ -139,30 +139,30 @@ public class NLP_Software {
     // Check for specific patterns in the Part-of-Speech tags
     public static String PatternCheck(Map<Integer, String> indexMap) {
         // Check if the indexMap matches Pattern X
-        if (isPattern1(indexMap)) {
-            return "DT NN VBP NN"; // Return the matched pattern
-        } else if (isPattern2(indexMap)) {
-            return "DT NN VB NN";
+        if (isPattern2(indexMap)) {
+            return "DT NN VB NN"; // Return the matched pattern
+        } else if (isPattern4(indexMap)) {
+            return "DT NN VB JJ";
         } else if (isPattern3(indexMap)) {
             return "DT NN VBP JJ";
-        }else if (isPattern4(indexMap)) {
-            return "DT NN VB JJ";
-        }else if (isPattern5(indexMap)) {
-            return "NNP VBP NN";
+        }else if (isPattern1(indexMap)) {
+            return "DT NN VBP NN";
         }else if (isPattern6(indexMap)) {
             return "NNP VB NN";
-        }else if (isPattern7(indexMap)) {
-            return "NNP VBP JJ";
+        }else if (isPattern5(indexMap)) {
+            return "NNP VBP NN";
         }else if (isPattern8(indexMap)) {
             return "NNP VB JJ";
-        }else if (isPattern9(indexMap)) {
-            return "NN VBP NN";
+        }else if (isPattern7(indexMap)) {
+            return "NNP VBP JJ";
         }else if (isPattern10(indexMap)) {
             return "NN VB NN";
-        }else if (isPattern11(indexMap)) {
-            return "NN VBP JJ";
+        }else if (isPattern9(indexMap)) {
+            return "NN VBP NN";
         }else if (isPattern12(indexMap)) {
             return "NN VB JJ";
+        }else if (isPattern11(indexMap)) {
+            return "NN VBP JJ";
         }else { // If neither pattern is found
             return "Pattern Not Found"; // Return the "Pattern Not Found" message
         }
@@ -176,11 +176,11 @@ public class NLP_Software {
         int vbpIndex = getIndexAfterValue(indexMap, nnIndex, "VBP");
         int nn2Index = getIndexAfterValue(indexMap, vbpIndex, "NN");
 
-        if (dtIndex != -1 && nnIndex != -1 && vbpIndex != -1 && nn2Index != -1){
+        if (dtIndex != -1 && nnIndex != -1 && vbpIndex != -1 && nn2Index != -1 && nnIndex == dtIndex + 1){
             indexarray = new int[]{dtIndex, nnIndex, vbpIndex, nn2Index};
         }
         // Check if all indices are found in the expected order
-        return dtIndex != -1 && nnIndex != -1 && vbpIndex != -1 && nn2Index != -1;
+        return dtIndex != -1 && nnIndex != -1 && vbpIndex != -1 && nn2Index != -1 && nnIndex == dtIndex + 1;
     }
 
     public static boolean isPattern2(Map<Integer, String> indexMap) {
@@ -190,12 +190,12 @@ public class NLP_Software {
         int vbIndex = getIndexAfterValue(indexMap, nnIndex, "VB");
         int nn2Index = getIndexAfterValue(indexMap, vbIndex, "NN");
 
-        if (dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && nn2Index != -1){
+        if (dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && nn2Index != -1 && nnIndex == dtIndex + 1){
             indexarray = new int[]{dtIndex, nnIndex, vbIndex, nn2Index};
         }
 
         // Check if all indices are found in the expected order
-        return dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && nn2Index != -1;
+        return dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && nn2Index != -1 && nnIndex == dtIndex + 1;
     }
 
     public static boolean isPattern3(Map<Integer, String> indexMap){
@@ -205,12 +205,12 @@ public class NLP_Software {
         int vbpIndex = getIndexAfterValue(indexMap, nnIndex, "VBP");
         int jjIndex = getIndexAfterValue(indexMap, vbpIndex, "JJ");
 
-        if (dtIndex != -1 && nnIndex != -1 && vbpIndex != -1 && jjIndex != -1){
+        if (dtIndex != -1 && nnIndex != -1 && vbpIndex != -1 && jjIndex != -1 && nnIndex == dtIndex + 1){
             indexarray = new int[]{dtIndex, nnIndex, vbpIndex, jjIndex};
         }
 
         // Check if all indices are found in the expected order
-        return dtIndex != -1 && nnIndex != -1 && vbpIndex != -1 && jjIndex != -1;
+        return dtIndex != -1 && nnIndex != -1 && vbpIndex != -1 && jjIndex != -1 && nnIndex == dtIndex + 1;
     }
 
     public static boolean isPattern4(Map<Integer, String> indexMap){
@@ -220,12 +220,12 @@ public class NLP_Software {
         int vbIndex = getIndexAfterValue(indexMap, nnIndex, "VB");
         int jjIndex = getIndexAfterValue(indexMap, vbIndex, "JJ");
 
-        if (dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && jjIndex != -1){
+        if (dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && jjIndex != -1 && nnIndex == dtIndex + 1){
             indexarray = new int[]{dtIndex, nnIndex, vbIndex, jjIndex};
         }
 
         // Check if all indices are found in the expected order
-        return dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && jjIndex != -1;
+        return dtIndex != -1 && nnIndex != -1 && vbIndex != -1 && jjIndex != -1 && nnIndex == dtIndex + 1;
     }
 
     public static boolean isPattern5(Map<Integer, String> indexMap){
@@ -246,7 +246,7 @@ public class NLP_Software {
         // Get the indices for each value in Pattern 1
         int nnpIndex = getIndexForValue(indexMap, "NNP");
         int vbIndex = getIndexAfterValue(indexMap, nnpIndex, "VB");
-        int nnIndex = getIndexAfterValue(indexMap, vbIndex, "nn");
+        int nnIndex = getIndexAfterValue(indexMap, vbIndex, "NN");
 
         if (nnpIndex != -1 && vbIndex != -1 && nnIndex != -1){
             indexarray = new int[]{nnpIndex, vbIndex, nnIndex};
@@ -365,13 +365,15 @@ public class NLP_Software {
         return -1; // Return -1 if the value is not found or found before the startIndex
     }
 
+
+
     // Split a sentence into individual words
     public static String[] splitIntoWords(String sentence) {
         return sentence.split("\\s+");
     }
 
     // Find matched words based on patterns and word map
-    public static String MatchedWords(Map<Integer, String> indexLemmamap) {
+    public static String MatchedWords(String patternMatchedOutput, Map<Integer, String> indexLemmamap) {
         // StringBuilder to store the matched words
         StringBuilder matchedWords = new StringBuilder();
 
@@ -392,8 +394,12 @@ public class NLP_Software {
             }
         }
 
-        // Return the string representation of the matchedWords StringBuilder with leading and trailing whitespaces trimmed
-        return matchedWords.toString().trim();
+        if (patternMatchedOutput.equals("Pattern Not Found")) {
+            return "No patterns";
+        } else {
+            // Return the string representation of the matchedWords StringBuilder with leading and trailing whitespaces trimmed
+            return matchedWords.toString().trim();
+        }
     }
 
 }
