@@ -1,62 +1,58 @@
 import os
 import numpy as np
-import scipy as sp
+from scipy.sparse import coo_array
 
 # Global Variables
 PATH = os.path.dirname(__name__)
-codonChart = {
-    "TTT": "F", "TTC": "F", "TTA": "L", "TTG": "L", "TCT": "S", "TCC": "S", "TCA": "S",
-    "TCG": "S", "TAT": "Y", "TAC": "Y", "TAA": "X", "TAG": "X", "TGT": "C", "TGC": "C",
-    "TGA": "X", "TGG": "W", "CTT": "L", "CTC": "L", "CTA": "L", "CTG": "L", "CCT": "P",
-    "CCC": "P", "CCA": "P", "CCG": "P", "CAT": "H", "CAC": "H", "CAA": "Q", "CAG": "Q",
-    "CGT": "R", "CGC": "R", "CGA": "R", "CGG": "R", "ATT": "I", "ATC": "I", "ATA": "I",
-    "ATG": "M", "ACT": "T", "ACC": "T", "ACA": "T", "ACG": "T", "AAT": "N", "AAC": "N",
-    "AAA": "K", "AAG": "K", "AGT": "S", "AGC": "S", "AGA": "R", "AGG": "R", "GTT": "V",
-    "GTC": "V", "GTA": "V", "GTG": "V", "GCT": "A", "GCC": "A", "GCA": "A", "GCG": "A",
-    "GAT": "D", "GAC": "D", "GAA": "E", "GAG": "E", "GGT": "G", "GGC": "G", "GGA": "G",
-    "GGG": "G"
-}
 indexed_Trigrams = {}
 indexed_Genes = {}
 geneIndex = 0
 trigramIndex = 0
 
-def core_Process():
-    # no input -> no output
-    # this is the MAIN process for what we are doing. Built because FASTA_reader() got too big
+trigram_coordinates = np.array([]) #row coordinate
+gene_coordinates = np.array([]) #column coordinate
+data = np.array([])
+
+gene_matrix = coo_array((trigramIndex, geneIndex), dtype=int)
+
+def core_Process(dirName):
+    # Directory Name -> no output
+    for file in os.listdir(os.path.join(PATH, dirName)):
+        if not file.startswith('.'):
+            realFile = dirName + "/" + file
+            #print("currently working on file {}".format(realFile))
+            FASTA_reader(os.path.join(PATH, realFile))
+    """
+    Debugging print()s
+    print(trigram_coordinates)
+    print(gene_coordinates)
+    print(data)
+    """
+    matrix_factory()
     return
+
+def matrix_factory():
+    # no input -> no return type
+    # prints the finalized array that we are working on
+    gene_matrix = coo_array((data, (trigram_coordinates, gene_coordinates)), shape=(trigramIndex, geneIndex))
+    print(gene_matrix.toarray())
+
 def FASTA_reader(file):
     # FASTA_file.txt -> dictionary
     # reads a FASTA file.txt and separates the Name line from the actual sequence.
-    # Also joins the sequence together
     working_file = open(file, "r", encoding='utf-8-sig')
     rv = {'geneName': working_file.readline().replace('\n', ""), 'sequence': ""}
     sequence = ""
+    # Combine lines together
     for line in working_file:
         sequence += line.replace("\n", '')
+    # Update appropriate dictionaries
     rv.update({'sequence': sequence})
     gene_indexing(rv['geneName'])
     trigram_scan(rv["sequence"])
+
     working_file.close()
     return rv
-
-def RNA_check(strand):
-    # string -> string
-    # checks if a strand contains an amino acid, if it does translate it over to a protein chain
-    if not strand.contains("M"):
-        protein = translation(strand)
-        return protein
-    else:
-        return strand
-
-def translation(strand):
-    # String  -> String
-    # function that changes an RNA strand to its Amino Acid Chain
-    AAseq = ""
-    for i in range(0, len(strand), 3):
-        codon = strand[i:i + 3]
-        AAseq += (codonChart[codon])
-    return AAseq
 
 def gene_indexing(gene):
     # string, integer -> no return
@@ -64,6 +60,21 @@ def gene_indexing(gene):
     global geneIndex
     indexed_Genes.update({gene: geneIndex})
     geneIndex += 1
+
+def array_Update(tri_coord):
+    # int -> no return type
+    # this updates all 3 arrays that make up our matrix
+    global data, gene_coordinates, trigram_coordinates
+    data = np.insert(data, len(data),1)
+    #print("I am placing {} in the data array".format(1))
+
+    gene_coordinates = np.append(gene_coordinates, [(geneIndex-1)])
+    #print("I am placing {} in the gene_coordinates array".format((geneIndex-1)))
+
+    # trigram_coordinates is the only one that should be moving around a lot
+    trigram_coordinates = np.append(trigram_coordinates, [tri_coord])
+    #print("I am placing {} in the trigram_coordinates array".format(tri_coord))
+    return
 
 def trigram_scan(proteinChain):
     # string -> no return type
@@ -76,30 +87,32 @@ def trigram_indexing(trigram):
     # string -> no return type
     # function that adds trigrams that have not been seen to indexed_Trigrams and updates counter
     global trigramIndex
-    if indexed_Trigrams.get(trigram) == None:
+    if indexed_Trigrams.get(trigram) is None:
+        # in the case of a new trigram
         indexed_Trigrams.update({trigram: trigramIndex})
+        array_Update(trigramIndex)
         trigramIndex += 1
     else:
-        #print("Trigram: {} already exists".format(trigram))
-        pass
+        # in the case of a duplicate
+        array_Update(indexed_Trigrams.get(trigram))
 
-def messing_With_Matricies():
-    # no input -> no return type
-    # this is just going to print out a matrix as I work on it to get accustomed
-    return
-
+####################### TESTING FUNCTIONS #######################
 def my_testing():
-    # Testing
-    FASTA_reader(os.path.join(PATH, "geneSequences/TEST_1.txt"))
-    FASTA_reader(os.path.join(PATH, "geneSequences/TEST_2.txt"))
-    #print(trial2)
-    #trial3 = FASTA_reader(os.path.join(PATH, "geneSequences/SbST3.txt"))
-    #print(trial3)
-    #trigram_scan(trial['sequence'])
+    # Testing function that serves no purpose anymore
+    core_Process("testSequences")
     print(indexed_Trigrams)
     print(indexed_Genes)
 
+    #print(gene_matrix.toarray())
+
     #trigram_scan(trial2['sequence'])
     #print(trial['sequence'])
+    return
+def messing_with_matricies():
+    # no input -> no return type
+    # just used to figure out how matrices function. No real purpose but being left for future developement sake
+    working_matrix = coo_array((data, (trigram_coordinates, gene_coordinates)), shape=(4, 2))
+    print(working_matrix.toarray())
+    return
 
-my_testing()
+core_Process("testSequences")
