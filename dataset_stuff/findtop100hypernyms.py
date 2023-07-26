@@ -37,13 +37,13 @@ def sort_frequency_map(frequency_map):
 
 
 # recursively find the hypernym hierarchy for a word
-def find_root_hypernym(index, word, collection_of_hypernyms):
+def find_root_hypernym(word, collection_of_hypernyms):
     if len(word.hypernyms()) == 0 or simplify_name(word.name()) == "entity":
         return [collection_of_hypernyms]
 
     hierarchy_of_hypernyms = []
     for hypernym in word.hypernyms():
-        hierarchy_of_hypernyms += (find_root_hypernym(index, hypernym, collection_of_hypernyms + " " + simplify_name(
+        hierarchy_of_hypernyms += (find_root_hypernym(hypernym, collection_of_hypernyms + " " + simplify_name(
             hypernym.name())))
 
     return hierarchy_of_hypernyms
@@ -66,7 +66,7 @@ def divide_words_senses(top100_words):
     i = 1
     for simple_word in top100_words:
         for word in wn.synsets(simple_word):
-            collection_of_hypernyms = find_root_hypernym(i, word, "")
+            collection_of_hypernyms = find_root_hypernym(word, "")
             hyponyms = get_hyponyms(word)
             print(collection_of_hypernyms)
             for collection in collection_of_hypernyms:
