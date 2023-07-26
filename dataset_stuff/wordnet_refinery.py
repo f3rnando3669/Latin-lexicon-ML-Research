@@ -2,36 +2,27 @@ import pandas as pd
 from nltk.corpus import wordnet as wn
 
 
-# get the top level category for a word
-# injects a new line in the csv file, for each derivationally_related_forms hypernym
-def inject(name, simple_hypernym, lemma, full_hypernym, lemmas):
-    hypernyms = related_hypernyms(lemmas)
+# simplifies name, form.v.1 -> form
+def simplify_name(name):
+    return name.split(".")[0].replace("_", " ")
+
+
+# list_of_hypernyms --> simplified form of hypernyms, full form of hypernym
+def hypernyms_tostring(hypernyms):
+    hypernym_simplified = ""
+    hypernym_full = ""
 
     for hypernym in hypernyms:
-        if len(hypernym) > 0:
-            org_set.append({"word_name": name,
-                            "word_hypernym": " ",
-                            "word_lemma": lemma,
-                            "hypernyms_lemmas": full_hypernym,
-                            "categories": hypernym})
+        name = hypernym.name()
+        hypernym_simplified += simplify_name(name)
+        hypernym_full += name + " "
+
+    return hypernym_simplified, hypernym_full
 
 
-# returns a list of derivationally_related_forms hypernyms
-def related_hypernyms(list_of_lemmas):
-    cat = ""
-
-    if len(list_of_lemmas) == 0:
-        return cat
-
-    unique = set()
-    for lemma in list_of_lemmas:
-        for derived_form in lemma.derivationally_related_forms():
-            simp_derived = get_simple_derived(derived_form)
-            if not unique.__contains__(simp_derived):
-                cat += (get_full_name(simp_derived))
-                unique.add(simp_derived)
-
-    return filter_cat(cat).split(" ")
+# simplifies lemma, Lemma('bruv.n.5') --> bruv
+def get_simple_derived(lemma):
+    return str(lemma).replace("Lemma('", "").replace("')", "").split(".")[3]
 
 
 # get full name of a name
@@ -59,27 +50,36 @@ def filter_cat(name):
     return rv
 
 
-# simplifies lemma, Lemma('bruv.n.5') --> bruv
-def get_simple_derived(lemma):
-    return str(lemma).replace("Lemma('", "").replace("')", "").split(".")[3]
+# returns a list of derivationally_related_forms hypernyms
+def related_hypernyms(list_of_lemmas):
+    cat = ""
+
+    if len(list_of_lemmas) == 0:
+        return cat
+
+    unique = set()
+    for lemma in list_of_lemmas:
+        for derived_form in lemma.derivationally_related_forms():
+            simp_derived = get_simple_derived(derived_form)
+            if not unique.__contains__(simp_derived):
+                cat += (get_full_name(simp_derived))
+                unique.add(simp_derived)
+
+    return filter_cat(cat).split(" ")
 
 
-# list_of_hypernyms --> simplified_hypernyms, full_hypernym, list_of_hypernym lemmas
-def hypernyms_tostring(hypernyms):
-    hypernym_simplified = ""
-    hypernym_full = ""
+# get the top level category for a word
+# injects a new line in the csv file, for each derivationally_related_forms hypernym
+def inject(name, lemma, full_hypernym, lemmas):
+    hypernyms = related_hypernyms(lemmas)
 
     for hypernym in hypernyms:
-        name = hypernym.name()
-        hypernym_simplified += simplify_name(name)
-        hypernym_full += name + " "
-
-    return hypernym_simplified, hypernym_full
-
-
-# simplifies name, form.v.1 -> form
-def simplify_name(name):
-    return name.split(".")[0].replace("_", " ")
+        if len(hypernym) > 0:
+            org_set.append({"word_name": name,
+                            "word_hypernym": " ",
+                            "word_lemma": lemma,
+                            "hypernyms_lemmas": full_hypernym,
+                            "categories": hypernym})
 
 
 title = ["word_name", "word_hypernym", "word_lemma", "hypernyms_lemmas", "categories"]
@@ -95,7 +95,7 @@ for syn in wn.all_eng_synsets():
                         "hypernyms_lemmas": full_hypernyms,
                         "categories": simple_hypernyms})
     else:
-        inject(simplify_name(syn.name()), simple_hypernyms, syn.name(), full_hypernyms, syn.lemmas())
+        inject(simplify_name(syn.name()), syn.name(), full_hypernyms, syn.lemmas())
 
 df = pd.DataFrame.from_dict(org_set)
 df.to_csv(r'wordsandhypernyms.csv', index=False, header=True)
