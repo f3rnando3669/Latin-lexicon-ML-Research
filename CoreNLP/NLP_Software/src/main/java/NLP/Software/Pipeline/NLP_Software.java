@@ -1,9 +1,12 @@
 package NLP.Software.Pipeline;
 
+import edu.stanford.nlp.ie.util.RelationTriple;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.simple.Document;
+import edu.stanford.nlp.simple.Sentence;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,16 +20,26 @@ public class NLP_Software {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        Scanner scanner = new Scanner(new File("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/OpenIEoutput.txt"));
+        Scanner scanner = new Scanner(new File("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/input.txt"));
 
         PrintWriter out = new PrintWriter("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/output.txt");
+
+//        Scanner scanner1 = new Scanner(new File("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/input.txt"));
+//
+//        PrintWriter out1 = new PrintWriter("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/OpenIEoutput.txt");
+//
+//        while (scanner1.hasNextLine()) {
+//
+//        }
 
         while (scanner.hasNextLine()) {
             // Reads each line of input
             String input = scanner.nextLine();
 
+            String openIEouput = OpenIE(input);
+
             // Separate the sentences
-            String[] sentences = seperatedSentences(input);
+            String[] sentences = seperatedSentences(openIEouput);
 
             // Process each sentence individually
             for (String sentence : sentences) {
@@ -36,20 +49,23 @@ public class NLP_Software {
                 StringBuilder IndexLemmaMapOutput = new StringBuilder();
 
                 // Lemmatize the sentence
-                String lemmaOutput = Lemma(sentence);
+                //String lemmaOutput = Lemma(sentence);
 
                 // Perform Part-of-Speech tagging on the lemmatized sentence
-                String posOutput = POS(lemmaOutput);
+                String posOutput = POS(sentence);
 
                 Map<Integer, String> indexposmap = IndexPoSConnect(posOutput);
 
-                Map<Integer, String> indexlemmamap = IndexLemmaConnect(lemmaOutput);
+                Map<Integer, String> indexlemmamap = IndexLemmaConnect(sentence);
 
                 // Check for specific patterns in the Part-of-Speech tags
                 String patternMatchedOutput = PatternCheck(indexposmap);
 
                 // Find matched words based on the patterns and word map
                 String wordMatch = MatchedWords(patternMatchedOutput, indexlemmamap);
+
+                String[] last = splitIntoWords(wordMatch);
+
 
                 for (Map.Entry<Integer, String> entry : indexposmap.entrySet()) {
                     IndexPOSMapOutput.append(entry.getKey()).append(" -> ").append(entry.getValue()).append("\n");
@@ -60,14 +76,38 @@ public class NLP_Software {
                 }
 
                 // Write the results to the output file
-                out.println("Input: " + sentence + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + posOutput + "\nPattern Matching: " + patternMatchedOutput + "\nIndexPOSMapOutput\n" + IndexPOSMapOutput + "\nIndexLemmaMapOutput:\n" + IndexLemmaMapOutput + "Matched Words: " + wordMatch + "\n");
-
+                out.println("Original Input: " + input + "\nPattern-Found: " + patternMatchedOutput + "\nMatched Words: " + wordMatch + "\nObject: " + last[last.length-1] + "\n");
                 // If you want to write the separated sentences to a file, uncomment the following line:
                 // out.println(separatedSentences(lemmaOutput));
+                // "\nPost-Lemma: " + lemmaOutput
             }
         }
         scanner.close();
         out.close();
+    }
+
+    public static String OpenIE(String input){
+
+        String subject = "";
+        String relation = "";
+        String object = "";
+        String sentence = "";
+        // Create a CoreNLP document
+        Document doc = new Document(input);
+
+        // Iterate over the sentences in the document
+        for (Sentence sent : doc.sentences()) {
+            // Iterate over the triples in the sentence
+            for (RelationTriple triple : sent.openieTriples()) {
+
+                subject = triple.subjectLemmaGloss();
+                relation = triple.relationLemmaGloss();
+                object = triple.objectLemmaGloss();
+
+                sentence = subject + " " + relation + " " + object;
+            }
+        }
+        return sentence;
     }
 
     // Separate input into sentences
@@ -329,15 +369,15 @@ public class NLP_Software {
     public static boolean isPattern12(Map<Integer, String> indexMap){
         // Get the indices for each value in Pattern 1
         int nnIndex = getIndexForValue(indexMap, "NN");
-        int vbpIndex = getIndexAfterValue(indexMap, nnIndex, "VBP");
-        int jjIndex = getIndexAfterValue(indexMap, vbpIndex, "JJ");
+        int vbIndex = getIndexAfterValue(indexMap, nnIndex, "VB");
+        int jjIndex = getIndexAfterValue(indexMap, vbIndex, "JJ");
 
-        if (nnIndex != -1 && vbpIndex != -1 && jjIndex != -1){
-            indexarray = new int[]{nnIndex, vbpIndex, jjIndex};
+        if (nnIndex != -1 && vbIndex != -1 && jjIndex != -1){
+            indexarray = new int[]{nnIndex, vbIndex, jjIndex};
         }
 
         // Check if all indices are found in the expected order
-        return nnIndex != -1 && vbpIndex != -1 && jjIndex != -1;
+        return nnIndex != -1 && vbIndex != -1 && jjIndex != -1;
     }
 
     public static int getIndexForValue(Map<Integer, String> indexMap, String value) {
