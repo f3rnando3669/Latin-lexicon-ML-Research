@@ -1,126 +1,600 @@
-Input: The waitress was not amused when he ordered green eggs and ham.
-Post-Lemma: the waitress be not amuse when he order green egg and ham .
-Post-POS: DT NN VB RB VB WRB PRP VBP JJ NN CC NN .
-Pattern Matching: Pattern found: DT NN VBP NN
-Pattern Matched Output: 
+Input: Rome be capital city of Italy
+Post-POS: NNP VB JJ NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be city
 
-Input: I may struggle with geography, but I'm sure I'm somewhere around here.
-Post-Lemma: I may struggle with geography , but I be sure I be somewhere around here .
-Post-POS: PRP MD VB IN NN , CC PRP VBP JJ PRP VBP RB RB RB .
-Pattern Matching: Pattern found: NN VBP JJ
-Pattern Matched Output: 
+Input: Rome be capital city
+Post-POS: NNP VB JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be city
 
-Input: We should play with legos at camp.
-Post-Lemma: we should play with lego at camp .
-Post-POS: PRP MD VB IN NN IN NN .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: it be capital
+Post-POS: PRP VB NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: Dan took the deep dive down the rabbit hole.
-Post-Lemma: Dan take the deep dive down the rabbit hole .
-Post-POS: NNP VB DT JJ NN IN DT NN NN .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: it centre of Metropolitan City of Rome
+Post-POS: PRP NN IN NNP NNP IN NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: Last Friday I saw a spotted striped blue worm shake hands with a legless lizard.
-Post-Lemma: last Friday I see a spotted striped blue worm shake hand with a legless lizard .
-Post-POS: JJ NNP PRP VBP DT JJ JJ JJ NN VBP NN IN DT JJ NN .
-Pattern Matching: Pattern found: DT NN VBP NN
-Pattern Matched Output: 
+Input: it be also capital
+Post-POS: PRP VB RB NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: You'll see the rainbow bridge after it rains cats and dogs.
-Post-Lemma: you will see the rainbow bridge after it rain cat and dog .
-Post-POS: PRP MD VB DT NN NN IN PRP NN NN CC NN .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: it be also capital of Lazio region
+Post-POS: PRP VB RB NN IN NNP NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: The fox in the tophat whispered into the ear of the rabbit.
-Post-Lemma: the fox in the tophat whisper into the ear of the rabbit .
-Post-POS: DT NN IN DT NN NN IN DT NN IN DT NN .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: it centre of Metropolitan City
+Post-POS: PRP NN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: Red is greener than purple, for sure.
-Post-Lemma: Red be green than purple , for sure .
-Post-POS: NNP VB JJ IN JJ , IN JJ .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: it comune name Comune di Roma Capitale
+Post-POS: PRP JJ NN NNP NNP NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: The wake behind the boat told of the past while the open sea for told life in the unknown future.
-Post-Lemma: the wake behind the boat tell of the past while the open sea for tell life in the unknown future .
-Post-POS: DT NN IN DT NN VB IN DT NN IN DT JJ NN IN JJ NN IN DT JJ NN .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: it special comune name Comune di Roma Capitale
+Post-POS: PRP JJ JJ NN NNP NNP NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: I'm not a party animal, but I do like animal parties.
-Post-Lemma: I be not a party animal , but I do like animal party .
-Post-POS: PRP VBP RB DT NN NN , CC PRP VBP IN NN NN .
-Pattern Matching: Pattern found: DT NN VBP NN
-Pattern Matched Output: 
+Input: it be capital of Lazio region
+Post-POS: PRP VB NN IN NNP NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: Nancy was proud that she ran a tight shipwreck.
-Post-Lemma: Nancy be proud that she run a tight shipwreck .
-Post-POS: NNP VB JJ IN PRP VBD DT JJ NN .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: Rome be with 2860009 resident country 's populated comune by population within city limit
+Post-POS: NNP VB IN CD JJ NN POS NN NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
 
-Input: Writing a list of random sentences is harder than I initially thought it would be.
-Post-Lemma: write a list of random sentence be hard than I initially think it would be .
-Post-POS: VB DT NN IN JJ NN VB RB IN PRP RB VBP PRP MD VB .
-Pattern Matching: Pattern found: NN VBP NN
-Pattern Matched Output: 
+Input: Rome be with 2860009 resident country 's populated comune by population
+Post-POS: NNP VB IN CD JJ NN POS NN NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
 
-Input: While all her friends were positive that Mary had a sixth sense, she knew she actually had a seventh sense.
-Post-Lemma: while all she friend be positive that Mary have a sixth sense , she know she actually have a seventh sense .
-Post-POS: IN DT PRP NN VB JJ IN NNP VBP DT JJ NN , PRP VBP PRP RB VBP DT JJ NN .
-Pattern Matching: Pattern found: DT NN VBP NN
-Pattern Matched Output: 
+Input: Rome be country 's populated comune by population within city limit
+Post-POS: NNP VB NN POS NN NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
 
-Input: The Japanese yen for commerce is still well-known.
-Post-Lemma: the Japanese yen for commerce be still well - know .
-Post-POS: DT JJ NNS IN NN VB RB RB HYPH VB .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: 2860009 resident in 1285 km2
+Post-POS: CD NN IN CD NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: He dreamed of eating green apples with worms.
-Post-Lemma: he dream of eat green apple with worm .
-Post-POS: PRP NN IN VB JJ NN IN NN .
-Pattern Matching: Pattern not found
-Pattern Matched Output: 
+Input: Rome be with 2860009 resident country 's comune
+Post-POS: NNP VB IN CD JJ NN POS NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
 
-Input: It took him a while to realize that everything he decided not to change, he was actually choosing.
-Post-Lemma: it take he a while to realize that everything he decide not to change , he be actually choose .
-Post-POS: PRP VB PRP DT NN TO VB IN NN PRP VBP RB TO VB , PRP VB RB VB .
-Pattern Matching: Pattern found: NN VBP NN
-Pattern Matched Output: 
+Input: Rome be with 2860009 resident country 's comune by population
+Post-POS: NNP VB IN CD JJ NN POS NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
 
-Input: He found a leprechaun in his walnut shell.
-Post-Lemma: he find a leprechaun in he walnut shell .
-Post-POS: PRP VBP DT NN IN PRP NN NN .
-Pattern Matching: Pattern found: NN VBP NN
-Pattern Matched Output: 
+Input: Rome be country 's most populated comune by population
+Post-POS: NNP VB NN POS RBS JJ NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
 
-Input: If my calculator had a history, it would be more embarrassing than my browser history.
-Post-Lemma: if my calculator have a history , it would be more embarrassing than my browser history .
-Post-POS: IN PRP$ NN VBP DT NN , PRP MD VB RBR JJ IN PRP$ NN NN .
-Pattern Matching: Pattern found: NN VBP NN
-Pattern Matched Output: 
+Input: Rome third populous city in European Union
+Post-POS: NNP JJ JJ NN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
 
-Input: Nudist colonies shun fig-leaf couture.
-Post-Lemma: nudist colony shun fig - leaf couture .
-Post-POS: JJ NN VBP NN HYPH NN FW .
-Pattern Matching: Pattern found: NN VBP NN
-Pattern Matched Output: 
+Input: Rome be with 2860009 resident country 's comune by population within city limit
+Post-POS: NNP VB IN CD JJ NN POS NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
 
-Input: People who insist on picking their teeth with their elbows are so annoying!
-Post-Lemma: person who insist on pick they tooth with they elbow be so annoying !
-Post-POS: NN WP VBP IN VBP PRP JJ IN PRP NN VB RB JJ .
-Pattern Matching: Pattern found: NN VBP NN
-Pattern Matched Output: 
+Input: Rome be country 's comune by population
+Post-POS: NNP VB NN POS NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
 
-Input: A fly rely and likes a banana.
-Post-Lemma: a fly rely and like a banana .
-Post-POS: DT NN VBP CC VBP DT NN .
-Pattern Matching: Pattern found: DT NN VBP NN
-Pattern Matched Output: 
+Input: Rome be with 2860009 resident in 1285 km2 country 's populated comune
+Post-POS: NNP VB IN CD NN IN CD CD NN POS NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Rome be with 2860009 resident in 1285 km2 country 's comune by population within city limit
+Post-POS: NNP VB IN CD NN IN CD CD NN POS NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Rome be with 2860009 resident in 1285 km2 country 's most populated comune by population
+Post-POS: NNP VB IN CD NN IN CD CD NN POS RBS JJ NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Rome be country 's populated comune by population
+Post-POS: NNP VB NN POS NN NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: country 's populated comune with 2860009 resident in 1285 km2
+Post-POS: NN POS NN NN IN CD NN IN CD NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be country 's most populated comune
+Post-POS: NNP VB NN POS RBS JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome be country 's comune
+Post-POS: NNP VB NN POS NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome be with 2860009 resident in 1285 km2 country 's populated comune by population
+Post-POS: NNP VB IN CD NN IN CD CD NN POS NN NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Rome be with 2860009 resident in 1285 km2 country 's most populated comune by population within city limit
+Post-POS: NNP VB IN CD NN IN CD CD NN POS RBS JJ NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Rome be with 2860009 resident in 1285 km2 country 's comune
+Post-POS: NNP VB IN CD NN IN CD CD NN POS NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Rome populous city in European Union
+Post-POS: NNP JJ NN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome most populous city in European Union
+Post-POS: NNP RBS JJ NN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: third populous city in European Union
+Post-POS: JJ JJ NN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be with 2860009 resident in 1285 km2 country 's most populated comune
+Post-POS: NNP VB IN CD NN IN CD CD NN POS RBS JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Rome third city in European Union
+Post-POS: NNP JJ NN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be country 's populated comune
+Post-POS: NNP VB NN POS NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome city in European Union
+Post-POS: NNP NN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be with 2860009 resident country 's populated comune
+Post-POS: NNP VB IN CD JJ NN POS NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome be with 2860009 resident country 's most populated comune
+Post-POS: NNP VB IN CD JJ NN POS RBS JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome be with 2860009 resident country 's most populated comune by population
+Post-POS: NNP VB IN CD JJ NN POS RBS JJ NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome be country 's comune by population within city limit
+Post-POS: NNP VB NN POS NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome third most populous city in European Union
+Post-POS: NNP RB RBS JJ NN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be with 2860009 resident country 's most populated comune by population within city limit
+Post-POS: NNP VB IN CD JJ NN POS RBS JJ NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome be with 2860009 resident in 1285 km2 country 's comune by population
+Post-POS: NNP VB IN CD NN IN CD CD NN POS NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Rome be country 's most populated comune by population within city limit
+Post-POS: NNP VB NN POS RBS JJ NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be country
+
+Input: Rome be with 2860009 resident in 1285 km2 country 's populated comune by population within city limit
+Post-POS: NNP VB IN CD NN IN CD CD NN POS NN NN IN NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be resident
+
+Input: Metropolitan City with population of 4355725 resident
+Post-POS: NNP NNP IN NN IN CD NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Metropolitan City be most populous metropolitan city in Italy
+Post-POS: NNP NNP VB RBS JJ JJ NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be most populous city in Italy
+Post-POS: NNP NNP VB RBS JJ NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be city
+Post-POS: NNP NNP VB NN
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be metropolitan city
+Post-POS: NNP NNP VB JJ NN
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be most populous city
+Post-POS: NNP NNP VB RBS JJ NN
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be metropolitan city in Italy
+Post-POS: NNP NNP VB JJ NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be populous city
+Post-POS: NNP NNP VB JJ NN
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be most populous metropolitan city
+Post-POS: NNP NNP VB RBS JJ JJ NN
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be populous city in Italy
+Post-POS: NNP NNP VB JJ NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: populous metropolitan city in Italy
+Post-POS: JJ JJ NN IN NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Metropolitan City be populous metropolitan city
+Post-POS: NNP NNP VB JJ JJ NN
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be populous metropolitan city in Italy
+Post-POS: NNP NNP VB JJ JJ NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: Metropolitan City be city in Italy
+Post-POS: NNP NNP VB NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Metropolitan be city
+
+Input: its area be populous
+Post-POS: PRP$ NN VB JJ
+Pattern Matching: NN VB JJMatched Words: area be populous
+
+Input: its metropolitan area be populous within Italy
+Post-POS: PRP$ JJ NN VB JJ IN NNP
+Pattern Matching: NN VB JJMatched Words: area be populous
+
+Input: its metropolitan area be populous
+Post-POS: PRP$ JJ NN VB JJ
+Pattern Matching: NN VB JJMatched Words: area be populous
+
+Input: its area be third-most populous
+Post-POS: PRP$ NN VB JJ NN
+Pattern Matching: NN VB NNMatched Words: area be populous
+
+Input: its metropolitan area be third-most populous within Italy
+Post-POS: PRP$ JJ NN VB JJ NN IN NNP
+Pattern Matching: NN VB NNMatched Words: area be populous
+
+Input: its area be populous within Italy
+Post-POS: PRP$ NN VB JJ IN NNP
+Pattern Matching: NN VB JJMatched Words: area be populous
+
+Input: its area be third-most populous within Italy
+Post-POS: PRP$ NN VB JJ NN IN NNP
+Pattern Matching: NN VB NNMatched Words: area be populous
+
+Input: its metropolitan area be third-most populous
+Post-POS: PRP$ JJ NN VB JJ NN
+Pattern Matching: NN VB NNMatched Words: area be populous
+
+Input: Rome be locate in portion along shore of Tiber
+Post-POS: NNP VB VBN IN NN IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion
+Post-POS: NNP VB VBN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate within Lazio Latium along shore
+Post-POS: NNP VB VBN IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be shore
+
+Input: Rome be locate in western portion of Italian Peninsula along shore
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion of Italian Peninsula within Lazio Latium
+Post-POS: NNP VB VBN IN NN IN NNP NNP IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate within Lazio Latium along shore of Tiber
+Post-POS: NNP VB VBN IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be shore
+
+Input: Rome be locate in central western portion along shore of Tiber
+Post-POS: NNP VB VBN IN JJ JJ NN IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion of Italian Peninsula along shore of Tiber
+Post-POS: NNP VB VBN IN NN IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion of Italian Peninsula within Lazio Latium along shore
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate
+Post-POS: NNP VB VBN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be locate in western portion of Italian Peninsula within Lazio Latium
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion within Lazio Latium along shore
+Post-POS: NNP VB VBN IN NN IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in western portion
+Post-POS: NNP VB VBN IN JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion within Lazio Latium along shore of Tiber
+Post-POS: NNP VB VBN IN NN IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in western portion within Lazio Latium along shore
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in western portion of Italian Peninsula
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion within Lazio Latium along shore
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate along shore of Tiber
+Post-POS: NNP VB VBN IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be shore
+
+Input: Rome be locate in portion within Lazio Latium
+Post-POS: NNP VB VBN IN NN IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion of Italian Peninsula within Lazio Latium along shore of Tiber
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion within Lazio Latium
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion
+Post-POS: NNP VB VBN IN JJ JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion along shore
+Post-POS: NNP VB VBN IN NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in western portion along shore
+Post-POS: NNP VB VBN IN JJ NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in western portion within Lazio Latium
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in western portion along shore of Tiber
+Post-POS: NNP VB VBN IN JJ NN IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate within Lazio Latium
+Post-POS: NNP VB VBN IN NNP NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be locate in western portion of Italian Peninsula within Lazio Latium along shore
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion of Italian Peninsula along shore of Tiber
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion within Lazio Latium along shore of Tiber
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion of Italian Peninsula within Lazio Latium along shore
+Post-POS: NNP VB VBN IN NN IN NNP NNP IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion of Italian Peninsula along shore
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion along shore
+Post-POS: NNP VB VBN IN JJ JJ NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in western portion of Italian Peninsula within Lazio Latium along shore of Tiber
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate along shore
+Post-POS: NNP VB VBN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be shore
+
+Input: Rome be locate in western portion within Lazio Latium along shore of Tiber
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion of Italian Peninsula within Lazio Latium along shore of Tiber
+Post-POS: NNP VB VBN IN NN IN NNP NNP IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion of Italian Peninsula along shore
+Post-POS: NNP VB VBN IN NN IN NNP NNP IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in portion of Italian Peninsula
+Post-POS: NNP VB VBN IN NN IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in western portion of Italian Peninsula along shore of Tiber
+Post-POS: NNP VB VBN IN JJ NN IN NNP NNP IN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion of Italian Peninsula
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Rome be locate in central western portion of Italian Peninsula within Lazio Latium
+Post-POS: NNP VB VBN IN JJ JJ NN IN NNP NNP IN NNP NNP
+Pattern Matching: NNP VB NNMatched Words: Rome be portion
+
+Input: Vatican City be country inside city boundary of Rome
+Post-POS: NNP NNP VB NN IN NN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Vatican be country
+
+Input: Vatican City be independent country inside city boundary of Rome
+Post-POS: NNP NNP VB JJ NN IN NN NN IN NNP
+Pattern Matching: NNP VB NNMatched Words: Vatican be country
+
+Input: Vatican City be country
+Post-POS: NNP NNP VB NN
+Pattern Matching: NNP VB NNMatched Words: Vatican be country
+
+Input: City be independent boundary
+Post-POS: NNP VB JJ NN
+Pattern Matching: NNP VB NNMatched Words: City be boundary
+
+Input: Vatican City be independent country inside city boundary
+Post-POS: NNP NNP VB JJ NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Vatican be country
+
+Input: Vatican City be independent country
+Post-POS: NNP NNP VB JJ NN
+Pattern Matching: NNP VB NNMatched Words: Vatican be country
+
+Input: Vatican City be country inside city boundary
+Post-POS: NNP NNP VB NN IN NN NN
+Pattern Matching: NNP VB NNMatched Words: Vatican be country
+
+Input: city boundary inside country only exist example of country within city
+Post-POS: NN NN IN NN RB VBP NN IN NN IN NN
+Pattern Matching: NN VBP NNMatched Words: city exist example
+
+Input: independent country example of country within city
+Post-POS: JJ NN NN IN NN IN NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: small country in world
+Post-POS: JJ NN IN NN
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be refer to to City of Seven
+Post-POS: NNP VB VB TO TO NNP IN CD
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be often refer due its geographic location
+Post-POS: NNP VB RB VB IN PRP$ JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be location
+
+Input: Rome be refer due its location
+Post-POS: NNP VB VB IN PRP$ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be location
+
+Input: Rome be often refer to to City of Seven
+Post-POS: NNP VB RB VB IN IN NNP IN CD
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be refer to to City
+Post-POS: NNP VB VB TO TO NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be often refer
+Post-POS: NNP VB RB VB
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Seven of city Hills
+Post-POS: CD IN NN NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be refer to Hills
+Post-POS: NNP VB VB IN NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be often refer to to City
+Post-POS: NNP VB RB VB IN IN NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be often refer to Hills
+Post-POS: NNP VB RB VB IN NNP
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be often refer due its location
+Post-POS: NNP VB RB VB IN PRP$ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be location
+
+Input: Rome be refer
+Post-POS: NNP VB VB
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be refer due its geographic location
+Post-POS: NNP VB VB IN PRP$ JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be location
+
+Input: Rome be generally consider to cradle of civilization
+Post-POS: NNP VB RB VB IN NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be consider
+Post-POS: NNP VB VB
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be generally consider to cradle
+Post-POS: NNP VB RB VB IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be generally consider cradle of civilization
+Post-POS: NNP VB RB VB NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be generally consider cradle
+Post-POS: NNP VB RB VB NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be cradle of western civilization
+Post-POS: NNP VB NN IN JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be cradle
+Post-POS: NNP VB NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be consider to cradle
+Post-POS: NNP VB VB TO VB
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be generally consider
+Post-POS: NNP VB RB VB
+Pattern Matching: Pattern Not FoundMatched Words: No patterns
+
+Input: Rome be cradle of civilization
+Post-POS: NNP VB NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be consider to cradle of civilization
+Post-POS: NNP VB VB IN NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be generally consider cradle of western civilization
+Post-POS: NNP VB RB VB NN IN JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be consider to cradle of western civilization
+Post-POS: NNP VB VB IN NN IN JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be consider cradle of civilization
+Post-POS: NNP VB VB NN IN NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be generally consider to cradle of western civilization
+Post-POS: NNP VB RB VB IN NN IN JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be consider cradle of western civilization
+Post-POS: NNP VB VB NN IN JJ NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
+
+Input: Rome be consider cradle
+Post-POS: NNP VB VB NN
+Pattern Matching: NNP VB NNMatched Words: Rome be cradle
 
