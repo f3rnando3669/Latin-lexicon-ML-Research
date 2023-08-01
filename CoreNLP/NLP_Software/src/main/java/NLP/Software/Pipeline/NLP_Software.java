@@ -24,14 +24,6 @@ public class NLP_Software {
 
         PrintWriter out = new PrintWriter("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/output.txt");
 
-//        Scanner scanner1 = new Scanner(new File("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/input.txt"));
-//
-//        PrintWriter out1 = new PrintWriter("C:/Users/sansk/IdeaProjects/NLP_Software/src/main/java/NLP/Software/Pipeline/OpenIEoutput.txt");
-//
-//        while (scanner1.hasNextLine()) {
-//
-//        }
-
         while (scanner.hasNextLine()) {
             // Reads each line of input
             String input = scanner.nextLine();
@@ -76,7 +68,7 @@ public class NLP_Software {
                 }
 
                 // Write the results to the output file
-                out.println("Original Input: " + input + "\nPattern-Found: " + patternMatchedOutput + "\nMatched Words: " + wordMatch + "\nObject: " + last[last.length-1] + "\n");
+                out.println("Original Input: " + input + "\nMatched Words: " + wordMatch + "\nObject: " + last[last.length-1] + "\n");
                 // If you want to write the separated sentences to a file, uncomment the following line:
                 // out.println(separatedSentences(lemmaOutput));
                 // "\nPost-Lemma: " + lemmaOutput
