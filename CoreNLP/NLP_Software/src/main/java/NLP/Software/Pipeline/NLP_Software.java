@@ -40,15 +40,19 @@ public class NLP_Software {
 
                 StringBuilder IndexLemmaMapOutput = new StringBuilder();
 
+                StringBuilder IndexOpenIEMapOutput = new StringBuilder();
+
                 // Lemmatize the sentence
-                //String lemmaOutput = Lemma(sentence);
+                String lemmaOutput = Lemma(sentence);
 
                 // Perform Part-of-Speech tagging on the lemmatized sentence
-                String posOutput = POS(sentence);
+                String posOutput = POS(lemmaOutput);
+
+                Map<Integer, String> indexopeniemap = IndexOpenIeConnect(sentence);
 
                 Map<Integer, String> indexposmap = IndexPoSConnect(posOutput);
 
-                Map<Integer, String> indexlemmamap = IndexLemmaConnect(sentence);
+                Map<Integer, String> indexlemmamap = IndexLemmaConnect(lemmaOutput);
 
                 // Check for specific patterns in the Part-of-Speech tags
                 String patternMatchedOutput = PatternCheck(indexposmap);
@@ -56,7 +60,9 @@ public class NLP_Software {
                 // Find matched words based on the patterns and word map
                 String wordMatch = MatchedWords(patternMatchedOutput, indexlemmamap);
 
-                String[] last = splitIntoWords(wordMatch);
+                String originalmatch = OriginalSentenceMatch(patternMatchedOutput, indexopeniemap);
+
+                String[] last = splitIntoWords(originalmatch);
 
 
                 for (Map.Entry<Integer, String> entry : indexposmap.entrySet()) {
@@ -67,8 +73,12 @@ public class NLP_Software {
                     IndexLemmaMapOutput.append(entry.getKey()).append(" -> ").append(entry.getValue()).append("\n");
                 }
 
+                for (Map.Entry<Integer, String> entry : indexopeniemap.entrySet()) {
+                    IndexOpenIEMapOutput.append(entry.getKey()).append(" -> ").append(entry.getValue()).append("\n");
+                }
+
                 // Write the results to the output file
-                out.println("Original Input: " + input + "\nMatched Words: " + wordMatch + "\nObject: " + last[last.length-1] + "\n");
+                out.println("Original Input: " + input + "\nOpenIE Input: " + openIEouput + "\nPost-Lemma: " + lemmaOutput + "\nPost-POS: " + posOutput + "\nPattern-Match: " + patternMatchedOutput + "\nMatched Words: " + wordMatch + "\nObject: " + last[last.length-1] + "\n");
                 // If you want to write the separated sentences to a file, uncomment the following line:
                 // out.println(separatedSentences(lemmaOutput));
                 // "\nPost-Lemma: " + lemmaOutput
@@ -78,11 +88,25 @@ public class NLP_Software {
         out.close();
     }
 
+    private static Map<Integer, String> IndexOpenIeConnect(String sentence) {
+        String[] sentencewords = splitIntoWords(sentence);
+
+        Map<Integer, String> openiemap = new LinkedHashMap<>();
+
+        for (int i = 0; i < sentencewords.length; i++) {
+            String value = sentencewords[i];
+
+            openiemap.put(i, value);
+        }
+
+        return openiemap;
+    }
+
     public static String OpenIE(String input){
 
-        String subject = "";
-        String relation = "";
-        String object = "";
+        String subject;
+        String relation;
+        String object;
         String sentence = "";
         // Create a CoreNLP document
         Document doc = new Document(input);
@@ -92,9 +116,9 @@ public class NLP_Software {
             // Iterate over the triples in the sentence
             for (RelationTriple triple : sent.openieTriples()) {
 
-                subject = triple.subjectLemmaGloss();
-                relation = triple.relationLemmaGloss();
-                object = triple.objectLemmaGloss();
+                subject = triple.subjectGloss();
+                relation = triple.relationGloss();
+                object = triple.objectGloss();
 
                 sentence = subject + " " + relation + " " + object;
             }
@@ -196,7 +220,7 @@ public class NLP_Software {
         }else if (isPattern11(indexMap)) {
             return "NN VBP JJ";
         }else { // If neither pattern is found
-            return "Pattern Not Found"; // Return the "Pattern Not Found" message
+            return ""; // Return the "Pattern Not Found" message
         }
     }
 
@@ -404,6 +428,26 @@ public class NLP_Software {
         return sentence.split("\\s+");
     }
 
+    public static String OriginalSentenceMatch(String patternMatchedOutput, Map<Integer, String> indexOpeniemap) {
+        StringBuilder originalmatch = new StringBuilder();
+
+        for (int index : indexarray) {
+            String word = indexOpeniemap.get(index);
+
+            if (word != null) {
+                // Append the word followed by a space to the matchedWords StringBuilder
+                originalmatch.append(word).append(" ");
+            }
+        }
+
+        if (patternMatchedOutput.equals("")) {
+            return "";
+        } else {
+            // Return the string representation of the matchedWords StringBuilder with leading and trailing whitespaces trimmed
+            return originalmatch.toString().trim();
+        }
+    }
+
     // Find matched words based on patterns and word map
     public static String MatchedWords(String patternMatchedOutput, Map<Integer, String> indexLemmamap) {
         // StringBuilder to store the matched words
@@ -426,8 +470,8 @@ public class NLP_Software {
             }
         }
 
-        if (patternMatchedOutput.equals("Pattern Not Found")) {
-            return "No patterns";
+        if (patternMatchedOutput.equals("")) {
+            return "";
         } else {
             // Return the string representation of the matchedWords StringBuilder with leading and trailing whitespaces trimmed
             return matchedWords.toString().trim();
