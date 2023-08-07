@@ -3,7 +3,7 @@ import numpy
 import sys
 numpy.set_printoptions(threshold=sys.maxsize)
 file = open("wiki_en.txt", "r")
-file1 = open("list_of_tfidf_word_pairs.txt", "w")
+#file1 = open("list_of_tfidf_word_pairs.txt", "w")
 file2 = open("Top_Related_Words.txt", "w")
 corpus = []
 #break wiki_en.txt into an array of all articles
