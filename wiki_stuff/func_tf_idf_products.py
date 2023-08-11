@@ -1,3 +1,7 @@
+'''
+THIS CODE WAS UPLOADED FOR THE SAKE OF BEING ABLE TO READ IT, IT IS THE ORIGINAL THAT func_tfi_new IS BASED ON
+THIS CODE IS DEPRECIATED UNTIL SOMEONE DECIDES IT WORKS BETTER THAN THE REWRITE.
+'''
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy
 import sys
