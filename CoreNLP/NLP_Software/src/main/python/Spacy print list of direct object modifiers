@@ -1,0 +1,41 @@
+#I do not have viable code at the moment, however I do have a solid process design and some starter code
+#This is meant to be a module that can be added to our code in order to grab the dependencies of the direct object and print them as a list
+#When called, the function will find the direct object (dobj in spacy notation) and then get the dependencies of the dobj
+#will most likely need to ennumerate each modifier type (e.g. "amod" "nummod" "quantmod" etc.)
+#RUN -> FIND dobj -> LIST ALL mods FOR dep dobj -> PRINT LIST -> TERMINATE
+
+#Here is some code from stack exchange that has the type of output we want. Need to modify it to grab mods of dobj.
+#https://stackoverflow.com/questions/67821137/spacy-how-to-get-all-words-that-describe-a-noun
+#Leaving this as-is because I know it runs, but it's a good starting point for the application we need.
+
+import spacy
+        from spacy.matcher import DependencyMatcher
+
+        nlp = spacy.load("en_core_web_sm")
+
+        pattern = [
+        {
+        "RIGHT_ID": "target",
+        "RIGHT_ATTRS": {"POS": "NOUN"}
+        },
+        # founded -> subject
+        {
+        "LEFT_ID": "target",
+        "REL_OP": ">",
+        "RIGHT_ID": "modifier",
+        "RIGHT_ATTRS": {"DEP": {"IN": ["amod", "nummod"]}}
+        },
+        ]
+
+        matcher = DependencyMatcher(nlp.vocab)
+        matcher.add("FOUNDED", [pattern])
+
+        text = "A large room with two yellow dishwashers in it"
+        doc = nlp(text)
+        for match_id, (target, modifier) in matcher(doc):
+        print(doc[modifier], doc[target], sep="\t")
+
+
+
+#I've done all I can do, you'll have to take it from here.
+#Good luck.
