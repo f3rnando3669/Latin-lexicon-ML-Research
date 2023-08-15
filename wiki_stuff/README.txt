@@ -1,9 +1,9 @@
 Dear Seamus,
 You are welcome
 
-I need to go through the tf_idf file and make it actually work, I've been copying it and fixing it as I go in func_tfi_new.py
+I copied tf_idf into a new file called func_tfi_new, I made a few edits to it that I think will help.
 
 func_main serves to run everything together so you don't have to run one forever just to wait to run the next
-func_top words gets the top 10000 words in a file. I should really have the 10000 be a variable too.
+func_main needs to be messed with. func_top_words takes 2 parameters now and I think its using func_tf_idf_products instead of _func_tfi_new
 
-After I get it theoretically working I need to go through and comment so anyone who is new to the code could understand what is going on and why the code does what it does.
+I went through and added comments to the code, hopefully that is all good, if anything isn't clear sned me an email.
