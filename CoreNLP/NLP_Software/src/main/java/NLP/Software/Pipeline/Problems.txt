@@ -1,5 +1,0 @@
-Problems I am running into:
-
-- Keeps printing null at the end of every sentence
-- Keeps giving me an index out of bounds exception when there are two sentences in one line.
-    - Maybe run it through a sentence recognizer to break them apart? (Maybe too much work) (Last option)
