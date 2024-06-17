@@ -5,7 +5,7 @@ import re
 folder_path = r'C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\DS1'
 
 # Regular expression made to capture each group of data necessary
-regex = r"(>[^ ]+)\s+([^[]+)\s+(\[[^\]]+\])\s+((?:[A-Z]+\n?)+)"
+regex = r"Protein ID:\s+(\d+)\s+Protein Sequence:\s+(>[^ ]+)\s+([^[]+)\s+(\[[^\]]+\])\s+((?:[A-Z]+\n?)+)"
 
 # Iterate over each file in a directory
 for file_name in os.listdir(folder_path):
