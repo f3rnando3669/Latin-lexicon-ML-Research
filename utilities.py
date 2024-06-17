@@ -12,7 +12,7 @@ def readdocx(docxFile):
         fulltext.append(para.text)
     return '\n'.join(fulltext)
 
-def get_file_string(path):
+def readfile(path):
     """
     get a string for a txt file
     """
@@ -63,3 +63,21 @@ def write_to_file(name, text, type="txt"):
 
 def directory_size(directory):
     return len(os.listdir(directory)) + 1
+
+def analyze_with_rulebook(client, prompts, text_dir, rulebook_path, find=[]):
+        rule_book = readfile(rulebook_path)
+        for path in os.listdir(text_dir):
+            if path in find:
+                client.clear()
+                prompts.clear()
+                file_path = text_dir + path
+                speech = readfile(file_path)
+                print(path)
+                prompts.add_var_prompt("<RB>", rule_book)
+                prompts.add_var_prompt("<SP>", speech)
+                # # # prompts.add_rhetoric_prompt("<SP>", "<RB>")
+                # # # prompts.add_argument_prompt("<SP>", "<RB>")
+                prompts.add_rating_prompt("<SP>", "<RB>")
+
+                response = client.generate_using_prompts(prompts=prompts)
+                write_to_file_in_dir("MachineLearningSummer/response_bank", "response", response, "txt", path)
