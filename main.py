@@ -1,6 +1,6 @@
 from prompt_client import Client
 from prompt_list import PromptList
-from utilities import readfile, readdocx, get_rule_book, write_to_file, write_to_file_in_dir
+from utilities import readfile, readdocx, get_rule_book, write_to_file, write_to_file_in_dir, analyze_with_rulebook
 import os
 if __name__ == "__main__":
     print("===START===")
@@ -16,6 +16,10 @@ if __name__ == "__main__":
     # rule_book = readfile(rule_path)
     client = Client()
     prompts = PromptList()
+
+    # rulebook_path = "/home/ml/MLResearch2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_9.txt"
+    # speech_path = "/home/ml/MLResearch2024/MachineLearningSummer/Speeches/Rule Book 9 Test"
+    # analyze_with_rulebook(client, prompts, rulebook_path, speech_path)
     
     symbol_list = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/comprehensive_symbol_system.txt")
     model1 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1.txt")
@@ -24,3 +28,4 @@ if __name__ == "__main__":
 
     prompts.add_var_prompt("Symbols",symbol_list)
     prompts.add_symbol_prompt_one_shot(model1, model1_analysis,model2)
+    write_to_file_in_dir("/home/ml/MLResearch2024/MachineLearningSummer/response_bank", "response",client.generate_using_prompts(prompts=prompts))
