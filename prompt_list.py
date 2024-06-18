@@ -58,6 +58,15 @@ class PromptList:
     
     def add_reference_comparison(self, var1, var2, ref_var) -> None:
         self.add_prompt([f"Using {ref_var} compare {var1} and {var2} and tell me which is worse", 0])
+
+    def add_symbol_prompt_zero_shot(self, var):
+        ...
+
+    def add_symbol_prompt_one_shot(self, model_1_txt, model_response, model_2_txt, ref_var) -> None:
+        """
+        Creating a one shot prompt using the models and model analysis in coorespondance with the symbols
+        """
+        self.add_prompt([f"{model_1_txt}\nComprehensive Symbols:\n{model_response}\n{model_2_txt}\nComprehensive Symbols:",0])
     
     def add_prompt(self, prompt) -> None:
         """
