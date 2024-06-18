@@ -62,7 +62,7 @@ class PromptList:
     def add_symbol_prompt_zero_shot(self, var):
         ...
 
-    def add_symbol_prompt_one_shot(self, model_1_txt, model_response, model_2_txt, ref_var) -> None:
+    def add_symbol_prompt_one_shot(self, model_1_txt, model_response, model_2_txt) -> None:
         """
         Creating a one shot prompt using the models and model analysis in coorespondance with the symbols
         """
