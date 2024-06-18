@@ -1,5 +1,5 @@
 Document Supplied, Document Analyzed, Sentence Number, AI Response, Actual Response, Percentage Wrong, More Information Present
-Document 1, Document 2, 1, (CC-29-T-CV-L-A-ST-M), (CC-31-D-CV-P-A-ST), 50%, 1
-Document 1, Document 2, 2, (CXC-38-D-RB-L-A-ST-M, (CXC-42-D-RB-L-ST-M), 25%, 1
-Document 1, Document 2, 3, (S-21-D-RB-L-ST), (CC-25-D-RB-L-ST), 34%, 0
-Document 1, Document 2, 4, (CXC-54-T-CV-P-L-ST-M), (CXC-58-T-CV-L-ST-M), 25%, 1
+Document 1, Document 2, 1, (CC-29-T-CV-L-A-ST-M), (CC-31-D-CV-P-A-ST), 50%, True
+Document 1, Document 2, 2, (CXC-38-D-RB-L-A-ST-M, (CXC-42-D-RB-L-ST-M), 25%, True
+Document 1, Document 2, 3, (S-21-D-RB-L-ST), (CC-25-D-RB-L-ST), 34%, False
+Document 1, Document 2, 4, (CXC-54-T-CV-P-L-ST-M), (CXC-58-T-CV-L-ST-M), 25%, True
