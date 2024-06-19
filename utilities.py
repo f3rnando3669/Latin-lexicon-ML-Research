@@ -65,9 +65,10 @@ def directory_size(directory):
     return len(os.listdir(directory)) + 1
 
 def analyze_with_rulebook(client, prompts, text_dir, rulebook_path, find=[]):
+        print("starting analyzing")
         rule_book = readfile(rulebook_path)
         for path in os.listdir(text_dir):
-            if path in find:
+            if path not in find:
                 client.clear()
                 prompts.clear()
                 file_path = text_dir + path
@@ -80,4 +81,6 @@ def analyze_with_rulebook(client, prompts, text_dir, rulebook_path, find=[]):
                 prompts.add_rating_prompt("<SP>", "<RB>")
 
                 response = client.generate_using_prompts(prompts=prompts)
-                write_to_file_in_dir("MachineLearningSummer/response_bank", "response", response, "txt", path)
+                # print(f"Response:\n{response}")
+                write_to_file_in_dir("/home/andi/summer2024/MachineLearningSummer/response_bank", "response", response, "txt", path)
+        print("done with analysis")
