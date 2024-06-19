@@ -54,7 +54,7 @@ class PromptList:
         """
         create a prompt for rating of var_name based on reference_var from 1 through 100
         """
-        self.add_prompt([f"Using {reference_var} give a rating for how defective the arguments are in {var_name} from 1 to 100. Give justifications for the ratings from {reference_var}, take it step by step.", 0])
+        self.add_prompt([f"Using {reference_var} give a score out of 100 for every type of defective argument in {var_name}", 0])
     
     def add_reference_comparison(self, var1, var2, ref_var) -> None:
         self.add_prompt([f"Using {ref_var} compare {var1} and {var2} and tell me which is worse", 0])
