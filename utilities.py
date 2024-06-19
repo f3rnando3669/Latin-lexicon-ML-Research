@@ -2,6 +2,7 @@
 import datetime
 import os
 import re
+from typing import List
 
 def readdocx(docxFile):
     """
@@ -81,7 +82,8 @@ def analyze_with_rulebook(client, prompts, text_dir, rulebook_path, find=[]):
             if path not in find:
                 client.clear()
                 prompts.clear()
-                file_path = text_dir + path
+                if text_dir[-1] != "/":
+                    file_path = f"{text_dir}/{path}"
                 speech = readfile(file_path)
                 print(path)
                 prompts.add_var_prompt("<RB>", rule_book)
@@ -92,40 +94,48 @@ def analyze_with_rulebook(client, prompts, text_dir, rulebook_path, find=[]):
 
                 response = client.generate_using_prompts(prompts=prompts)
                 # print(f"Response:\n{response}")
-                write_to_file_in_dir("/home/andi/summer2024/MachineLearningSummer/response_bank", "response", response, "txt", path)
+                write_to_file_in_dir("/home/ml/MLResearch2024/MachineLearningSummer/response_bank", "response", response, "txt", path)
+                
         print("done with analysis")
 
-def remove_headings(arr):
+def remove_headings(arr: List[str]) -> List[str]:
     """
     takes an array of sentences
     produces an array that omits headings
     """
     rv = []
     for line in arr:
-        line = re.sub(r"[0-9]. \*\*([a-zA-Z]* [a-zA-Z]*)*\*\*:", "", line)
+        line = re.sub(r"[0-9]. \*\*([a-zA-Z]* [a-zA-Z]*)*\*\*:", r"", line)
         if line:
             rv.append(line)
     
     return rv
 
-def remove_tab_spacing(arr):
+def remove_indent_spacing(arr: List[str]) -> List[str]:
     """
     takes an array of sentences
     produces an array that has sentences reformatted to have no tab indentation
     """
     rv = []
     for line in arr:
-        line = re.sub(r"(\s{3})- \*\*([a-zA-Z]*)*\*\*", r"\1", line)
+        line = line.strip()
         if line:
-            rv.append(line)
+            rv.append(line + "\n")
     
     return rv
 
-# lines = readfile_lines("/home/andi/summer2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_9.txt")
-# headingless = remove_headings(lines)
-# # print(headingless)
-# stuff = "".join(headingless)
-# _dir = "/home/andi/summer2024/MachineLearningSummer/rule_book_bank"
-# write_to_file_in_dir(_dir,"RAW_RuleBooks", stuff)
-line = "   - **Inappropriate Reason**:"
-print(remove_tab_spacing([line]))
+def remove_line_spacing(text: str) -> str:
+
+    rv = ""
+    window_length = 0
+
+    for i in range(len(text)):
+        if text[i] != '\n':
+            if window_length > 0:
+                rv += "\n"
+                window_length = 0
+            rv += text[i]
+        else:
+            window_length += 1
+    
+    return rv

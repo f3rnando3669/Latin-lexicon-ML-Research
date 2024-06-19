@@ -17,15 +17,15 @@ if __name__ == "__main__":
     client = Client()
     prompts = PromptList()
 
-    #rulebook_path = "/home/andi/summer2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_9.txt"
-    #speech_path = "/home/andi/summer2024/MachineLearningSummer/Speeches/Rule Book 9 Test/"
-    #analyze_with_rulebook(client=client, prompts=prompts, rulebook_path=rulebook_path, text_dir=speech_path)
+    rulebook_path = "/home/ml/MLResearch2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_10.txt"
+    speech_path = "/home/ml/MLResearch2024/MachineLearningSummer/Speeches/Rule Book 9 Test"
+    analyze_with_rulebook(client=client, prompts=prompts, rulebook_path=rulebook_path, text_dir=speech_path)
     
-    symbol_list = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/comprehensive_symbol_system.txt")
-    model1 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1.txt")
-    model1_analysis = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1_analysis.txt")
-    model2 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model4.txt")
+    # symbol_list = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/comprehensive_symbol_system.txt")
+    # model1 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1.txt")
+    # model1_analysis = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1_analysis.txt")
+    # model2 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model4.txt")
 
-    prompts.add_var_prompt("Symbols",symbol_list)
-    prompts.add_symbol_prompt_one_shot(model1, model1_analysis,model2)
-    write_to_file_in_dir("/home/ml/MLResearch2024/MachineLearningSummer/response_bank", "response",client.generate_using_prompts(prompts=prompts))
+    # prompts.add_var_prompt("Symbols",symbol_list)
+    # prompts.add_symbol_prompt_one_shot(model1, model1_analysis,model2)
+    # write_to_file_in_dir("/home/ml/MLResearch2024/MachineLearningSummer/response_bank", "response",client.generate_using_prompts(prompts=prompts))
