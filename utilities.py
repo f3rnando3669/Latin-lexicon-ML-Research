@@ -1,6 +1,7 @@
-import docx
+# import docx
 import datetime
 import os
+import re
 
 def readdocx(docxFile):
     """
@@ -18,6 +19,15 @@ def readfile(path):
     """
     fd = open(path)
     text = fd.read()
+    fd.close()
+    return text
+
+def readfile_lines(path):
+    """
+    get an array where each element is a line of text
+    """
+    fd = open(path)
+    text = fd.readlines()
     fd.close()
     return text
 
@@ -84,3 +94,38 @@ def analyze_with_rulebook(client, prompts, text_dir, rulebook_path, find=[]):
                 # print(f"Response:\n{response}")
                 write_to_file_in_dir("/home/andi/summer2024/MachineLearningSummer/response_bank", "response", response, "txt", path)
         print("done with analysis")
+
+def remove_headings(arr):
+    """
+    takes an array of sentences
+    produces an array that omits headings
+    """
+    rv = []
+    for line in arr:
+        line = re.sub(r"[0-9]. \*\*([a-zA-Z]* [a-zA-Z]*)*\*\*:", "", line)
+        if line:
+            rv.append(line)
+    
+    return rv
+
+def remove_tab_spacing(arr):
+    """
+    takes an array of sentences
+    produces an array that has sentences reformatted to have no tab indentation
+    """
+    rv = []
+    for line in arr:
+        line = re.sub(r"(\s{3})- \*\*([a-zA-Z]*)*\*\*", r"\1", line)
+        if line:
+            rv.append(line)
+    
+    return rv
+
+# lines = readfile_lines("/home/andi/summer2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_9.txt")
+# headingless = remove_headings(lines)
+# # print(headingless)
+# stuff = "".join(headingless)
+# _dir = "/home/andi/summer2024/MachineLearningSummer/rule_book_bank"
+# write_to_file_in_dir(_dir,"RAW_RuleBooks", stuff)
+line = "   - **Inappropriate Reason**:"
+print(remove_tab_spacing([line]))
