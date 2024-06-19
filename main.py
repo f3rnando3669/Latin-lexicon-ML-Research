@@ -24,7 +24,7 @@ if __name__ == "__main__":
     symbol_list = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/comprehensive_symbol_system.txt")
     model1 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1.txt")
     model1_analysis = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1_analysis.txt")
-    model2 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model2.txt")
+    model2 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model3.txt")
 
     prompts.add_var_prompt("Symbols",symbol_list)
     prompts.add_symbol_prompt_one_shot(model1, model1_analysis,model2)
