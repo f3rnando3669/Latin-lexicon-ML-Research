@@ -94,6 +94,7 @@ def analyze_with_rulebook(client, prompts, text_dir, rulebook_path, find=[]):
 
                 response = client.generate_using_prompts(prompts=prompts)
                 # print(f"Response:\n{response}")
+                #/home/ml/MLResearch2024/MachineLearningSummer/response_bank
                 write_to_file_in_dir("/home/ml/MLResearch2024/MachineLearningSummer/response_bank", "response", response, "txt", path)
                 
         print("done with analysis")
