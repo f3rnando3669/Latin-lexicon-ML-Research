@@ -69,11 +69,12 @@ class PromptList:
         """
         self.add_prompt([f"{model_1_txt}\nComprehensive Symbols:\n{model_response}\n{model_2_txt}\nComprehensive Symbols:",0])
     
-    def add_prompt(self, prompt) -> None:
+    def add_prompt(self, prompt, flag=0) -> None:
         """
         add your own custom prompt
+        you may also decide to change the flag
         """
-        self._prompts.append(prompt)
+        self._prompts.append([prompt, flag])
     
     def clear(self) -> None:
         """
