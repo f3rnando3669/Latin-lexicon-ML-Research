@@ -16,16 +16,8 @@ def compare_values(ai, actual):
         art_list = artifical.split('-')
         act_list = act.split('-')
 
-        print(art_list)
         print(act_list)
-        if len(art_list) > len(act_list):
-            extra_classifiers = True
-
-        for i in range(len(act_list)):
-            if art_list[i] != act_list[i]:
-                error_count += 1
-
-    return error_count, extra_classifiers
+        print(art_list)
 
 
 def compare_column(file, ai_column, actual_column):
@@ -35,11 +27,7 @@ def compare_column(file, ai_column, actual_column):
         for row in reader:
             ai_value = row[ai_column]
             actual_value = row[actual_column]
-
-            if ai_value != actual_value:
-                print(compare_values(ai_value, actual_value))
-            else:
-                print("These values are the same!")
+            print(compare_values(ai_value, actual_value))
 
 csv_file = r'C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model_accuracy.csv'
 column1 = ' AI Response'

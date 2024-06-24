@@ -17,43 +17,21 @@ if __name__ == "__main__":
     client = Client()
     prompts = PromptList()
 
-    # create rulebook
-    # rhetorica_path = r"/home/andi/summer2024/MachineLearningSummer/rhetoradher_bks1and2.txt"
-    # rhetorica = readfile(rhetorica_path)
-    # prompts.add_var_prompt("<RH>", rhetorica)
-    rulebook_dir = r"/home/andi/summer2024/MachineLearningSummer/rule_book_bank"
-    # prompts.add_rulebook_prompt("<RH>")
-    # # rulebook_path = get_rule_book(rulebook_dir, "RAW_RuleBooks", "txt", client=client, prompts=prompts)
-    # # rulebook = readfile(rulebook_path)
-    # rulebook = client.generate_using_prompts(prompts=prompts)
-    # write_to_file_in_dir(rulebook_dir, "RAW_RuleBooks", rulebook, text_analyzed="Rhetorica Rulebook")
-    # go thru rulebook, check for stuff that lack examples
-    rulebook = readfile(r"/home/andi/summer2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_11.txt")
-    rulebook_arr = rulebook.split("\n")
-    # rulebook_arr  = remove_headings(rulebook_arr)
-    # rulebook_arr = remove_indent_spacing(rulebook_arr)
-    rulebook_arr = fit_to_template(3, rulebook_arr, 5)
-    rulebook = "".join(rulebook_arr)
-    write_to_file_in_dir(rulebook_dir, "RAW_RuleBooks", rulebook, text_analyzed="Rhetorica Rulebook")
-    # rulebook, enforce = r_enforce_prompt(rulebook)
-    # if enforce:
-    #     client.clear()
-    #     prompts.clear()
-    #     prompts.add_prompt(rulebook)
-    #     rulebook = client.generate_using_prompts(prompts=prompts)
-    # write_to_file_in_dir(rulebook_dir, "RAW_RuleBooks", rulebook, text_analyzed="Rhetorica Rulebook")
-    # if any lack examples make gpt fill them out using multi-shot prompting
-    # return a final rulebook
-
-    # rulebook_path = "/home/ml/MLResearch2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_10.txt"
-    # speech_path = "/home/ml/MLResearch2024/MachineLearningSummer/Speeches/Rule Book 9 Test"
-    # analyze_with_rulebook(client=client, prompts=prompts, rulebook_path=rulebook_path, text_dir=speech_path)
+    #rulebook_path = "/home/ml/MLResearch2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_10.txt"
+    #speech_path = "/home/ml/MLResearch2024/MachineLearningSummer/Speeches/Rule Book 9 Test"
+    #analyze_with_rulebook(client=client, prompts=prompts, rulebook_path=rulebook_path, text_dir=speech_path)
     
-    # symbol_list = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/comprehensive_symbol_system.txt")
-    # model1 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1.txt")
-    # model1_analysis = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model1_analysis.txt")
-    # model2 = readfile("/home/ml/MLResearch2024/MachineLearningSummer/model_sentence_bank/model4.txt")
+    symbol_list = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\comprehensive_symbol_system.txt")
+    model1 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model1.txt")
+    model1_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model1_analysis.txt")
+    model2 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model2.txt")
+    model2_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model2_analysis.txt")
+    model3 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model3.txt")
+    model3_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model3_analysis.txt")
+    model4 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model4.txt")
+    rulebook10 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\rule_book_bank\RAW_RuleBooks_10.txt")
 
-    # prompts.add_var_prompt("Symbols",symbol_list)
-    # prompts.add_symbol_prompt_one_shot(model1, model1_analysis,model2)
-    # write_to_file_in_dir("/home/ml/MLResearch2024/MachineLearningSummer/response_bank", "response",client.generate_using_prompts(prompts=prompts))
+    prompts.add_var_prompt("Symbols",symbol_list)
+    prompts.add_var_prompt("rulebook", rulebook10)
+    prompts.add_symbol_prompt_multi_shot("Symbols","rulebook", model1, model1_analysis, model2, model2_analysis, model3, model3_analysis, model4)
+    write_to_file_in_dir(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\response_bank", "response",client.generate_using_prompts(prompts=prompts))
