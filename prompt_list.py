@@ -61,7 +61,7 @@ class PromptList:
 
     def add_symbol_prompt_multi_shot(self, ref_var_1, ref_var_2,model1_txt, model1_response, model2_txt, model2_response, model3_txt, model3_response, model4_txt) -> None:
         self.add_prompt(
-            [f"Using {ref_var_1} and {ref_var_2} explain each setence step by step.\nText:\n{model1_txt}\nComprehensive Symbols:\n{model1_response}\nText:{model2_txt}\nComprehensive Symbols:\n{model2_response}\nText:\n{model3_txt}\nComprehensive Symbols:\n{model3_response}\nText:\n{model4_txt}",0])
+            [f"Using {ref_var_1} and {ref_var_2} explain each setence step by step.\nText:\n{model1_txt}\nComprehensive Symbols:\n{model1_response}\nText:{model2_txt}\nComprehensive Symbols:\n{model2_response}\nText:\n{model3_txt}\nComprehensive Symbols:\n{model3_response}\nText:\n{model4_txt}\nComprehensive Symbols:",0])
 
     def add_symbol_prompt_one_shot(self, model_1_txt, model_response, model_2_txt) -> None:
         """
