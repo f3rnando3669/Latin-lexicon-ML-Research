@@ -40,12 +40,17 @@ def get_rule_book(dir, name, type, client, prompts):
     print("Generating rulebook")
     current_time = datetime.datetime.now()
     dir_size = directory_size(dir)
-    fd_raw_rulebk = open(f"{dir}{name}_{dir_size}.{type}", "w")
+    new_rule_path = ""
+    if dir[-1] == "/":
+        new_rule_path = f"{dir}{name}_{dir_size}.{type}"
+    else:
+        new_rule_path = f"{dir}/{name}_{dir_size}.{type}"
+    fd_raw_rulebk = open(new_rule_path, "w")
     fd_raw_rulebk.write(f"New Rule book iteration made at {current_time}\n" + client.generate_using_prompts(prompts=prompts) + "\n")
     print("Rulebook appended to file successfully")
     # text = fd_raw_rulebk.read()
     fd_raw_rulebk.close()
-    return f"{dir}{name}_{dir_size}.{type}"
+    return new_rule_path
 
 def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed=""):
     try:
@@ -139,3 +144,35 @@ def remove_line_spacing(text: str) -> str:
             window_length += 1
     
     return rv
+
+def r_enforce_prompt(text, delimiter="\n"):
+    lines = text.split(delimiter)
+    unrelated = []
+    complete = []
+    incomplete = []
+    enforce = False
+    # print(lines)
+    for line in lines:
+        line = line.strip()
+        if line.startswith("* "):
+            if line:
+                line_arr = line.split(",")
+
+                if " e.g." in line_arr:
+                    complete.append(line+"\n")
+                else:
+                    incomplete.append(line + ", e.g.,\n")
+                    # print(line_arr)
+                    if not enforce:
+                        enforce = True
+        else:
+            unrelated.append(line)
+
+    return "".join(complete+incomplete), enforce
+
+# book = "- **Belated Arguments**: Presenting arguments too late in the timeline of the discourse.\n- **Banality**: Offering overused excuses, e.g., \"He did it because of anger.\"\n- **Misleading Defenses**: Using pretexts to cover evident faults.\n- **Double-Edged Phrases**: Using statements open to dual interpretations, potentially against the speaker.\n- **Misleading Definitions**: Offering false or overly general definitions."
+# print(r_enforce_prompt(book))
+# book = readfile("/home/andi/summer2024/MachineLearningSummer/testing_enforcer.txt")
+# book, enforce = r_enforce_prompt(book)
+# write_to_file("testing_enforcer", book)
+# print(enforce)

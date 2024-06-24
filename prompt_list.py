@@ -33,8 +33,8 @@ class PromptList:
         remember to tweak to your liking
         """
         #self.add_prompt([f"Create a rulebook to analyze a speech for effective argument: {prompt}", 0])
-        self.add_prompt([f"Give a summary and rule-book for defective arguments according to {prompt}", 0])
-    
+        # self.add_prompt([f"Give a summary and rule-book for defective arguments according to {prompt}", 0])
+        self.add_prompt([f"Create a rulebook for types of defective arguments according to {prompt} with the following template: \"* <Rule 1>: <name of Rule 1>, <explanation of Rule 1>, e.g, <example of Rule 1>\"", 0])
     
     def add_argument_prompt(self, var_name, reference_var) -> None:
         """
