@@ -1,6 +1,6 @@
-from prompt_client import Client
+from MachineLearningSummer.prompt_client import Client
 from prompt_list import PromptList
-from utilities import readfile, analyze_with_rulebook, write_to_file_in_dir, get_rule_book, autocomplete
+from MachineLearningSummer.utilities import readfile, analyze_with_rulebook, write_to_file_in_dir, get_rule_book, autocomplete
 
 if __name__ == "__main__":
     print("===START===")
