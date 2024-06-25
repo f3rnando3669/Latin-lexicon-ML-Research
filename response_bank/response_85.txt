@@ -1,70 +1,107 @@
-New response iteration made at 2024-06-25 10:09:24.615754
-For 
-Let's break down and explain each sentence step by step using the provided symbols from model #5 of the text.
+New response iteration made at 2024-06-24 11:11:59.922165
+For false_enum.txt
+Based on the rulebook provided, here is a score out of 100 for each type of defective argument applied to the statement "Only money can make people do heinous things":
 
-### Sentence Examples
+1. **Faulty Proposition**: 100
+   - This statement generalizes that only money can cause heinous actions, ignoring other possible motivations such as hatred, fear, or ideology.
 
-**1. "It seems to me that it was far from right for the Professor of English in Yale, the Professor of English Literature in Columbia, and Wilkie Collins to deliver opinions on Cooper's literature without having read some of it." (CXC-D-RB-L-A-ST-M)**
+2. **Impossible Generalizations**: 100
+   - It claims an impossible generalization by stating that no other factor besides money can lead to heinous behavior.
 
-- **Sentence Structure (CXC)**: Compound-complex sentence, because it contains multiple independent clauses and at least one dependent clause.
-- **Sentence Opener (D)**: Direct statement, beginning with "It seems to me that..."
-- **Rhythm and Euphony (RB)**: Rhythmic and balanced, maintaining a smooth flow.
-- **Rhetorical Type (L)**: Loose sentence, where the main idea is presented at the beginning and is elaborated with additional clauses.
-- **Functional Type (ST)**: Statement, giving an opinion or declaration.
-- **Method and Location of Expansion (M)**: Includes various expansions such as specifying "Professors of English in Yale" and "Columbia" as well as "Wilkie Collins delivering opinions without reading."
+3. **Incomplete Enumeration**: 100
+   - This argument incompletely enumerates the causes of heinous actions, excluding motives such as power, revenge, or mental illness.
 
-**2. "It would have been much more decorous to keep silent and let persons talk who have read Cooper." (C-D-RB-L-ST)**
+4. **False Enumeration**: 100
+   - It provides a restrictive list of causes (only money) while there are indeed many other possible reasons for heinous actions.
 
-- **Sentence Structure (C)**: Compound sentence, containing two independent clauses connected by "and".
-- **Sentence Opener (D)**: Direct statement, starting with "It would have been..."
-- **Rhythm and Euphony (RB)**: Rhythmic and balanced again for smoothness in argumentation.
-- **Rhetorical Type (L)**: Loose sentence, beginning with the main idea "It would have been much more decorous..."
-- **Functional Type (ST)**: Statement, presenting a corrective suggestion.
+5. **Tracing Too Far Back**: 0
+   - The argument does not overly complicate by tracing back to complex causes.
 
-**3. "Cooper's art has some defects." (S-D-SM-L-ST)**
+6. **Inappropriate Reason**: 100
+   - Offering money as the sole reason for heinous acts is weak and groundless because it disregards other strong motivators.
 
-- **Sentence Structure (S)**: Simple sentence, consisting of one independent clause.
-- **Sentence Opener (D)**: Direct statement, initiating with a clear subject “Cooper’s art...”
-- **Rhythm and Euphony (SM)**: Smooth and flowing, simply stating a fact.
-- **Rhetorical Type (L)**: Loose sentence, as the main idea is presented outright.
-- **Functional Type (ST)**: Statement, conveying factual information.
+7. **Circular Reasoning**: 0
+   - The statement does not repeat its proposition in the reason.
 
-**4. "In one place in Deerslayer, and in the restricted space of two-thirds of a page, Cooper has scored 114 offenses against literary art out of a possible 115." (CC-C-RB-L-ST)**
+8. **Adequacy in Reason**: 100
+   - The reason given (only money) is insufficient to fully explain all heinous actions.
 
-- **Sentence Structure (CC)**: Compound sentence, as it has multiple independent ideas joined together.
-- **Sentence Opener (C)**: Clause opener, starting with a prepositional phrase "In one place in Deerslayer..."
-- **Rhythm and Euphony (RB)**: Rhythmic and balanced, listing specific details in a flowing manner.
-- **Rhetorical Type (L)**: Loose sentence, leading with descriptive elements then the main point.
-- **Functional Type (ST)**: Statement, making a factual declaration.
+9. **Misapplied Reason**: 100
+   - Money could indeed be a reason for heinous actions, but itâ€™s misapplied as the exclusive cause.
 
-**5. "It breaks the record." (S-D-JA-ST)**
+10. **Rebuttable Dilemma**: 0
+    - This statement is not presented as a dilemma that needs reversing or straightforward rebuttal.
 
-- **Sentence Structure (S)**: Simple sentence, comprising just one independent clause.
-- **Sentence Opener (D)**: Direct statement, starting directly with "It breaks..."
-- **Rhythm and Euphony (JA)**: Jerky or abrupt, providing a stark, concise comment.
-- **Functional Type (ST)**: Statement, presenting an impactful conclusion or fact.
+11. **Misapplied Sign**: 100
+    - Implying that money is a definitive sign of someone committing heinous acts is misleading as there can be multiple causes.
 
-**6. "There are nineteen rules governing literary art in the domain of romantic fiction--some say twenty-two." (CXC-D-CV-L-A-ST)**
+12. **Banal Defense**: 100
+    - Argues that heinous actions can occur only because of money, which is a generalization.
 
-- **Sentence Structure (CXC)**: Compound-complex sentence, having multiple clauses and aspects (main clause then addition via '--some say twenty-two').
-- **Sentence Opener (D)**: Direct statement, opening with "There are..."
-- **Rhythm and Euphony (CV)**: Complex and varied, providing detailed and nuanced information.
-- **Rhetorical Type (L)**: Loose sentence, starting the main idea then elaboration.
-- **Functional Type (ST)**: Statement, indicating factual guidelines.
+13. **Universal Agreement**: 0
+    - Does not falsely assume universal agreement.
 
-**7. "In Deerslayer Cooper violated eighteen of them." (S-D-JA-ST)**
+14. **Retrospective Reasoning**: 0
+    - This does not reason about actions after events have occurred.
 
-- **Sentence Structure (S)**: Simple sentence, one independent clause.
-- **Sentence Opener (D)**: Direct statement, beginning straightforwardly.
-- **Rhythm and Euphony (JA)**: Jerky or abrupt, making a concise point.
-- **Functional Type (ST)**: Statement, conveying a direct fact.
+15. **Manifest Transgression**: 0
+    - The argument doesn't present a defense for an acknowledged wrong.
 
-8. **"These eighteen require:"**
-   **"That a tale shall accomplish something and arrive somewhere. But the Deerslayer tale accomplishes nothing and arrives in the air." (C-D-JA-A-ST)**
+16. **Ambiguous Statements**: 100
+    - The term "only" creates ambiguity about the exclusive nature of the influence of money.
 
-- **Sentence Structure (C)**: Compound sentence, giving a requirement then contrasting with a failure.
-- **Sentence Opener (D)**: Direct statement, leading with "These eighteen require" to set a base.
-- **Rhythm and Euphony (JA)**: Jerky or abrupt, drawing clear contrast briskly.
-- **Functional Type (ST)**: Statement, stating expectations versus shortcomings.
-  
-Using the provided symbols and explanations, each sentence in the text from model #5 has been analyzed for their sentence patterns, structures, openers, rhythms, rhetorical types, and functional types as per the constraints of this comprehensive symbol system.
+17. **False Definitions**: 100
+    - Defines the cause of heinous acts too narrowly, ignoring other significant factors.
+
+18. **Disputed Proof**: 100
+    - Uses a disputed assertion that only money leads to heinous actions without proof.
+
+19. **Unsettled Controversy**: 100
+    - Does not adequately settle the controversy about what causes heinous acts.
+
+20. **Self-Contradiction**: 0
+    - The statement does not contradict itself.
+
+21. **Inconsistency with the Audience**: 50
+    - Depending on the audience, it could be inconsistent, as many might disagree that only money causes heinous acts.
+
+22. **Unfulfilled Promises**: 0
+    - Not necessarily promising to prove multiple points.
+
+23. **Changing the Subject**: 0
+    - Sticks to the topic of causes for heinous actions.
+
+24. **Faulty Disparagement**: 0
+    - It doesn't disparage an entire field or group.
+
+25. **Crime Identification**: 100
+    - Confuses identifying a cause of crime (money) as the sole cause without evidence of broader context.
+
+26. **Unbalanced Comparison**: 100
+    - Does not balance other motivations for heinous acts against money.
+
+27. **Disparaging When Unnecessary**: 0
+    - Does not disparage anything unnecessary to the argument.
+
+28. **Controversy on Names**: 0
+    - Does not raise debate based on terminology.
+
+29. **Faulty Simile**: 0
+    - Does not rely on a simile.
+
+30. **False Example**: 0
+    - Does not provide incorrect examples.
+
+31. **Invalid Previous Judgements**: 0
+    - Does not rely on irrelevant past decisions.
+
+32. **Redundant Proof**: 0
+    - Does not prove what's already accepted.
+
+33. **Unbacked Amplification**: 100
+    - Amplifies the role of money without sufficient proof.
+
+34. **Incomplete RÃ©sumÃ©**: 0
+    - Does not fall short in summarizing points, as it is a singular statement.
+
+In summary, "Only money can make people do heinous things" holds a high score in many forms of defective arguments, suggestive of being significantly flawed reasoning. Specifically, it is highly criticized for faulty propositions (100), impossible generalizations (100), incomplete and false enumeration (100 each), providing inadequate or misapplied reasons (100 each), offering disputed proof (100), and having many other flaws amounting to possibly more than half the types listed, indicating severe deficiencies as per the rulebook standards.

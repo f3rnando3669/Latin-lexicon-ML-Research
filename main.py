@@ -1,7 +1,7 @@
 from prompt_client import Client
 from prompt_list import PromptList
-from utilities import readfile, analyze_with_rulebook, write_to_file_in_dir
-import os
+from utilities import readfile, analyze_with_rulebook, write_to_file_in_dir, get_rule_book, autocomplete
+
 if __name__ == "__main__":
     print("===START===")
     # rhetorica = readfile(r"/home/ml/MLResearch2024/rhetoradher_bks1and2.txt")
@@ -16,10 +16,14 @@ if __name__ == "__main__":
     # rule_book = readfile(rule_path)
     client = Client()
     prompts = PromptList()
+    text_auto_path = "/home/ml/MLResearch2024/MachineLearningSummer/rulebook_intermediates/rulebk10_multishot_prompt.txt"
+    rulebook_dir = "/home/ml/MLResearch2024/MachineLearningSummer/rule_book_bank"
+    response = autocomplete(client=client, prompts=prompts, text_path=text_auto_path)
+    write_to_file_in_dir(rulebook_dir, "RAW_Rulebooks", response)
 
-    #rulebook_path = "/home/ml/MLResearch2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_10.txt"
-    #speech_path = "/home/ml/MLResearch2024/MachineLearningSummer/Speeches/Rule Book 9 Test"
-    #analyze_with_rulebook(client=client, prompts=prompts, rulebook_path=rulebook_path, text_dir=speech_path)
+    # rulebook_path = "/home/ml/MLResearch2024/MachineLearningSummer/rule_book_bank/RAW_RuleBooks_11.txt"
+    # speech_path = "/home/ml/MLResearch2024/MachineLearningSummer/Speeches/Rule Book 9 Test"
+    # analyze_with_rulebook(client=client, prompts=prompts, rulebook_path=rulebook_path, text_dir=speech_path, find="false_enum.txt")
     
     symbol_list = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\comprehensive_symbol_system.txt")
     model1 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model1.txt")
