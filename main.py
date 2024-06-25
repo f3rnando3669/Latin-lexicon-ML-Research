@@ -29,9 +29,10 @@ if __name__ == "__main__":
     model3 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model3.txt")
     model3_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model3_analysis.txt")
     model4 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model4.txt")
+    model4_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model4_analysis.txt")
+    model5 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\model_sentence_bank\model5.txt")
     rulebook10 = readfile(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\rule_book_bank\RAW_RuleBooks_10.txt")
 
     prompts.add_var_prompt("Symbols",symbol_list)
-    prompts.add_var_prompt("rulebook", rulebook10)
-    prompts.add_symbol_prompt_multi_shot("Symbols","rulebook", model1, model1_analysis, model2, model2_analysis, model3, model3_analysis, model4)
+    prompts.add_symbol_prompt_multi_shot("Symbols", model1, model1_analysis, model2, model2_analysis, model3, model3_analysis, model4, model4_analysis, model5)
     write_to_file_in_dir(r"C:\Users\Liam\Desktop\Summer Research\MachineLearningSummer\response_bank", "response",client.generate_using_prompts(prompts=prompts))
