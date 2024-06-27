@@ -3,6 +3,8 @@ import datetime
 import os
 import re
 from typing import List
+from prompt_client import Client
+from prompt_list import PromptList
 
 def readdocx(docxFile):
     """
@@ -82,26 +84,27 @@ def write_to_file(name, text, type="txt"):
 def directory_size(directory):
     return len(os.listdir(directory)) + 1
 
-def analyze_with_rulebook(client, prompts, text_dir, rulebook_path, find=[]):
+def analyze_with_rulebook(text_dir, rulebook_path, find=[]):
         # should probably be moved to the client
         # seems like a client function
         # I'll do this in my free time
+        client = Client()
         print("starting analyzing")
         rule_book = readfile(rulebook_path)
         for path in os.listdir(text_dir):
             if path not in find:
                 client.clear()
-                prompts.clear()
+                prompts = PromptList()
                 if text_dir[-1] != "/":
                     file_path = f"{text_dir}/{path}"
                 speech = readfile(file_path)
                 print(path)
                 prompts.add_var_prompt("<RB>", rule_book)
                 prompts.add_var_prompt("<SP>", speech)
-                prompts.add_rating_prompt("<SP>", "<RB>")
+                prompts.add_ranking_prompt("<SP>", "<RB>", 3)
 
                 response = client.generate_using_prompts(prompts=prompts)
-                write_to_file_in_dir("/home/ml/MLResearch2024/MachineLearningSummer/response_bank", "response", response, "txt", path)
+                write_to_file_in_dir(r"/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/response_bank", "response", response, "txt", path)
                 
         print("done with analysis")
 

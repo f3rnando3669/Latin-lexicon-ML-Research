@@ -56,6 +56,12 @@ class PromptList:
         """
         self.add_prompt([f"Using {reference_var} give a score out of 100 for every type of defective argument in {var_name}", 0])
     
+    def add_ranking_prompt(self, var_name, reference_var, rank) -> None:
+        """
+        create a prompt for rating of var_name based on reference_var from 1 through 100
+        """
+        self.add_prompt([f"Using {reference_var} enumerate and give a score out of 100 for the worst {rank} types of defective arguments in {var_name}", 0])
+    
     def add_reference_comparison(self, var1, var2, ref_var) -> None:
         self.add_prompt([f"Using {ref_var} compare {var1} and {var2} and tell me which is worse", 0])
 
@@ -69,12 +75,12 @@ class PromptList:
         """
         self.add_prompt([f"{model_1_txt}\nComprehensive Symbols:\n{model_response}\n{model_2_txt}\nComprehensive Symbols:",0])
     
-    def add_prompt(self, prompt, flag=0) -> None:
+    def add_prompt(self, prompt) -> None:
         """
         add your own custom prompt
         you may also decide to change the flag
         """
-        self._prompts.append([prompt, flag])
+        self._prompts.append(prompt)
     
     def clear(self) -> None:
         """
