@@ -74,6 +74,12 @@ class PromptList:
         Creating a one shot prompt using the models and model analysis in coorespondance with the symbols
         """
         self.add_prompt([f"{model_1_txt}\nComprehensive Symbols:\n{model_response}\n{model_2_txt}\nComprehensive Symbols:",0])
+
+    def define_gpt_function(self, var_name, var_function) -> None:
+        if var_name.contains("<") & var_function.contains(">"):
+            self.add_prompt([f"Define {var_name} as {var_function}",0])
+        else:
+            self.add_prompt([f"Define <{var_name}> as {var_function}"])
     
     def add_prompt(self, prompt) -> None:
         """
