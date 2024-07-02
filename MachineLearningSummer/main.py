@@ -25,12 +25,6 @@ if __name__ == "__main__":
     # analyze_with_rulebook(client=client, prompts=prompts, rulebook_path=rulebook_path, text_dir=speech_path, find="false_enum.txt")
     
     client = Client()
-    # assistant = client.beta.assistants.create(
-    #     name = "Paragraph Analyzer",
-    #     instructions = "You are to analyze passages sentence by sentence and provide identifying features about the sentence.",
-    #     temperature = 0.3,
-    #     model="gpt-4o"
-    # )
     prompts = PromptList()
 
     symbol_list = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\comprehensive_symbol_system.txt")
