@@ -21,7 +21,7 @@ def pretty_print(messages):
 def wait_on_run(run, thread):
     while run.status == "queued" or run.status == "in_progress":
         run = client.beta.threads.runs.retrieve(
-            thread_id=thread,
+            thread_id=thread.id,
             run_id=run.id,
         )
         time.sleep(0.5)
@@ -34,10 +34,10 @@ def create_thread_and_run(user_input):
 
 def submit_message(assistant_id, thread, user_message):
     client.beta.threads.messages.create(
-        thread_id=thread, role="user", content=user_message
+        thread_id=thread.id, role="user", content=user_message
     )
     return client.beta.threads.runs.create(
-        thread_id=thread,
+        thread_id=thread.id,
         assistant_id=assistant_id,
     )
 
@@ -46,6 +46,9 @@ assistant = client.beta.assistants.retrieve(
     SENTENCE_ID,
 )
 
-run4 = submit_message(assistant.id, "thread_IJXuYr299aws9Wv1oDtRz7BP", "<SID> what is this?")
-run4 = wait_on_run(run4, "thread_IJXuYr299aws9Wv1oDtRz7BP")
-get_response("thread_IJXuYr299aws9Wv1oDtRz7BP")
+thread = client.beta.threads.retrieve(
+    thread_id = "thread_IJXuYr299aws9Wv1oDtRz7BP",
+)
+run4 = submit_message(assistant.id, thread, "<SID> what is this?")
+run4 = wait_on_run(run4, thread)
+get_response(thread.id)
