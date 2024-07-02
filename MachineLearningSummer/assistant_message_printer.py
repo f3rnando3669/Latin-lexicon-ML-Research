@@ -52,7 +52,7 @@ assistant = client.beta.assistants.retrieve(
 thread = client.beta.threads.retrieve(
     thread_id = "thread_IJXuYr299aws9Wv1oDtRz7BP",
 )
-run4 = submit_message(assistant.id, thread, "<SID> what is this?")
-run4 = wait_on_run(run4, thread)
+# run4 = submit_message(assistant.id, thread, "<SID> what is this?")
+# run4 = wait_on_run(run4, thread)
 #get_response(thread.id)
 write_to_file_in_dir(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\assistant_response_bank", "assistant_response",get_response(thread.id))
