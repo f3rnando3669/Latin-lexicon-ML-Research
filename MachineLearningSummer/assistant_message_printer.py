@@ -1,6 +1,8 @@
 from openai import OpenAI
 import time
 import json
+import os
+from utilities import write_to_file_in_dir
 
 SENTENCE_ID = "asst_jwqKl7o85yHTcQYO1s66J2QF"
 
@@ -13,10 +15,11 @@ def get_response(thread):
     return pretty_print(messages)
     
 def pretty_print(messages):
-    print("# Messages")
+    print("Writing to file...")
+    content = "# Messages\n"
     for m in reversed(messages.data):
-        print(f"{m.role}: {m.content[0].text.value}")
-    print()
+        content += f"{m.role}: {m.content[0].text.value}\n"
+    return content
 
 def wait_on_run(run, thread):
     while run.status == "queued" or run.status == "in_progress":
@@ -51,4 +54,5 @@ thread = client.beta.threads.retrieve(
 )
 run4 = submit_message(assistant.id, thread, "<SID> what is this?")
 run4 = wait_on_run(run4, thread)
-get_response(thread.id)
+#get_response(thread.id)
+write_to_file_in_dir(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\assistant_response_bank", "assistant_response",get_response(thread.id))
