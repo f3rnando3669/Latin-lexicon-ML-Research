@@ -213,8 +213,3 @@ def read_fromcsv(path):
     read = list(csv.reader(fd))
     fd.close()
     return read
-
-print(read_fromcsv("/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/hello.csv"))
-
-# import errors for client due to circular import
-# fix by moving generation methods to Client.py

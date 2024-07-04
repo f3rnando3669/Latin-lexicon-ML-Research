@@ -1,5 +1,4 @@
 from typing import List
-import re
 import openai
 from ClientUtils.StringValidation import emptyString
 from utilities import write_tocsv, read_fromcsv
@@ -9,7 +8,7 @@ class Client:
     model object
     """
     def __init__(self, model="gpt-4o") -> None:
-        self._key = "sk-proj-zhneKzEWaF5adbdJPBPmT3BlbkFJk8yS2iJVC501GP79GVwx"
+        self._key = ""
         self._client = openai.OpenAI(api_key=self._key)
         self._model = model
         self._messages = []
@@ -49,6 +48,7 @@ class Client:
         if self.is_prompt(prompts):
             generated = self._generate(self._messages)
             self._save(savepath, generated)
+            return generated
         else:
             ValueError("Use an actual prompt\nAPI requests are expensive")
             exit(-1)
