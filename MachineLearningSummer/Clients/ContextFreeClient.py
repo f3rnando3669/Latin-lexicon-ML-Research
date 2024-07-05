@@ -5,11 +5,19 @@ from Clients.Utilities.FileUtilities import write_tofile_indir, write_tojson
 from Clients.Utilities.StringValidation import emptyString
 
 class ContextFreeClient(AbstractClient.ABsClient):
+    """
+    This Client cannot make use of context
+    """
     def __init__(self, client: OpenAI, model: str) -> None:
         self._client = client
         self._model = model
     
-    def generate(self, prompts: PromptList, savepath: str="", json_savepath:str = "") -> str:
+    def generate(self, prompts: PromptList, txt_savepath: str="", json_savepath:str = "") -> str:
+        """
+        Enter a list of prompts\n
+        You may also specify a savepath for a txt file\n
+        Or a savepath for a json file
+        """
         if len(prompts) == 0:
             raise Exception("Empty Prompt List...")
             
@@ -20,8 +28,8 @@ class ContextFreeClient(AbstractClient.ABsClient):
         )
         response = generated.choices[0].message.content
 
-        if not emptyString(savepath):
-            self._txtsave(savepath, response)
+        if not emptyString(txt_savepath):
+            self._txtsave(txt_savepath, response)
         
         if not emptyString(json_savepath):
             jsonbuild = [response]

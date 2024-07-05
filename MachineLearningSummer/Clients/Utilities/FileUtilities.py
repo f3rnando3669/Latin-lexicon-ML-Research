@@ -1,10 +1,11 @@
 import datetime
 import os
+from typing import List
 import docx
 import csv
 import json
 
-def readdocx(docxFile):
+def readdocx(docxFile) -> str:
     """
     get a string for a docx file
     """
@@ -14,7 +15,7 @@ def readdocx(docxFile):
         fulltext.append(para.text)
     return '\n'.join(fulltext)
 
-def readfile(path):
+def readfile(path) -> str:
     """
     get a string for a txt file
     """
@@ -23,13 +24,16 @@ def readfile(path):
     fd.close()
     return text
 
-def readcsv(path):
+def readcsv(path) -> List[str]:
+    """
+    read a csv file
+    """
     fd = open(path, "r")
     read = list(csv.reader(fd))
     fd.close()
     return read
 
-def read_filelines(path):
+def read_filelines(path) -> List[str]:
     """
     get an array where each element is a line of text
     """
@@ -39,12 +43,19 @@ def read_filelines(path):
     return text
 
 def readjson(path):
+    """
+    read a json file\n
+    returns a json object
+    """
     fd = open(path, "r")
     jsonobject = json.load(fd)
     fd.close()
     return jsonobject
 
-def write_tofile_indir(dir, name, text, type="txt", text_analyzed=""):
+def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed="") -> None:
+    """
+    write to a file in a directory
+    """
     try:
         print("Writing to file")
         current_time = datetime.datetime.now()
@@ -53,11 +64,13 @@ def write_tofile_indir(dir, name, text, type="txt", text_analyzed=""):
         fd.write(f"New response iteration made at {current_time}\nFor {text_analyzed}\n" + text + "\n")
         print("Write successful")
         fd.close()
-        return 1
     except:
         raise RuntimeError("Could not write to file")
 
-def write_tofile(name, text, type="txt"):
+def write_to_file(name, text, type="txt") -> None:
+    """
+    write to a file
+    """
     try:
         print("Writing to file")
         current_time = datetime.datetime.now()
@@ -67,14 +80,20 @@ def write_tofile(name, text, type="txt"):
         fd.write(f"New response iteration made at {current_time}\n" + text + "\n")
         print("Write successful")
         fd.close()
-        return 1
     except:
         raise RuntimeError("Could not write to file")
 
-def directory_size(directory):
+def directory_size(directory) -> int:
+    """
+    find out the size of a directory
+    """
     return len(os.listdir(directory)) + 1
 
-def write_tocsv(path, row):
+def write_tocsv(path, row) -> None:
+    """
+    write to a csv file\n
+    Would append new row to the file if data already exists in the file
+    """
     try:
         fd = open(path, "a")
         writer = csv.writer(fd)
@@ -83,7 +102,11 @@ def write_tocsv(path, row):
     except:
         raise RuntimeError("Could not write to csv file")
 
-def write_tojson(path, data):
+def write_tojson(path, data) -> None:
+    """
+    Write to a json file\n
+    Would override file if data already exists in the file
+    """
     try:
         fd = open(path, "w")
         json.dump(data, fd)

@@ -1,3 +1,4 @@
+from typing import List
 import Clients.AbstractClient as AbstractClient
 from Prompts.PromptList import PromptList
 from Prompts.SimplePrompt import SimplePrompt
@@ -6,15 +7,29 @@ from Clients.Utilities.FileUtilities import write_tofile_indir, write_tojson
 from Clients.Utilities.StringValidation import emptyString
 
 class ContextTightClient(AbstractClient.ABsClient):
+    """
+    This is a more powerful Client\n
+    You can load context into this model\n
+    After getting a response it also saves the information as the last bit of context
+    """
     def __init__(self, client: OpenAI, model: str) -> None:
         self._client = client
         self._model = model
         self._context = []
 
     def loadcontext(self, context: str) -> None:
-        self._context = context
+        """
+        load context into the model as a string
+        """
+        self._context = [context]
 
-    def loadcontext_fromjson(self, jsonobject, flag=-1) -> None:
+    def loadcontext_fromjson(self, jsonobject: List[str], flag=-1) -> None:
+        """
+        load context into model as a List of strings\n
+        By default flag is set as -1, this would make the client always use the most recent context\n
+        Flag 0 would get you the first bit of context\n
+        Flag 1 would combine all context
+        """
         try:
             if flag == 1:
                 context = []
@@ -30,9 +45,17 @@ class ContextTightClient(AbstractClient.ABsClient):
             raise Exception("Error whilst reading JSON object!")
     
     def clearcontext(self):
-        self._context = ""
+        """
+        delete all context
+        """
+        self._context.clear()
     
     def generate(self, prompts: PromptList, txt_savepath: str="", json_savepath: str="") -> str:
+        """
+        Enter a list of prompts\n
+        You may also specify a savepath for a txt file\n
+        Or a savepath for a json file
+        """
         context = "\n".join(self._context)
         
         messages = prompts.unpack()
@@ -51,6 +74,7 @@ class ContextTightClient(AbstractClient.ABsClient):
             jsonbuild = self._context + ["".join(messages[-1]["content"])+"\n"+response]
             self._jsonsave(json_savepath, jsonbuild)
 
+        self._context = jsonbuild
         return response
 
     def _txtsave(self, path, data) -> None:
