@@ -115,4 +115,4 @@ def messing_with_matricies():
     print(working_matrix.toarray())
     return
 
-core_Process("geneSequences")
+core_Process("testSequences")
