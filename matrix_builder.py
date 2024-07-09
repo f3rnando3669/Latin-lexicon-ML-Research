@@ -81,23 +81,23 @@ def array_manager(trigram_coor: int) -> None:
 
 # Step 6: Finally make the matrix
 def matrix_maker() -> coo_array:
-    gene_matrix = coo_array((data, (row_coordinates, column_coordinates)), shape=(trigram_index, gene_index))
-    return gene_matrix
+    matrix = coo_array((data, (row_coordinates, column_coordinates)), shape=(trigram_index, gene_index))
+    return matrix
 
 
-def main() -> None:
+def main(data_set_name: str) -> coo_array:
     # Create blank matrix that will be filled in
     gene_matrix = coo_array((trigram_index, gene_index), dtype=int)
     # Read the csv file
-    df_main = pd_reader("test_sequences.csv")
+    df_main = pd_reader(data_set_name)
     # Break the data down and populate the 3 arrays
     pull_data(df_main)
     # Re-Assign the matrix with the new data
     gene_matrix = matrix_maker()
     # Print the matrix
     print(gene_matrix.toarray())
-    return
+    return gene_matrix
 
 
 if __name__ == "__main__":
-    main()
+    main("full_sequence_list.csv")
