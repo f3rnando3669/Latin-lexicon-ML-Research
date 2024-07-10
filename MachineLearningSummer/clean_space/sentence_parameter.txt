@@ -1,0 +1,30 @@
+Define <S> to be a simple sentence that is comprised of one independent clause.
+Define <C> to be a compound sentence that is comprised of two independent clauses and no dependpent clauses.
+Define <CC> to be a complex sentence that is comprised of only one independent clause and at least one dependent clause.
+Define <CXC> to be a complex compound sentence that is comprised of at least two independent clauses and at least one dependent clause.
+
+Define <L> to be a loose rhetorical type that follows the formula: Main clause + Parallel Dependent clauses or phrases
+Define <P> to be a periodic rhetorical type that follows the formula: Parallel Dependent clauses or phrases + Main clause
+Define <B> to be a balanced rhetorical type that the phrases or clauses balance each other by virtue of their likeness of structure, meaning, or length: e.g., “He maketh me lie down in green pastures; he leadeth me beside still waters.”
+Define <A> to be an antithetical rhetoric type where two oposing ideas or meanings are juxtaposed, usually two independent clauses seperated by a comma or a semicolon: e.g., "Hope for the best, prepare for the worst."
+
+Define <T> to be a sentence opener where the opener is a transitional word or phrase.(e.g., True, But, Another)
+Define <D> to be a sentence opener where the opener is a direct statement.(e.g., The critical power, It is undeniable)
+Define <C> to be a setence opener where the opener is a clause opener. (e.g., In that case)
+Define <Q> to be a setence opener where the opener is a question. (e.g., What if)
+
+Let <s> be some string. Define <ID> to be the task of identifying the clauses and sentence type of a string <s>.
+
+Let <s> be some string. Define <O> to be the task of identifying the type of opening <s> has.
+
+Let <s> be some string. Define <RT> to be the task of identifying the rhetorical type of <s>.
+
+Let <t> be some advanced task. Define <D> to be the decomposition of <t> into a specific steps.
+
+Define <IDAnalysis> to be the application of <D> to <ID>.
+
+Define <OAnalysis> to be the application of <D> to <O>.
+
+Define <RTAnalysis> to be the application of <D> to <RT>.
+
+Define <Full_Sent> to be the combination of the steps in <IDAnalysis>, <OAnalysis>, and <RTAnalysis>.
