@@ -50,7 +50,7 @@ class ContextTightClient(AbstractClient.ABsClient):
         """
         self._context.clear()
     
-    def generate(self, prompts: PromptList, txt_savepath: str="", json_savepath: str="") -> str:
+    def generate(self, prompts: PromptList, txt_savepath: str="", txt_name: str="", json_savepath: str="") -> str:
         """
         Enter a list of prompts\n
         You may also specify a savepath for a txt file\n
@@ -70,7 +70,7 @@ class ContextTightClient(AbstractClient.ABsClient):
             jsonbuild = self._context
             
         if not emptyString(txt_savepath):
-            self._txtsave(txt_savepath, response)
+            self._txtsave(txt_savepath, txt_name, response)
 
         if not emptyString(json_savepath):
             jsonbuild = self._context + jsonbuild
@@ -78,8 +78,8 @@ class ContextTightClient(AbstractClient.ABsClient):
 
         return response
 
-    def _txtsave(self, path, data) -> None:
-        write_to_file_in_dir(path, data)
+    def _txtsave(self, path, name, data) -> None:
+        write_to_file_in_dir(path, name, data)
     
     def _jsonsave(self, path, data):
         write_tojson(path, data)
