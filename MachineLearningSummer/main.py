@@ -1,6 +1,6 @@
-from prompt_client import Client
-from prompt_list import PromptList
-from utilities import readfile, analyze_with_rulebook, write_to_file_in_dir, get_rule_book, autocomplete
+from Clients.ContextFreeClient import ContextFreeClient
+from Clients.ClientInterface import ClientInterface
+from Prompts import Prompt
 
 if __name__ == "__main__":
     print("===START===")
@@ -24,24 +24,24 @@ if __name__ == "__main__":
     # speech_path = "/home/ml/MLResearch2024/MachineLearningSummer/Speeches/Rule Book 9 Test"
     # analyze_with_rulebook(client=client, prompts=prompts, rulebook_path=rulebook_path, text_dir=speech_path, find="false_enum.txt")
     
-    client = Client()
-    prompts = PromptList()
+    # client = Client()
+    # prompts = PromptList()
 
-    symbol_list = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\comprehensive_symbol_system.txt")
-    model1 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model1.txt")
-    model1_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model1_analysis.txt")
-    model2 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model2.txt")
-    model2_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model2_analysis.txt")
-    model3 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model3.txt")
-    model3_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model3_analysis.txt")
-    model4 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model4.txt")
-    model4_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model4_analysis.txt")
-    model5 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model5.txt")
-    rulebook10 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\rule_book_bank\RAW_RuleBooks_10.txt")
+    # symbol_list = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\comprehensive_symbol_system.txt")
+    # model1 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model1.txt")
+    # model1_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model1_analysis.txt")
+    # model2 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model2.txt")
+    # model2_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model2_analysis.txt")
+    # model3 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model3.txt")
+    # model3_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model3_analysis.txt")
+    # model4 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model4.txt")
+    # model4_analysis = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model4_analysis.txt")
+    # model5 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\model_sentence_bank\model5.txt")
+    # rulebook10 = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\rule_book_bank\RAW_RuleBooks_10.txt")
 
-    prompts.add_var_prompt("Symbols",symbol_list)
-    prompts.add_symbol_prompt_multi_shot("Symbols", model1, model1_analysis, model2, model2_analysis, model3, model3_analysis, model4, model4_analysis, model5)
-    write_to_file_in_dir(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\response_bank", "response",client.generate_using_prompts(prompts=prompts))
+    # prompts.add_var_prompt("Symbols",symbol_list)
+    # prompts.add_symbol_prompt_multi_shot("Symbols", model1, model1_analysis, model2, model2_analysis, model3, model3_analysis, model4, model4_analysis, model5)
+    # write_to_file_in_dir(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\response_bank", "response",client.generate_using_prompts(prompts=prompts))
     # speech_dir = r"/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/Speeches/Rule Book 9 Test"
     # rulebook_path = r"/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/rule_book_bank/RAW_Rulebooks_12.txt"
     # analyze_with_rulebook(text_dir=speech_dir, rulebook_path=rulebook_path)
