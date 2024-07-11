@@ -1,27 +1,15 @@
 import datetime
 import os
 from typing import List
-import docx
 import csv
 import json
-
-def readdocx(docxFile) -> str:
-    """
-    get a string for a docx file
-    """
-    doc = docx.Document(docxFile)
-    fulltext = []
-    for para in doc.paragraphs:
-        fulltext.append(para.text)
-    return '\n'.join(fulltext)
 
 def readfile(path) -> str:
     """
     get a string for a txt file
     """
-    fd = open(path)
-    text = fd.read()
-    fd.close()
+    with open(path, 'r', encoding='utf-8') as fd:
+        text = fd.read()
     return text
 
 def readcsv(path) -> List[str]:

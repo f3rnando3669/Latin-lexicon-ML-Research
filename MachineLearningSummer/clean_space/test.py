@@ -36,14 +36,14 @@ from Clients.Utilities.FileUtilities import readjson, readfile, write_to_file
 
 # Liam's Experiment
 
-parameters = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\clean_space\sentence_response.txt")
+parameters = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\clean_space\sentence_parameter.txt")
 
 parameter_set = SimplePrompt(parameters)
-sent_1 = SimplePrompt("Apply <Full_Sent> to the string 'This wisdom have I seen also under the sun, and it seemed great unto me.'")
+sent_1 = SimplePrompt("Apply <Full_Sent> to the string \'This wisdom have I seen also under the sun, and it seemed great unto me.\'")
 
 prompts = PromptList()
 
-prompts.add_userprompt([parameter_set, sent_1])
+prompts.add_userprompts([parameter_set, sent_1])
 
 client_interface = ClientInterface(ContextTightClient)
 print(client_interface._client.generate(prompts=prompts, json_savepath=r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\clean_space\sentence_bot.json"))
