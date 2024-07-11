@@ -13,15 +13,15 @@ def main():
 
 def modeChange():
     global mode
-    print("Current mode set to carbohydrate transporting genes")
+    print("Currently set to carbohydrate transporting genes")
     while True:
-        choice = input("Would you like to change it? [Y/N]\n")
+        choice = input("Would you like to change it to non carb transporters? [Y/N]\n")
         if choice.upper() == "Y":
             mode = "locus/nonCarbGenes.txt"
             print("Mode changed to non-carbohydrate transporting genes.")
             break
         elif choice.upper() == "N":
-            print("Preserving mode.")
+            print("Continuing on with carbohydrate transporting genes.")
             break
 def reader():
     global loci
