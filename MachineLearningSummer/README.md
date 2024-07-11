@@ -17,7 +17,15 @@ The Various Sentence Structures will be defined as follows:
 <C> is a setence opener where the opener is a clause opener. (e.g., In that case)
 <Q> is a setence opener where the opener is a question. (e.g., What if)
 
-<SM> is a rythmic and euphony where the setence is "Smooth and flowing" defined by 
-<RB> is a rythmic and euphony where the setence is "Rhythmic and balanced" defined by
-<CV> is a rythmic and euphony where the setence is "Complex and varied" defined by
-<JA> is a rythmic and euphony where the setence is "Jerky or abrupt" defined by
+A Note to those reading, no strict classifier was found for the following definitions, so I have taken the liberty to give quantifiable characteristics to the best of my ability.
+
+<i> is a type of rhetorical meter where it is comprised of two syllables where the first is stressed, while the following syllable is unstressed.
+<t> is a type of rhetorical meter where it is comprised of two syllables where the first is unstressed, while the following syllable is stressed.
+<a> is a type of rhetorical meter where it is comprised of three syllables where the first two are stressed, while the last syllable is unstressed.
+<d> is a type of rhetorical meter where it is comprised of three syllables where where the first syllable is unstressed, while the second and third are stressed.
+<sp> is a type of rhetorical meter where it is comprised of two syllables where both syllables are unstressed.
+
+<SM> is a rythmic and euphony where the setence is "Smooth and flowing" defined by maintaining a consistent rhythm and cadence. This can be achieved through the use of regular meter, such as iambic or trochaic patterns, where syllables are stressed and unstressed in a predictable manner. 
+<RB> is a rythmic and euphony where the setence is "Rhythmic and balanced" defined through the use of parallel structure, repetition, and symmetrical phrasing, often seen in antithetical or balanced rhetorical types.
+<CV> is a rythmic and euphony where the setence is "Complex and varied" defined by intricate arrangements of clauses and phrases, incorporating a mix of different rhythmic patterns and varying sentence lengths. This type of sentence often includes multiple dependent and independent clauses, creating a rich and layered effect.
+<JA> is a rythmic and euphony where the setence is "Jerky or abrupt" defined by irregular, choppy rhythms and abrupt shifts in thought or structure. This type of sentence often uses short, disjointed clauses or phrases that disrupt the flow and create a sense of unease or urgency.
