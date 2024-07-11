@@ -15,8 +15,8 @@ data = np.array([])
 # Step 1: Read the csv file using pandas
 def pd_reader(file_name: str) -> pd.DataFrame:
     # df = pd.read_csv("snap.csv",names =["x", "y", "z", "vx", "vy", "vz"])
-    df = pd.read_csv(file_name, names=["Locus", "Accession ID", "Protein Name", "Organism", "Sequence"])
-    df = df.loc[:, ['Locus', 'Sequence']] # excludes the other columns
+    df = pd.read_csv(file_name, names=["Protein ID", "Accession ID", "Protein Name", "Organism", "Sequence"])
+    df = df.loc[:, ['Protein ID', 'Sequence']] # excludes the other columns
     df.drop(0, axis=0, inplace=True)
     return df
 
@@ -29,7 +29,7 @@ def pull_data(df: pd.DataFrame) -> None:
         gene_index += 1
 
         # Pull the name and sequence from the dataframe
-        name = row['Locus']
+        name = row['Protein ID']
         sequence = row['Sequence']
 
         # for each gene, grab and index the trigrams
@@ -100,4 +100,4 @@ def main(data_set_name: str) -> coo_array:
 
 
 if __name__ == "__main__":
-    main("full_sequence_list.csv")
+    main("good_boys.csv")
