@@ -29,3 +29,8 @@ A Note to those reading, no strict classifier was found for the following defini
 <RB> is a rythmic and euphony where the setence is "Rhythmic and balanced" defined through the use of parallel structure, repetition, and symmetrical phrasing, often seen in antithetical or balanced rhetorical types.
 <CV> is a rythmic and euphony where the setence is "Complex and varied" defined by intricate arrangements of clauses and phrases, incorporating a mix of different rhythmic patterns and varying sentence lengths. This type of sentence often includes multiple dependent and independent clauses, creating a rich and layered effect.
 <JA> is a rythmic and euphony where the setence is "Jerky or abrupt" defined by irregular, choppy rhythms and abrupt shifts in thought or structure. This type of sentence often uses short, disjointed clauses or phrases that disrupt the flow and create a sense of unease or urgency.
+
+<S> is a statement.
+<Q> is a question.
+<C> is a command.
+<E> is an exclamation.

@@ -1,7 +1,7 @@
 Define <S> to be a simple sentence that is comprised of only one independent clause.
-Define <C> to be a compound sentence that is comprised of at most two independent clauses and no dependpent clauses.
+Define <C> to be a compound sentence that is comprised of at most two independent clauses and no dependpent clauses. Usually identified by showing the relationship between main ideas and supporting ideas
 Define <CC> to be a complex sentence that is comprised of only one independent clause and at least one dependent clause.
-Define <CXC> to be a complex compound sentence that is comprised of at least two independent clauses and at least one dependent clause.
+Define <CXC> to be a complex compound sentence that is comprised of at least two independent clauses and at least one dependent clause. Commonly used coordinating conjunctions include “and,” “but,” and “or”, usually identified by a relationship between equal or similar ideas.
 
 Define <L> to be a loose rhetorical type that follows the formula: Main clause + Parallel Dependent clauses or phrases
 Define <P> to be a periodic rhetorical type that follows the formula: Parallel Dependent clauses or phrases + Main clause
@@ -24,6 +24,11 @@ Define <RB> to be a rythmic and euphony where the setence is "Rhythmic and balan
 Define <CV> to be a rythmic and euphony where the setence is "Complex and varied" defined by intricate arrangements of clauses and phrases, incorporating a mix of different rhythmic patterns and varying sentence lengths. This type of sentence often includes multiple dependent and independent clauses, creating a rich and layered effect.
 Define <JA> to be a rythmic and euphony where the setence is "Jerky or abrupt" defined by irregular, choppy rhythms and abrupt shifts in thought or structure. This type of sentence often uses short, disjointed clauses or phrases that disrupt the flow and create a sense of unease or urgency.
 
+Define <S> to be a statement.
+Define <Q> to be a question.
+Define <C> to be a command.
+Define <E> to be a exlamation.
+
 Let <s> be some string. Define <ID> to be the task of identifying the clauses and sentence type of a string <s>.
 
 Let <s> be some string. Define <O> to be the task of identifying the type of opening <s> has.
@@ -31,6 +36,8 @@ Let <s> be some string. Define <O> to be the task of identifying the type of ope
 Let <s> be some string. Define <RT> to be the task of identifying the rhetorical type of <s>.
 
 Let <s> be some string. Define <MA> to be the task of identifying the type of rhetorical meter in <s>.
+
+Let <s> be some string. Define <SentType> to be the task of identifying the function of a sentence.
 
 Let <t> be some advanced task. Define <D> to be the decomposition of <t> into a specific steps.
 
@@ -46,4 +53,4 @@ Let <s> be some string. Define <Rh> to be the task of identifying the rhythm and
 
 Define <RhAnalysis> to be the application of <D> to <Rh>.
 
-Define <Full_Sent> to be the combination of the steps in <IDAnalysis>, <OAnalysis>, <RTAnalysis>, and <RhAnalysis>.
+Define <Full_Sent> to be the combination of the steps in <IDAnalysis>, <OAnalysis>, <RTAnalysis>, <RhAnalysis>, and <SentType>.
