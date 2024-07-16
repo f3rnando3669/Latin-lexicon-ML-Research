@@ -3,6 +3,7 @@ import os
 from typing import List
 import csv
 import json
+import re
 
 def readfile(path) -> str:
     """
@@ -47,8 +48,12 @@ def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed="") -> None:
     try:
         print("Writing to file")
         current_time = datetime.datetime.now()
-        dir_size = directory_size(dir)
-        fd = open(f"{dir}/{name}_{dir_size}.{type}", "w")
+        directory_list = os.listdir(dir) 
+        count = 1
+        for item in directory_list:
+            if re.match(f'{name}_'+r'[0-9]+'+f'.{type}', item):
+                count += 1
+        fd = open(f"{dir}/{name}_{count}.{type}", "w")
         fd.write(f"New response iteration made at {current_time}\nFor {text_analyzed}\n" + text + "\n")
         print("Write successful")
         fd.close()
@@ -101,3 +106,4 @@ def write_tojson(path, data) -> None:
         fd.close()
     except:
         raise RuntimeError("Could not write to json file")
+    
