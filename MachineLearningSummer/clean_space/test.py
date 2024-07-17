@@ -39,7 +39,7 @@ from Clients.Utilities.FileUtilities import readjson, readfile, write_to_file
 parameters = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\clean_space\sentence_parameter.txt")
 
 parameter_set = SimplePrompt(parameters)
-sent_1 = SimplePrompt("Apply <Full_Sent> to the string \'Because the soup was too cold, I warmed it in the microwave\'")
+sent_1 = SimplePrompt("Apply <Full_Sent> to the string \'It is said by some to be the ghost of a Hessian trooper, whose head had been carried away by a cannon-ball, in some nameless battle during the revolutionary war; and who is ever and anon seen by the country folk, hurrying along in the gloom of night, as if on the wings of the wind.\'")
 
 prompts = PromptList()
 
