@@ -1,8 +1,7 @@
 from Clients.Utilities.FileUtilities import read_filelines, readjson
 import re
-import os
 
-mapping_path = r"/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/fallacy_dataset/abrev_to_fallacy.json"
+mapping_path = r"Computer-Science-Research-Summer/MachineLearningSummer/fallacy_dataset/abrev_to_fallacy.json"
 label_to_article_map = readjson(mapping_path)
 
 def extract_result(path) -> None:
@@ -10,6 +9,7 @@ def extract_result(path) -> None:
     for line in lines:
         rv = ''
         accum = False
+        line = "".join(line.split(" ")[::-1])
         for char in line:
             if char == '<':
                 accum = True
@@ -18,11 +18,10 @@ def extract_result(path) -> None:
                 rv += char
             if char == '>':
                 if rv in label_to_article_map:
+                    # print(rv)
                     return rv
                 accum = False
                 rv = ''
-            
-p = r'/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/DEP_1.txt'
 
 def iscorrect(path):
     file = path.split('/')[-1]
