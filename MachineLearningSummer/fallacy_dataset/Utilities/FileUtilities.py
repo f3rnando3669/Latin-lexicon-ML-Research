@@ -41,7 +41,7 @@ def readjson(path):
     fd.close()
     return jsonobject
 
-def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed="") -> str:
+def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed="") -> None:
     """
     write to a file in a directory
     """
@@ -53,16 +53,14 @@ def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed="") -> str:
         for item in directory_list:
             if re.match(f'{name}_'+r'[0-9]+'+f'.{type}', item):
                 count += 1
-        path = f"{dir}/{name}_{count}.{type}"
-        fd = open(path, "w")
+        fd = open(f"{dir}/{name}_{count}.{type}", "w")
         fd.write(f"New response iteration made at {current_time}\nFor {text_analyzed}\n" + text + "\n")
         print("Write successful")
         fd.close()
-        return path
     except:
         raise RuntimeError("Could not write to file")
 
-def write_to_file(name, text, type="txt") -> str:
+def write_to_file(name, text, type="txt") -> None:
     """
     write to a file
     """
@@ -70,13 +68,11 @@ def write_to_file(name, text, type="txt") -> str:
         print("Writing to file")
         current_time = datetime.datetime.now()
         print(current_time)
-        path = f"{name}.{type}"
-        fd = open(path, "w")
+        fd = open(f"{name}.{type}", "w")
         print("file created")
         fd.write(f"New response iteration made at {current_time}\n" + text + "\n")
         print("Write successful")
         fd.close()
-        return path
     except:
         raise RuntimeError("Could not write to file")
 
@@ -111,3 +107,10 @@ def write_tojson(path, data) -> None:
     except:
         raise RuntimeError("Could not write to json file")
     
+def write_lines(path, lines) -> None:
+    try:
+        fd = open(path, 'w')
+        fd.writelines(lines)
+        fd.close()
+    except:
+        raise RuntimeError("Could not write to txt file")
