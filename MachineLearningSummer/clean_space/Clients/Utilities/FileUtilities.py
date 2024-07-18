@@ -110,4 +110,29 @@ def write_tojson(path, data) -> None:
         fd.close()
     except:
         raise RuntimeError("Could not write to json file")
-    
+
+def write_lines(path, lines) -> str:
+    try:
+        fd = open(path, 'w')
+        fd.writelines(lines)
+        fd.close()
+        return path
+    except:
+        raise RuntimeError("Could not write to txt file")
+
+def write_lines_to_dir(dir, name, lines, type="txt") -> str:
+    try:
+        print("Writing to file")
+        directory_list = os.listdir(dir) 
+        count = 1
+        for item in directory_list:
+            if re.match(f'{name}_'+r'[0-9]+'+f'.{type}', item):
+                count += 1
+        path = f"{dir}/{name}_{count}.{type}"
+        fd = open(path, "w")
+        fd.writelines(lines)
+        print("Write successful")
+        fd.close()
+        return path
+    except:
+        raise RuntimeError("Could not write to file")
