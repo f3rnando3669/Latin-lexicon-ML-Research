@@ -39,11 +39,15 @@ from Clients.Utilities.FileUtilities import readjson, readfile, write_to_file
 parameters = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\clean_space\sentence_parameter.txt")
 
 parameter_set = SimplePrompt(parameters)
-sent_1 = SimplePrompt("Apply <Full_Sent> to the string \'It is said by some to be the ghost of a Hessian trooper, whose head had been carried away by a cannon-ball, in some nameless battle during the revolutionary war; and who is ever and anon seen by the country folk, hurrying along in the gloom of night, as if on the wings of the wind.\'")
+sent_1 = SimplePrompt("Apply <Full_Sent> to the string \'I returned and saw under the sun that the race is not to the swift, nor the battle to the strong, neither yet bread to the wise, nor yet riches to men of understanding, nor yet favour to men of skill; but time and chance happeneth to them all.\'")
+sent_2 = SimplePrompt("Apply <Full_Sent> to the string \'For man also knoweth not his time: as the fishes that are taken in an evil net, and as the birds that are caught in the snare; so are the sons of men snared in an evil time, when it falleth suddenly upon them.\'")
+sent_3 = SimplePrompt("Apply <Full_Sent> to the string \'This wisdom have I seen also under the sun, and it seemed great unto me.\'")
+sent_4 = SimplePrompt("Apply <Full_Sent> to the string \'There was a little city, and few men within it; and there came a great king against it, and besieged it, and built great bulwarks against it.\'")
+sent_5 = SimplePrompt("Apply <Full_Sent> to the string \'Now there was found in it a poor wise man, and he by his wisdom delivered the city; yet no man remembered that same poor man.\'")
 
 prompts = PromptList()
 
-prompts.add_userprompts([parameter_set, sent_1])
+prompts.add_userprompts([parameter_set, sent_5])
 
 client_interface = ClientInterface(ContextTightClient)
 tpath = r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\clean_space"
