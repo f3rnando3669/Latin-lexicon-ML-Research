@@ -115,4 +115,8 @@ def messing_with_matricies():
     print(working_matrix.toarray())
     return
 
-core_Process("DS1_FASTA")
+core_Process("bad_boys_FASTA")
+print(indexed_Trigrams)
+print(indexed_Genes)
+print(geneIndex)
+print(trigramIndex)
