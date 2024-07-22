@@ -1,10 +1,10 @@
-New response iteration made at 2024-07-22 13:55:04.681453
+New response iteration made at 2024-07-22 18:20:58.352790
 For 
 
 General:
-Correctly Indentified: 11
+Correctly Indentified: 12
 Total: 14
-Percentage: 78.57
+Percentage: 85.71
 
 Breakdown:
 DEP:
@@ -28,9 +28,9 @@ Total: 2
 Percentage: 100.0
 ==============================
 IR:
-Correct: 1
+Correct: 2
 Total: 2
-Percentage: 50.0
+Percentage: 100.0
 ==============================
 RR:
 Correct: 2
@@ -42,3 +42,7 @@ Correct: 2
 Total: 2
 Percentage: 100.0
 ==============================
+
+Paths for Incorrect Files:
+MachineLearningSummer/clean_space/response_bank/batch2/FU_1.txt
+MachineLearningSummer/clean_space/response_bank/batch2/FU_2.txt

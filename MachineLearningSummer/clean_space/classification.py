@@ -30,13 +30,14 @@ def batch_classify(rbk_path, dataset_path, mapping_path, batch_dir, summary_name
         response_paths.append(path)
 
     category_details = {}
+    incorrect_list = []
     count = 0
     for path in response_paths:
         category = path.split('/')[-1].split('_')[0]
         if category in category_details:
             category_details[category]['Total'] += 1
         else:
-            category_details[category] = {'Total':1}
+            category_details[category] = {'Total':1, 'Correct':0}
 
         correct = iscorrect(path)
         if correct:
@@ -45,16 +46,18 @@ def batch_classify(rbk_path, dataset_path, mapping_path, batch_dir, summary_name
                 category_details[category]['Correct'] += 1
             else:
                 category_details[category] = {'Correct':1}
+        else:
+            incorrect_list.append(path)
 
     total = len(response_paths)
-    summary = f'Correctly Indentified: {count}\nPercentage: {count/total*100}\nBreakdown:\n'
+    summary = f'\nGeneral:\nCorrectly Indentified: {count}\nTotal: {total}\nPercentage: {round(count/total*100, 2)}\n\nBreakdown:'
     for category in category_details:
         correct = category_details[category]['Correct']
         total = category_details[category]['Total']
-        summary += f'{category}:\nCorrect: {correct}\nTotal: {total}\nPercentage: {correct/total*100}'
+        summary += f'\n{category}:\nCorrect: {correct}\nTotal: {total}\nPercentage: {correct/total*100}\n'
         summary += "=" * 30
-        summary += '\n'
-    write_to_file_in_dir(batch_dir, summary_name, summary)
+    summary += "\n\nPaths for Incorrect Files:\n"+"\n".join(incorrect_list)
+    write_to_file_in_dir(batch_dir, 'batch_summary', summary)
     print('Done')
     return summary
 
@@ -62,36 +65,5 @@ def batch_classify(rbk_path, dataset_path, mapping_path, batch_dir, summary_name
 # mapping_path = r"MachineLearningSummer/fallacy_dataset/article_to_label_test.json"
 # # dataset_path = r'MachineLearningSummer/fallacy_dataset/30%_of_dataset.csv'
 # dataset_path = r'MachineLearningSummer/fallacy_dataset/article_to_label_test.json'
-batch_dir = r"MachineLearningSummer/clean_space/response_bank/batch2"
+# batch_dir = r"MachineLearningSummer/clean_space/response_bank/batch2"
 # batch_classify(rbk_path=rbk_path, dataset_path=dataset_path, mapping_path=mapping_path, batch_dir=dir)
-
-response_paths = ['MachineLearningSummer/clean_space/response_bank/batch2/DEP_1.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/DEP_2.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/FE_1.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/FE_2.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/FU_1.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/FU_2.txt',
-                  'MachineLearningSummer/clean_space/response_bank/batch2/G_1.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/G_2.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/IR_1.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/IR_2.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/RR_1.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/RR_2.txt',
-                  'MachineLearningSummer/clean_space/response_bank/batch2/WCB_1.txt', 'MachineLearningSummer/clean_space/response_bank/batch2/WCB_2.txt'
-                  ]
-category_details = {}
-count = 0
-for path in response_paths:
-    category = path.split('/')[-1].split('_')[0]
-    if category in category_details:
-        category_details[category]['Total'] += 1
-    else:
-        category_details[category] = {'Total':1, 'Correct':0}
-
-    correct = iscorrect(path)
-    if correct:
-        count += 1
-        if category in category_details:
-            category_details[category]['Correct'] += 1
-        else:
-            category_details[category] = {'Correct':1}
-
-total = len(response_paths)
-summary = f'\nGeneral:\nCorrectly Indentified: {count}\nTotal: {total}\nPercentage: {round(count/total*100, 2)}\n\nBreakdown:'
-for category in category_details:
-    correct = category_details[category]['Correct']
-    total = category_details[category]['Total']
-    summary += f'\n{category}:\nCorrect: {correct}\nTotal: {total}\nPercentage: {correct/total*100}\n'
-    summary += "=" * 30
-write_to_file_in_dir(batch_dir, 'batch_summary', summary)
-print('Done')

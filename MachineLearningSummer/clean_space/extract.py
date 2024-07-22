@@ -12,8 +12,8 @@ def extract_result(path: str) -> bool:
     lines = read_filelines(path)[::-1]
     for line in lines:
         line = line.rstrip()
-        line = " ".join(line.split(" ")[::-1]).split(" ")
-        for word in line:
+        line_arr = " ".join(line.split(" ")[::-1]).split(" ")
+        for word in line_arr:
             result = re.search(r'(<[\S]+>)|(\([\S]+\))', word)
             if result:
                 tag = result.group()
@@ -27,25 +27,24 @@ def extract_result(path: str) -> bool:
                 if tag in label_to_article_map:
                     # print(tag, "TAG")
                     return tag
-
-        for word in line:
-            result = re.search(r'\\langle IR \\rangle', word)
-            if result:
-                tag = result.group()
-                print(tag)
-                tag = re.sub(r'\\\( \\langle', '', tag)
-                tag = re.sub(r'\\rangle \\\)', '', tag)
-                for i in range(len(tag)):
-                    tag = tag.rstrip('>')
-                    tag = tag.strip('<')
-                    tag = tag.rstrip(')')
-                    tag = tag.strip('(')
-                    tag = tag.rstrip('}')
-                    tag = tag.strip('{')
-                tag = '<'+tag+'>'
-                if tag in label_to_article_map:
-                    # print(tag, "TAG")
-                    return tag
+    
+        result = re.search(r'\\langle [a-zA-Z]+ \\rangle', line)
+        if result:
+            tag = result.group()
+            tag = re.sub(r'\\langle', '', tag)
+            tag = re.sub(r'\\rangle', '', tag)
+            for i in range(len(tag)):
+                tag = tag.rstrip('>')
+                tag = tag.strip('<')
+                tag = tag.rstrip(')')
+                tag = tag.strip('(')
+                tag = tag.rstrip('}')
+                tag = tag.strip('{')
+                tag = tag.rstrip(' ')
+                tag = tag.strip(' ')
+            tag = '<'+tag+'>'
+            if tag in label_to_article_map:
+                return tag
 
 def iscorrect(path: str):
     """
