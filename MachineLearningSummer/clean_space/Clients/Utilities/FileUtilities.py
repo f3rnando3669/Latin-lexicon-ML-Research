@@ -46,7 +46,7 @@ def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed="") -> str:
     write to a file in a directory
     """
     try:
-        print("Writing to file")
+        # print("Writing to file")
         current_time = datetime.datetime.now()
         directory_list = os.listdir(dir) 
         count = 1

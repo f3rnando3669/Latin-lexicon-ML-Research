@@ -2,7 +2,7 @@ from typing import List
 from Clients.Utilities.FileUtilities import read_filelines, readjson
 import re
 
-mapping_path = r"Computer-Science-Research-Summer/MachineLearningSummer/fallacy_dataset/abrev_to_fallacy.json"
+mapping_path = r"MachineLearningSummer/fallacy_dataset/abrev_to_fallacy.json"
 label_to_article_map = readjson(mapping_path)
 
 def extract_result(path: str) -> bool:
@@ -27,7 +27,7 @@ def extract_result(path: str) -> bool:
                 accum = False
                 rv = ''
 
-def iscorrect(path: str) -> List[bool, int]:
+def iscorrect(path: str):
     """
     check if the label from gpt matches the filename
     """
