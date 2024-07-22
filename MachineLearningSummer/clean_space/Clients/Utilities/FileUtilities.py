@@ -48,7 +48,10 @@ def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed="") -> str:
     try:
         # print("Writing to file")
         current_time = datetime.datetime.now()
-        directory_list = os.listdir(dir) 
+        try:
+            directory_list = os.listdir(dir)
+        except:
+            raise RuntimeError("Could not locate directory")
         count = 1
         for item in directory_list:
             if re.match(f'{name}_'+r'[0-9]+'+f'.{type}', item):
@@ -56,7 +59,7 @@ def write_to_file_in_dir(dir, name, text, type="txt", text_analyzed="") -> str:
         path = f"{dir}/{name}_{count}.{type}"
         fd = open(path, "w")
         fd.write(f"New response iteration made at {current_time}\nFor {text_analyzed}\n" + text + "\n")
-        print("Write successful")
+        # print("Write successful")
         fd.close()
         return path
     except:
@@ -123,12 +126,19 @@ def write_lines(path, lines) -> str:
 def write_lines_to_dir(dir, name, lines, type="txt") -> str:
     try:
         print("Writing to file")
-        directory_list = os.listdir(dir) 
+        try:
+            directory_list = os.listdir(dir)
+        except:
+            raise RuntimeError("Could not locate directory")
         count = 1
         for item in directory_list:
             if re.match(f'{name}_'+r'[0-9]+'+f'.{type}', item):
                 count += 1
-        path = f"{dir}/{name}_{count}.{type}"
+        path = ''
+        if dir[-1] != '/':
+            path = f"{dir}/{name}_{count}.{type}"
+        else:
+            path = f"{dir}{name}_{count}.{type}"
         fd = open(path, "w")
         fd.writelines(lines)
         print("Write successful")

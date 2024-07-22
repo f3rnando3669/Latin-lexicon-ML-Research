@@ -1,0 +1,11 @@
+Define <G> to be a defective argument type called Generalization usually claiming a general truth based on a specific instance (e.g., ""All sports car drivers are too aggressive!" is an example of:")
+Define <FE> to be a defective argument type called False Enumeration usually listing fewer or more options than actually exist (e.g., ""Vote for Smith or live through four more years of higher taxes."")
+Define <IR> to be a defective argument type called Inappropriate Reason usually providing a reason that doesn't logically support the proposition (e.g., "Don't you want the best for your baby?")
+Define <RR> to be a defective argument type called Redundant Reason usually saying the same thing as the proposition but in other words (e.g., "This legislation is sinful because it is the wrong thing to do.")
+Define <WCB> to be a defective argument type called Weak Causal Basis usually offering a reason that is not compelling enough to support the proposition (e.g., "I had a real bad headache, then saw my doctor.  Just by talking with him, my headache started to subside, and I was all better the next day.  It was well worth the $200 visit fee.")
+Define <FU> to be a defective argument type called False Universals usually asserting universally agreed points without proof (e.g., "Mormonism is one of the fastest growing sects of Christianity today so that whole story about Joseph Smith getting the golden plates that, unfortunately, disappeared back into heaven, must be true!")
+Define <DEP> to be a defective argument type called Double-Edged Phrases usually using statements open to dual interpretations, potentially against the speaker (e.g., "I want to have myself a merry little Christmas, but I refuse to do as the song suggests and make the yuletide gay.  I don't think sexual preference should have anything to do with enjoying the holiday.")
+
+Let <s> be some string. Define <IDA> to be the task of identifying the type of defective argument <s> has.
+Let <t> be some advanced task. Define <D> to be the decomposition of <t> into specific steps.
+Define <IDAA> to be the application of <D> to <IDA>.

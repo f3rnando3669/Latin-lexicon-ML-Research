@@ -12,7 +12,10 @@ def extract_result(path: str) -> bool:
     lines = read_filelines(path)[::-1]
     for line in lines:
         rv = ''
+        rv_b = ''
         accum = False
+        accum_b = False
+        
         line = "".join(line.split(" ")[::-1])
         for char in line:
             if char == '<':
@@ -22,10 +25,21 @@ def extract_result(path: str) -> bool:
                 rv += char
             if char == '>':
                 if rv in label_to_article_map:
-                    # print(rv)
                     return rv
                 accum = False
                 rv = ''
+
+            if char == '(':
+                accum_b = True
+                rv_b = '<'
+            elif accum_b:
+                rv_b += char
+            if char == ')':
+                rv_b = rv_b[:-1]+'>'
+                if rv_b in label_to_article_map:
+                    return rv_b
+                accum_b = False
+                rv_b = ''
 
 def iscorrect(path: str):
     """
@@ -37,6 +51,6 @@ def iscorrect(path: str):
     propername = filename+'_'+suffix
     if re.match(r'\<[A-Z]+\>_[0-9]+.txt', propername):
         extracted = extract_result(path)
-        return extracted == filename, 1
+        return extracted == filename
     else:
-        return False, 0
+        return False
