@@ -29,7 +29,8 @@ def get_limited_labels_and_articles(tags, labels_and_articles, limit=1):
 
 def add_examples(dataset_path, tags_path, rbk_path, dir, name, prefix=r'^Define ', suffix=r')', limit=1) -> str:
     labels_and_articles = get_labels_and_articles(dataset_path)
-    tags = readjson(tags_path)
+    # tags = readjson(tags_path)
+    tags = {'<FU>'}
     tag_to_article = get_limited_labels_and_articles(tags, labels_and_articles, limit)
     rbk = read_filelines(rbk_path)
 
@@ -46,9 +47,9 @@ def add_examples(dataset_path, tags_path, rbk_path, dir, name, prefix=r'^Define 
     
     return write_lines_to_dir(dir, name, rbk)
 
-# dataset_path = r'MachineLearningSummer/fallacy_dataset/70%_of_dataset.csv'
-# tags_path = r'MachineLearningSummer/fallacy_dataset/abrev_to_fallacy.json'
-# rb_path = r'MachineLearningSummer/rulebook_intermediates/rbk22_1.txt'
-# new_path = r'MachineLearningSummer/rule_book_bank'
-# name = 'RAW_RuleBooks'
-# add_examples(dataset_path=dataset_path, tags_path=tags_path, rbk_path=rb_path, dir=new_path, name=name)
+dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/20%_of_70%_of_dataset.csv'
+tags_path = r'MachineLearningSummer/fallacy_dataset/abrev_to_fallacy.json'
+rb_path = r'MachineLearningSummer/rule_book_bank/RAW_RuleBooks_22.txt'
+new_path = r'MachineLearningSummer/rule_book_bank'
+name = 'RAW_RuleBooks'
+add_examples(dataset_path=dataset_path, tags_path=tags_path, rbk_path=rb_path, dir=new_path, name=name, limit=5)

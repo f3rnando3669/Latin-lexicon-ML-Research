@@ -11,35 +11,41 @@ def extract_result(path: str) -> bool:
     """
     lines = read_filelines(path)[::-1]
     for line in lines:
-        rv = ''
-        rv_b = ''
-        accum = False
-        accum_b = False
-        
-        line = "".join(line.split(" ")[::-1])
-        for char in line:
-            if char == '<':
-                accum = True
-                rv = '<'
-            elif accum:
-                rv += char
-            if char == '>':
-                if rv in label_to_article_map:
-                    return rv
-                accum = False
-                rv = ''
+        line = line.rstrip()
+        line = " ".join(line.split(" ")[::-1]).split(" ")
+        for word in line:
+            result = re.search(r'(<[\S]+>)|(\([\S]+\))', word)
+            if result:
+                tag = result.group()
+                
+                for i in range(len(tag)):
+                    tag = tag.rstrip('>')
+                    tag = tag.strip('<')
+                    tag = tag.rstrip(')')
+                    tag = tag.strip('(')
+                tag = '<'+tag+'>'
+                if tag in label_to_article_map:
+                    # print(tag, "TAG")
+                    return tag
 
-            if char == '(':
-                accum_b = True
-                rv_b = '<'
-            elif accum_b:
-                rv_b += char
-            if char == ')':
-                rv_b = rv_b[:-1]+'>'
-                if rv_b in label_to_article_map:
-                    return rv_b
-                accum_b = False
-                rv_b = ''
+        for word in line:
+            result = re.search(r'\\langle IR \\rangle', word)
+            if result:
+                tag = result.group()
+                print(tag)
+                tag = re.sub(r'\\\( \\langle', '', tag)
+                tag = re.sub(r'\\rangle \\\)', '', tag)
+                for i in range(len(tag)):
+                    tag = tag.rstrip('>')
+                    tag = tag.strip('<')
+                    tag = tag.rstrip(')')
+                    tag = tag.strip('(')
+                    tag = tag.rstrip('}')
+                    tag = tag.strip('{')
+                tag = '<'+tag+'>'
+                if tag in label_to_article_map:
+                    # print(tag, "TAG")
+                    return tag
 
 def iscorrect(path: str):
     """
