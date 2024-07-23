@@ -4,12 +4,10 @@ import re
 from dataset_utils import get_labels_and_articles, get_limited_labels_and_articles
 
 
-def add_examples(dataset_path:str, tags:dict[str], rbk_path:str, dir:str, name:str, prefix=r'^Define ', suffix=r')', limit=1) -> str:
-    labels_and_articles = get_labels_and_articles(dataset_path)
-    tag_to_article = get_limited_labels_and_articles(tags, labels_and_articles, limit)
+def add_examples(tag_to_article:dict, rbk_path:str, dir:str, name:str, prefix=r'^Define ', suffix=r')', limit=1) -> str:
     rbk = read_filelines(rbk_path)
 
-    for tag in tags:
+    for tag in tag_to_article:
         for i, definition in enumerate(rbk):
             if re.match(prefix+tag, definition):
                 definition = definition.rstrip().removesuffix(suffix)

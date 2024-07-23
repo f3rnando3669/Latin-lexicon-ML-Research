@@ -125,7 +125,7 @@ def write_lines(path, lines) -> str:
 
 def write_lines_to_dir(dir, name, lines, type="txt") -> str:
     try:
-        print("Writing to file")
+        # print("Writing to file")
         try:
             directory_list = os.listdir(dir)
         except:
@@ -139,10 +139,36 @@ def write_lines_to_dir(dir, name, lines, type="txt") -> str:
             path = f"{dir}/{name}_{count}.{type}"
         else:
             path = f"{dir}{name}_{count}.{type}"
-        fd = open(path, "w")
-        fd.writelines(lines)
-        print("Write successful")
-        fd.close()
+        write_lines(path, lines)
         return path
     except:
         raise RuntimeError("Could not write to file")
+
+def write_dict_to_csv_in_dir(dir, name, dictionary, column_names) -> str:
+    try:
+        # print("Writing to file")
+        try:
+            directory_list = os.listdir(dir)
+        except:
+            raise RuntimeError("Could not locate directory")
+        count = 1
+        for item in directory_list:
+            if re.match(f'{name}_'+r'[0-9]+'+f'.csv', item):
+                count += 1
+        path = ''
+        if dir[-1] != '/':
+            path = f"{dir}/{name}_{count}.csv"
+        else:
+            path = f"{dir}{name}_{count}.csv"
+
+        write_dict_to_csv(path, dictionary, column_names)
+        return path
+    except:
+        raise RuntimeError("Could not write to file")
+    
+def write_dict_to_csv(path:str, dictionary:dict[str], column_names: List[str]):
+    fd = open(path, 'w')
+    writer = csv.DictWriter(fd, column_names)
+    writer.writeheader()
+    writer.writerows(dictionary)
+    fd.close()
