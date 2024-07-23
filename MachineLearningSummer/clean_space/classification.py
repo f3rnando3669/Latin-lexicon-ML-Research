@@ -6,23 +6,17 @@ from Clients.Utilities.FileUtilities import readfile, readjson, write_to_file_in
 from extract import iscorrect
 
 # Classification Experiment
-def batch_classify(rbk_path, dataset_path, batch_dir, summary_name='batch_summary'):
+def batch_classify(rbk_path: str, article_to_label_map, batch_dir:str, summary_name='batch_summary'):
     params = readfile(rbk_path)
     param_prompt = SimplePrompt(params)
-    dataset = readcsv(dataset_path)
-    article_to_label_map = {}
-    for entry in dataset:
-        label, article = entry
-        article_to_label_map[article] = label
-    # article_to_label_map = readjson(dataset_path)
-    # target = ['<WCB>']
     
     response_paths = []
-    print_freq  = len(article_to_label_map) // 6
+    print_freq  = len(article_to_label_map) // 10
     counter = 0
     index = 1
     for article in article_to_label_map:
-            # if article_to_label_map[article] in target:
+        if article == 'article':
+            continue
         prompt = SimplePrompt(f"Apply <IDAA> to \"{article}\"")
         prompts = PromptList()
         prompts.add_userprompts([param_prompt, prompt])
@@ -31,14 +25,13 @@ def batch_classify(rbk_path, dataset_path, batch_dir, summary_name='batch_summar
         txt_name = article_to_label_map[article][1:-1]
         path = write_to_file_in_dir(batch_dir, txt_name, response)
         response_paths.append(path)
-        if counter == print_freq:
-            print("="*10, f'batch_{index}_complete', '='*10 )
-            counter = 0
-            index += 1
         counter += 1
-
-    if counter != 0:
-        print("="*10, f'batch_{index}_complete', '='*10 )
+        if counter % print_freq == 0:
+            print("="*10, f'group_{index}_complete', '='*10 )
+            index += 1
+        
+    if counter % print_freq != 0:
+        print("="*10, f'group_{index}_complete', '='*10 )
         
     category_details = {}
     incorrect_list = []
@@ -72,9 +65,9 @@ def batch_classify(rbk_path, dataset_path, batch_dir, summary_name='batch_summar
     print('Done')
     return summary
 
-rbk_path = r"MachineLearningSummer/rule_book_bank/RAW_RuleBooks_23.txt"
+# rbk_path = r"MachineLearningSummer/rule_book_bank/RAW_RuleBooks_23.txt"
 # mapping_path = r"MachineLearningSummer/fallacy_dataset/article_to_label_test.json"
-dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/30%_of_80%_of_70%_of_dataset.csv'
+# dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/30%_of_80%_of_70%_of_dataset.csv'
 # dataset_path = r'MachineLearningSummer/fallacy_dataset/article_to_label_test.json'
-batch_dir = r"MachineLearningSummer/clean_space/response_bank/batch3"
-batch_classify(rbk_path=rbk_path, dataset_path=dataset_path, batch_dir=batch_dir)
+# batch_dir = r"MachineLearningSummer/clean_space/response_bank/batch3"
+# batch_classify(rbk_path=rbk_path, dataset_path=dataset_path, batch_dir=batch_dir)
