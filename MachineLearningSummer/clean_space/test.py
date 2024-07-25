@@ -39,15 +39,20 @@ from Clients.Utilities.FileUtilities import readjson, readfile, write_to_file
 parameters = readfile(r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\clean_space\sentence_parameter.txt")
 
 parameter_set = SimplePrompt(parameters)
-sent_1 = SimplePrompt("Apply <Full_Sent> to the string \'I returned and saw under the sun that the race is not to the swift, nor the battle to the strong, neither yet bread to the wise, nor yet riches to men of understanding, nor yet favour to men of skill; but time and chance happeneth to them all.\'")
-sent_2 = SimplePrompt("Apply <Full_Sent> to the string \'For man also knoweth not his time: as the fishes that are taken in an evil net, and as the birds that are caught in the snare; so are the sons of men snared in an evil time, when it falleth suddenly upon them.\'")
-sent_3 = SimplePrompt("Apply <Full_Sent> to the string \'This wisdom have I seen also under the sun, and it seemed great unto me.\'")
-sent_4 = SimplePrompt("Apply <Full_Sent> to the string \'There was a little city, and few men within it; and there came a great king against it, and besieged it, and built great bulwarks against it.\'")
-sent_5 = SimplePrompt("Apply <Full_Sent> to the string \'Now there was found in it a poor wise man, and he by his wisdom delivered the city; yet no man remembered that same poor man.\'")
+sent_1 = SimplePrompt("Apply <Full_Sent> to the string \'There is a time in every man's education when he arrives at the conviction that envy is ignorance; that imitation is suicide; that he must take himself for better for worse as his portion; that though the wide universe is full of good, no kernel of nourishing corn can come to him but through his toil bestowed on that plot of ground which is given to him to till.\'")
+sent_2 = SimplePrompt("Apply <Full_Sent> to the string \'That power which resides in him is new in nature, and none but he knows what that is which he can do, nor does he know until he has tried.\'")
+sent_3 = SimplePrompt("Apply <Full_Sent> to the string \'Not for nothing one face, one character, one fact, makes much impression on him and another none.\'")
+sent_4 = SimplePrompt("Apply <Full_Sent> to the string \'This sculpture in the memory is not without pre-established harmony.\'")
+sent_5 = SimplePrompt("Apply <Full_Sent> to the string \'The eye was placed where one ray should fall, that it might testify of that particular ray.\'")
+sent_6 = SimplePrompt("Apply <Full_Sent> to the string \'We but half express ourselves, and are ashamed of that divine idea which each of us represents.\'")
+sent_7 = SimplePrompt("Apply <Full_Sent> to the string \'It may be safely trusted as proportionate and of good issues, so it be faithfully imparted, but God will not have his work made manifest by cowards.\'")
+sent_8 = SimplePrompt("Apply <Full_Sent> to the string \'A man is relieved and gay when he has put his heart into his work and done his best; but what he has said or done otherwise shall give him no peace.\'")
+sent_9 = SimplePrompt("Apply <Full_Sent> to the string \'It is a deliverance which does not deliver.\'")
+sent_10 = SimplePrompt("Apply <Full_Sent> to the string \'In the attempt his genius deserts him; no muse befriends; no invention, no hope.\'")
 
 prompts = PromptList()
 
-prompts.add_userprompts([parameter_set, sent_5])
+prompts.add_userprompts([parameter_set, sent_4])
 
 client_interface = ClientInterface(ContextTightClient)
 tpath = r"C:\Users\Liam\Desktop\Summer Research\Computer-Science-Research-Summer\MachineLearningSummer\clean_space"
