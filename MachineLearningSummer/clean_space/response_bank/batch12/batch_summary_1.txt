@@ -1,0 +1,52 @@
+New response iteration made at 2024-07-25 18:25:35.235547
+For 
+
+General:
+Correctly Indentified: 22
+Total: 28
+Percentage: 78.57
+
+Breakdown:
+IR:
+Correct: 2
+Total: 4
+Percentage: 50.0
+==============================
+FE:
+Correct: 3
+Total: 4
+Percentage: 75.0
+==============================
+FU:
+Correct: 4
+Total: 4
+Percentage: 100.0
+==============================
+G:
+Correct: 4
+Total: 4
+Percentage: 100.0
+==============================
+WCB:
+Correct: 4
+Total: 4
+Percentage: 100.0
+==============================
+RR:
+Correct: 1
+Total: 4
+Percentage: 25.0
+==============================
+DEP:
+Correct: 4
+Total: 4
+Percentage: 100.0
+==============================
+
+Paths for Incorrect Files:
+MachineLearningSummer/clean_space/response_bank/batch12/IR_2.txt
+MachineLearningSummer/clean_space/response_bank/batch12/IR_3.txt
+MachineLearningSummer/clean_space/response_bank/batch12/FE_4.txt
+MachineLearningSummer/clean_space/response_bank/batch12/RR_1.txt
+MachineLearningSummer/clean_space/response_bank/batch12/RR_2.txt
+MachineLearningSummer/clean_space/response_bank/batch12/RR_4.txt
