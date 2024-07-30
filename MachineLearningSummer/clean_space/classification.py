@@ -17,11 +17,13 @@ def batch_classify(rbk_path: str, article_to_label_map, batch_dir:str, summary_n
     for article in article_to_label_map:
         if article == 'article':
             continue
+
         prompt = SimplePrompt(f"Apply <IDAA> to \"{article}\"")
         prompts = PromptList()
         prompts.add_userprompts([param_prompt, prompt])
         client_interface = ClientInterface(ContextTightClient)
-        response = client_interface._client.generate(prompts=prompts)
+        client = client_interface._client
+        response = client.generate(prompts=prompts)
         txt_name = article_to_label_map[article][1:-1]
         path = write_to_file_in_dir(batch_dir, txt_name, response)
         response_paths.append(path)
