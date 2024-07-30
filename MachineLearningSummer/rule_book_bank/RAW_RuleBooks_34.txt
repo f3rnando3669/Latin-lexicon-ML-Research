@@ -7,6 +7,6 @@ Define <FU> to be a defective argument type called False Universals usually asse
 Which logical fallacy is represented here?")
 Define <DEP> to be a defective argument type called Double-Edged Phrases usually using statements open to dual interpretations, potentially against the speaker (e.g., "I want to have myself a merry little Christmas, but I refuse to do as the song suggests and make the yuletide gay.  I don't think sexual preference should have anything to do with enjoying the holiday.")
 
-Let <s> be some string. Define <IDA> to be the task of identifying the type of defective argument <s> has.
+Let <s> be some string. Define <IDA> to be the task of classifying <s> as of type <G>, <FE>, <IR>, <RR>, <WCB>, <FU> or <DEP> 
 Let <t> be some advanced task. Define <D> to be the decomposition of <t> into specific steps.
 Define <IDAA> to be the application of <D> to <IDA>.
