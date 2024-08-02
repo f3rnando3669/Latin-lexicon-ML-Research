@@ -58,3 +58,61 @@ def partition_dataset(path: str, train_num, test_num: int, shuffle_list=True) ->
             tracker[label] = 1
     
     return train_data, test_data, test_list
+
+def get_training_data(path, train_num, indexes, forbidden, selected):
+    if train_num == 0:
+        return {}, {}
+    labels_and_articles = list(get_labels_and_articles(path=path))
+
+    train_data = {}
+    updated = set()
+    
+    for i, entry in enumerate(labels_and_articles):
+        label, article = entry
+        if label not in selected:
+            continue
+        if article in forbidden[label]:
+            continue
+        if label in indexes:
+            if indexes[label] > i:
+                continue
+        if label in train_data:
+            if len(train_data[label]) == train_num:
+                if label in updated:
+                    continue
+                indexes[label] = i
+                updated.add(label)
+                continue
+            train_data[label].append(article)
+        else:
+            train_data[label] = [article]
+    
+    return train_data, indexes
+
+def get_test_data(path, test_num, indexes, forbidden):
+    if test_num == 0:
+        return {}, {}
+    labels_and_articles = list(get_labels_and_articles(path=path))
+
+    test_data = {}
+    updated = set()
+    
+    for i, entry in enumerate(labels_and_articles):
+        label, article = entry
+        if article in forbidden[label]:
+            continue
+        if label in indexes:
+            if indexes[label] > i:
+                continue
+        if label in test_data:
+            if len(test_data[label]) == test_num:
+                if label in updated:
+                    continue
+                indexes[label] = i
+                updated.add(label)
+                continue
+            test_data[label].append(article)
+        else:
+            test_data[label] = [article]
+    
+    return test_data, indexes

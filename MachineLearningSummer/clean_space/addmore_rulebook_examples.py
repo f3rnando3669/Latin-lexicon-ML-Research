@@ -4,7 +4,7 @@ import re
 from dataset_utils import get_labels_and_articles, get_limited_labels_and_articles
 
 
-def add_examples(tag_to_article:dict, rbk_path:str, dir:str, name:str, prefix=r'^Define ', suffix=r')', limit=1) -> str:
+def add_examples(tag_to_article:dict, rbk_path:str, dir:str, name:str, prefix=r'^Define ', suffix=r')') -> str:
     rbk = read_filelines(rbk_path)
 
     for tag in tag_to_article:
