@@ -3,12 +3,15 @@ from Clients.ContextTightClient import ContextTightClient
 from Prompts.SimplePrompt import SimplePrompt
 from Prompts.PromptList import PromptList
 from Clients.Utilities.FileUtilities import readfile, readjson, write_to_file_in_dir, readcsv
-from extract import iscorrect
+from extract import iscorrect, iscorrect_text
 
 # Classification Experiment
 def batch_classify(rbk_path: str, article_to_label_map, batch_dir:str, summary_name='batch_summary'):
     params = readfile(rbk_path)
-    param_prompt = SimplePrompt(params)
+    # portfolio = readfile(portfolio_path)
+    # param_prompt = SimplePrompt(params+'\n\n'+portfolio)
+    # print(param_prompt)
+    # return
     
     response_paths = []
     print_freq  = len(article_to_label_map) // 10
@@ -18,9 +21,9 @@ def batch_classify(rbk_path: str, article_to_label_map, batch_dir:str, summary_n
         if article == 'article':
             continue
 
-        prompt = SimplePrompt(f"Apply <IDAA> to \"{article}\"")
+        prompt = SimplePrompt(params+'\n'+f"\nApply <IDAA> to \"{article}\"")
         prompts = PromptList()
-        prompts.add_userprompts([param_prompt, prompt])
+        prompts.add_userprompts([prompt])
         client_interface = ClientInterface(ContextTightClient)
         client = client_interface._client
         response = client.generate(prompts=prompts)
@@ -63,7 +66,7 @@ def batch_classify(rbk_path: str, article_to_label_map, batch_dir:str, summary_n
         summary += f'\n{category}:\nCorrect: {correct}\nTotal: {total}\nPercentage: {correct/total*100}\n'
         summary += "=" * 30
     summary += "\n\nPaths for Incorrect Files:\n"+"\n".join(incorrect_list)
-    write_to_file_in_dir(batch_dir, summary_name, summary)
+    write_to_file_in_dir(batch_dir, summary_name, summary, text_analyzed=rbk_path)
     print('Done')
     return summary
 
@@ -73,3 +76,31 @@ def batch_classify(rbk_path: str, article_to_label_map, batch_dir:str, summary_n
 # dataset_path = r'MachineLearningSummer/fallacy_dataset/article_to_label_test.json'
 # batch_dir = r"MachineLearningSummer/clean_space/response_bank/batch3"
 # batch_classify(rbk_path=rbk_path, dataset_path=dataset_path, batch_dir=batch_dir)
+
+def build_portfolio(rbk_path: str, article_to_label_map: dict, portfolio_dir: str, portfolio_name: str) -> str:
+    params = readfile(rbk_path)
+    path = f'{portfolio_dir}/{portfolio_name}.txt'
+    fd = open(path, 'a')
+    # print(article_to_label_map)
+    # return ''
+    for i, article in enumerate(article_to_label_map):
+        if article == 'article':
+            continue
+        # print(article_to_label_map[article])
+        # break
+        prompt = SimplePrompt(params+f"\nApply <IDAA> to \"{article}\"")
+        prompts = PromptList()
+        prompts.add_userprompts([prompt])
+        client_interface = ClientInterface(ContextTightClient)
+        client = client_interface._client
+        response = client.generate(prompts=prompts)
+        tag = article_to_label_map[article]
+        correct = iscorrect_text(correct_tag=tag, text=response)
+        # print(i)
+        if correct:
+            fd.write(response)
+            fd.write(f'\nType of Defective Argument for \'{article}\': {tag}\n\n')
+        # break
+    fd.close()
+    print('Portfolio is ready')
+    return path

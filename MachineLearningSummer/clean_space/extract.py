@@ -59,3 +59,54 @@ def iscorrect(path: str):
         return extracted == filename
     else:
         return False
+
+def iscorrect_text(correct_tag: str, text: str) -> bool:
+    """
+    check if the label from gpt matches the expected tag
+    """
+    extracted = extract_result_from_text(text)
+    # print(correct_tag, extracted)
+    return correct_tag == extracted
+
+
+def extract_result_from_text(text: str) -> str:
+    """
+    check for the label specified by GPT as correct
+    """
+    lines = text.split('\n')[::-1]
+    for line in lines:
+        line = line.rstrip()
+        line_arr = " ".join(line.split(" ")[::-1]).split(" ")
+        for word in line_arr:
+            result = re.search(r'(<[\S]+>)|(\([\S]+\))', word)
+            if result:
+                tag = result.group()
+                
+                for i in range(len(tag)):
+                    tag = tag.rstrip('>')
+                    tag = tag.strip('<')
+                    tag = tag.rstrip(')')
+                    tag = tag.strip('(')
+                tag = '<'+tag+'>'
+                if tag in label_to_article_map:
+                    # print(tag, "TAG")
+                    return tag
+    
+        result = re.search(r'\\langle [a-zA-Z]+ \\rangle', line)
+        if result:
+            tag = result.group()
+            tag = re.sub(r'\\langle', '', tag)
+            tag = re.sub(r'\\rangle', '', tag)
+            for i in range(len(tag)):
+                tag = tag.rstrip('>')
+                tag = tag.strip('<')
+                tag = tag.rstrip(')')
+                tag = tag.strip('(')
+                tag = tag.rstrip('}')
+                tag = tag.strip('{')
+                tag = tag.rstrip(' ')
+                tag = tag.strip(' ')
+            tag = '<'+tag+'>'
+            if tag in label_to_article_map:
+                # print(tag, "TAG")
+                return tag
