@@ -51,13 +51,8 @@ def create_portfolio(portfolio_dir:str, portfolio_name:str, dataset_path:str, rb
         print('Portfolio complete!')
     return portfolio_path
 
-# need to be sure of the side effects here...
-# def create_portolio_and_classify(portfolio_dir: str, portfolio_name: str, train_n:int, test_n:int, rbk_path:str, dataset_path:str, train_data={}, test_data={}, indexes={}, select_labels={}, forbidden_examples={}):
-#     portfolio_path = create_portfolio(portfolio_dir=portfolio_dir, portfolio_name=portfolio_name, dataset_path=dataset_path, rbk_path=rbk_path, data_dict=test_data, example_count=test_n, forbidden_examples=forbidden_examples)
-#     experiment(train_n=train_n, test_n=test_n, dataset_path=dataset_path, rbk_path=rbk_path, portfolio=True, portfolio_path=portfolio_path, forbidden_examples=forbidden_examples, train_data=train_data, test_data=test_data, indexes=indexes, select_labels=select_labels)
-
 train_n = 0
-test_n = 8
+test_n = 4
 clean_space_dir = get_clean_space_dir()
 dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/70%_of_dataset.csv'
 forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/examples.json')
@@ -67,10 +62,6 @@ forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/exa
 select_labels = {'<IR>', '<FE>', '<RR>', '<G>', '<DEP>', '<FU>', '<WCB>'}
 indexes = {label:0 for label in select_labels}
 rule_book_bank_path = get_rulebook_bank_path()
-rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_36.txt'
-portfolio_dir = clean_space_dir+'/Portfolios'
-portfolio_name = r'portfolio3'
+rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_44.txt'
 
-portfolio_path = r'MachineLearningSummer/clean_space/Portfolios/portfolio3.txt'
-experiment(train_n=train_n, test_n=test_n, dataset_path=dataset_path, rbk_path=rbk_path, forbidden_examples=forbidden_examples, indexes=indexes, select_labels=select_labels, portfolio=True, portfolio_path=portfolio_path)
-# create_portfolio(portfolio_dir=portfolio_dir, portfolio_name=portfolio_name, dataset_path=dataset_path, rbk_path=rbk_path, data_dict={}, example_count=test_n,forbidden_examples=forbidden_examples, indexes=indexes, select_labels=select_labels)
+experiment(train_n=train_n, test_n=test_n, dataset_path=dataset_path, rbk_path=rbk_path, forbidden_examples=forbidden_examples, indexes=indexes, select_labels=select_labels)

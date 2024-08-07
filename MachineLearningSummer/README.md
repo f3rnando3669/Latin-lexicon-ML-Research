@@ -34,3 +34,5 @@ A Note to those reading, no strict classifier was found for the following defini
 <Q> is a question.
 <C> is a command.
 <E> is an exclamation.
+
+Toward the end of these experiments, the main issue in the model being made was the rhythm of the sentences. To combat this, we have selected a new source to obtain a new possible metric that would still be insightful to the purpose of a sentence without the need to explain how to quantify rhythm, which is something that can't really be quantified. In this pursuit where we lie at 8/5/2024 is the idea that ancient latinate words have more of a tendency to be balanced and rhythmic. Using this in tandem with the existing rhythm parameters, we are hoping for better results in analysis of sentences.
