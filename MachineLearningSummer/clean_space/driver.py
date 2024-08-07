@@ -62,6 +62,6 @@ forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/exa
 select_labels = {'<IR>', '<FE>', '<RR>', '<G>', '<DEP>', '<FU>', '<WCB>'}
 indexes = {label:0 for label in select_labels}
 rule_book_bank_path = get_rulebook_bank_path()
-rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_41.txt'
+rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_44.txt'
 
 experiment(train_n=train_n, test_n=test_n, dataset_path=dataset_path, rbk_path=rbk_path, forbidden_examples=forbidden_examples, indexes=indexes, select_labels=select_labels)

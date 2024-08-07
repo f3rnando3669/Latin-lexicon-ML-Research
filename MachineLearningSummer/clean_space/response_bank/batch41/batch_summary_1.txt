@@ -1,0 +1,57 @@
+New response iteration made at 2024-08-06 16:20:29.161186
+For MachineLearningSummer/rule_book_bank/RAW_RuleBooks_44.txt
+
+General:
+Correctly Indentified: 17+2
+Total: 28
+Percentage: 60.71 (67)
+
+Breakdown:
+IR:
+Correct: 1+1
+Total: 4
+Percentage: 25.0
+==============================
+FE:
+Correct: 2
+Total: 4
+Percentage: 50.0
+==============================
+FU:
+Correct: 4
+Total: 4
+Percentage: 100.0
+==============================
+G:
+Correct: 4
+Total: 4
+Percentage: 100.0
+==============================
+WCB:
+Correct: 2
+Total: 4
+Percentage: 50.0
+==============================
+RR:
+Correct: 2
+Total: 4
+Percentage: 50.0
+==============================
+DEP:
+Correct: 2+1
+Total: 4
+Percentage: 50.0
+==============================
+
+Paths for Incorrect Files:
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/IR_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/IR_3.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/IR_4.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/FE_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/FE_4.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/WCB_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/WCB_2.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/RR_2.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/RR_4.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/DEP_2.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch41/DEP_4.txt
