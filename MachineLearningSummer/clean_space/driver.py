@@ -15,8 +15,12 @@ def experiment(train_n:int, test_n:int, dataset_path, rbk_path, create_new_rbk=F
     extra_train_data, updated_indexes = get_new_data(dataset_path, train_n, indexes, forbidden_examples, select_labels)
     train_data = update_data(data_dict=train_data, new_data=extra_train_data)
     extra_test_data, updated_indexes = get_new_data(dataset_path, test_n, indexes, forbidden_examples, select_labels)
+    print(indexes)
     indexes.update(updated_indexes)
     test_data = update_data(data_dict=test_data, new_data=extra_test_data)
+    for label in test_data:
+        print(label, len(test_data[label]))
+    return
     working_directory = generate_batch_directory()
     write_experiment_info(working_dir=working_directory, data_dicts=[('indexes', indexes), ('test_data', test_data), ('train_data', train_data)])
     
@@ -33,7 +37,7 @@ def experiment(train_n:int, test_n:int, dataset_path, rbk_path, create_new_rbk=F
         else:
             print('classifying...')
             summary = batch_classify(rbk_path=rbk_path, article_to_label_map=article_to_label_map, batch_dir=working_directory)
-    print("Experiment complete!")
+        print("Experiment complete!")
     return summary
 
 def create_portfolio(portfolio_dir:str, portfolio_name:str, dataset_path:str, rbk_path:str, data_dict:dict, example_count:int, indexes={}, forbidden_examples={}, select_labels={}) -> str:
@@ -52,9 +56,9 @@ def create_portfolio(portfolio_dir:str, portfolio_name:str, dataset_path:str, rb
     return portfolio_path
 
 train_n = 0
-test_n = 4
+test_n = 50
 clean_space_dir = get_clean_space_dir()
-dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/70%_of_dataset.csv'
+dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/30%_of_dataset.csv'
 forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/examples.json')
 # train_data: dict = readjson(clean_space_dir+r'/response_bank/batch4/train_data.json')
 # test_data: dict = readjson(clean_space_dir+r'response_bank/batch4/test_data.json')
@@ -62,6 +66,6 @@ forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/exa
 select_labels = {'<IR>', '<FE>', '<RR>', '<G>', '<DEP>', '<FU>', '<WCB>'}
 indexes = {label:0 for label in select_labels}
 rule_book_bank_path = get_rulebook_bank_path()
-rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_44.txt'
+rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_47.txt'
 
 experiment(train_n=train_n, test_n=test_n, dataset_path=dataset_path, rbk_path=rbk_path, forbidden_examples=forbidden_examples, indexes=indexes, select_labels=select_labels)
