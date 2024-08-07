@@ -15,11 +15,7 @@ def get_fraction_of_dataset(fraction:float, original_set_path:str, target_dir:st
     else:
         df.to_csv(write_dir+target_name+'.csv', index=False)
 
-# original_set_path=r'MachineLearningSummer/fallacy_dataset/datasets/80%_of_70%_of_dataset.csv'
-# target_dir = r'MachineLearningSummer/fallacy_dataset/datasets/'
-# target_name = r'30%_of_80%_of_70%_of_dataset'
-# get_fraction_of_dataset(fraction=0.3, original_set_path=original_set_path, target_dir=target_dir, target_name=target_name)
-
+@DeprecationWarning
 def partition_dataset(path: str, train_num, test_num: int, shuffle_list=True) -> tuple[dict[str:str]]:
     labels_and_articles = list(get_labels_and_articles(path=path))
 
@@ -59,12 +55,18 @@ def partition_dataset(path: str, train_num, test_num: int, shuffle_list=True) ->
     
     return train_data, test_data, test_list
 
-def get_training_data(path, train_num, indexes, forbidden, selected):
-    if train_num == 0:
+def get_new_data(path: str, example_count:int, indexes={}, forbidden={}, selected={}):
+    """
+    get new data from a dataset path\n
+    you may specify the indexes to start from per label\n
+    you may also specify data that you do not want to be picked\n
+    tou may specify the types of labels you want
+    """
+    if example_count == 0:
         return {}, {}
     labels_and_articles = list(get_labels_and_articles(path=path))
 
-    train_data = {}
+    new_data = {}
     updated = set()
     
     for i, entry in enumerate(labels_and_articles):
@@ -76,43 +78,15 @@ def get_training_data(path, train_num, indexes, forbidden, selected):
         if label in indexes:
             if indexes[label] > i:
                 continue
-        if label in train_data:
-            if len(train_data[label]) == train_num:
+        if label in new_data:
+            if len(new_data[label]) == example_count:
                 if label in updated:
                     continue
                 indexes[label] = i
                 updated.add(label)
                 continue
-            train_data[label].append(article)
+            new_data[label].append(article)
         else:
-            train_data[label] = [article]
+            new_data[label] = [article]
     
-    return train_data, indexes
-
-def get_test_data(path, test_num, indexes, forbidden):
-    if test_num == 0:
-        return {}, {}
-    labels_and_articles = list(get_labels_and_articles(path=path))
-
-    test_data = {}
-    updated = set()
-    
-    for i, entry in enumerate(labels_and_articles):
-        label, article = entry
-        if article in forbidden[label]:
-            continue
-        if label in indexes:
-            if indexes[label] > i:
-                continue
-        if label in test_data:
-            if len(test_data[label]) == test_num:
-                if label in updated:
-                    continue
-                indexes[label] = i
-                updated.add(label)
-                continue
-            test_data[label].append(article)
-        else:
-            test_data[label] = [article]
-    
-    return test_data, indexes
+    return new_data, indexes

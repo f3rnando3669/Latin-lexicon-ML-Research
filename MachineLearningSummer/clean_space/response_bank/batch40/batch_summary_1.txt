@@ -1,0 +1,63 @@
+New response iteration made at 2024-08-06 15:57:06.198387
+For MachineLearningSummer/rule_book_bank/RAW_RuleBooks_43.txt
+
+General:
+Correctly Indentified: 11+8
+Total: 28
+Percentage: 39.29 (67)
+
+Breakdown:
+IR:
+Correct: 1
+Total: 4
+Percentage: 25.0
+==============================
+FE:
+Correct: 2
+Total: 4
+Percentage: 50.0
+==============================
+FU:
+Correct: 3+1
+Total: 4
+Percentage: 75.0
+==============================
+G:
+Correct: 2+2
+Total: 4
+Percentage: 50.0
+==============================
+WCB:
+Correct: 2+2
+Total: 4
+Percentage: 50.0
+==============================
+RR:
+Correct: 0+1
+Total: 4
+Percentage: 0.0
+==============================
+DEP:
+Correct: 1+1
+Total: 4
+Percentage: 25.0
+==============================
+
+Paths for Incorrect Files:
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/IR_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/IR_3.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/IR_4.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/FE_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/FE_4.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/FU_3.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/G_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/G_3.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/WCB_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/WCB_3.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/RR_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/RR_2.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/RR_3.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/RR_4.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/DEP_1.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/DEP_2.txt
+/home/andi/summer2024/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch40/DEP_4.txt

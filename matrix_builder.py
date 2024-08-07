@@ -100,5 +100,5 @@ def main(data_set_name: str) -> coo_array:
 
 
 if __name__ == "__main__":
-    main("good_boys.csv")
+    main("full_sequence_list.csv")
     print(trigram_index)
