@@ -1,5 +1,5 @@
 from addmore_rulebook_examples import add_examples
-from sampledataset import get_new_data
+from sampledataset import get_new_data, get_new_random_data
 from classification import batch_classify, build_portfolio, batch_classify_with_portfolio
 from driver_utilities import update_data, generate_batch_directory, write_experiment_info, build_article_label_map, get_rulebook_bank_path, get_clean_space_dir
 from Clients.Utilities.FileUtilities import readjson
@@ -12,15 +12,13 @@ def experiment(train_n:int, test_n:int, dataset_path, rbk_path, create_new_rbk=F
     if portfolio:
         if not portfolio_path:
             raise Exception("No portfolio path defined")
-    extra_train_data, updated_indexes = get_new_data(dataset_path, train_n, indexes, forbidden_examples, select_labels)
-    train_data = update_data(data_dict=train_data, new_data=extra_train_data)
-    extra_test_data, updated_indexes = get_new_data(dataset_path, test_n, indexes, forbidden_examples, select_labels)
-    print(indexes)
+    # extra_train_data, updated_indexes = get_new_data(dataset_path, train_n, indexes, forbidden_examples, select_labels)
+    # train_data = update_data(data_dict=train_data, new_data=extra_train_data)
+    extra_test_data, updated_indexes = get_new_random_data(dataset_path, test_n, selected=select_labels)
+    # print(indexes)
     indexes.update(updated_indexes)
     test_data = update_data(data_dict=test_data, new_data=extra_test_data)
-    for label in test_data:
-        print(label, len(test_data[label]))
-    return
+
     working_directory = generate_batch_directory()
     write_experiment_info(working_dir=working_directory, data_dicts=[('indexes', indexes), ('test_data', test_data), ('train_data', train_data)])
     
@@ -66,6 +64,6 @@ forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/exa
 select_labels = {'<IR>', '<FE>', '<RR>', '<G>', '<DEP>', '<FU>', '<WCB>'}
 indexes = {label:0 for label in select_labels}
 rule_book_bank_path = get_rulebook_bank_path()
-rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_47.txt'
+rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_50.txt'
 
 experiment(train_n=train_n, test_n=test_n, dataset_path=dataset_path, rbk_path=rbk_path, forbidden_examples=forbidden_examples, indexes=indexes, select_labels=select_labels)

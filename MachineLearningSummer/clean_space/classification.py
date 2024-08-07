@@ -19,6 +19,7 @@ def batch_classify_with_portfolio(rbk_path: str, portfolio_path:str, article_to_
     return summary
 
 def generate_response(preprompt: str, article: str) -> str:
+    # prompt = SimplePrompt(f"Classify \"{article}\" as of type <G>, <FE>, <IR>, <RR>, <WCB>, <FU> or <DEP>. Take it step by step.")
     prompt = SimplePrompt(preprompt+'\n'+f"\nApply <IDAA> to \"{article}\"")
     prompts = PromptList()
     prompts.add_userprompts([prompt])

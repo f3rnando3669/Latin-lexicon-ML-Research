@@ -1,0 +1,85 @@
+New response iteration made at 2024-08-07 17:07:42.852546
+For MachineLearningSummer/rule_book_bank/RAW_RuleBooks_49.txt
+
+General:
+Correctly Indentified: 11
+Total: 50
+Percentage: 22.0
+
+Breakdown:
+FU:
+Correct: 0
+Total: 5
+Percentage: 0.0
+==============================
+IR:
+Correct: 2
+Total: 17
+Percentage: 11.76470588235294
+==============================
+FE:
+Correct: 0
+Total: 3
+Percentage: 0.0
+==============================
+WCB:
+Correct: 1
+Total: 3
+Percentage: 33.33333333333333
+==============================
+G:
+Correct: 8
+Total: 17
+Percentage: 47.05882352941176
+==============================
+RR:
+Correct: 0
+Total: 4
+Percentage: 0.0
+==============================
+DEP:
+Correct: 0
+Total: 1
+Percentage: 0.0
+==============================
+
+Paths for Incorrect Files:
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/FU_1.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/FU_2.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/FU_3.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/FU_4.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/FU_5.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_1.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_2.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_3.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_5.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_6.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_7.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_8.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_9.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_10.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_11.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_12.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_14.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_15.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_16.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/IR_17.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/FE_1.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/FE_2.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/FE_3.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/WCB_2.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/WCB_3.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_6.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_7.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_8.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_9.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_11.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_12.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_13.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_15.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/G_17.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/RR_1.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/RR_2.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/RR_3.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/RR_4.txt
+/home/ml/Computer-Science-Research-Summer/MachineLearningSummer/clean_space/response_bank/batch48/DEP_1.txt

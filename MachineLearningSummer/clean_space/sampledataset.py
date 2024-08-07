@@ -1,7 +1,7 @@
 import pandas as pd
 from dataset_utils import get_labels_and_articles
 from random import shuffle
-from collections import Counter
+import random as rn
 
 def get_fraction_of_dataset(fraction:float, original_set_path:str, target_dir:str, target_name='') -> None:
     """
@@ -66,7 +66,6 @@ def get_new_data(path: str, example_count:int, indexes={}, forbidden={}, selecte
     if example_count == 0:
         return {}, {}
     labels_and_articles = list(get_labels_and_articles(path=path))
-    print(Counter([x for x,y in labels_and_articles]))
     new_data = {}
     updated = set()
     count = 0
@@ -93,3 +92,29 @@ def get_new_data(path: str, example_count:int, indexes={}, forbidden={}, selecte
             new_data[label] = [article]
     print(count)
     return new_data, indexes
+
+
+def get_new_random_data(path: str, example_count:int, selected={}):
+    """
+    get new data from a dataset path\n
+    you may specify the indexes to start from per label\n
+    you may also specify data that you do not want to be picked\n
+    tou may specify the types of labels you want
+    """
+    if example_count == 0:
+        return {}, {}
+    labels_and_articles = list(get_labels_and_articles(path=path))
+    rn.seed(a=25)
+    sampled_indexes = rn.sample(range(0, len(labels_and_articles)), k=50)
+    
+    new_data = {}
+    for index in sampled_indexes:
+        label, article = labels_and_articles[index]
+        if label not in selected:
+            continue
+        if label in new_data:
+            new_data[label].append(article)
+        else:
+            new_data[label] = [article]
+    
+    return new_data, {}
