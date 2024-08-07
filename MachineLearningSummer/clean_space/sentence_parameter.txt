@@ -41,6 +41,10 @@ Let <s> be some string. Define <SentType> to be the task of identifying the func
 
 Let <t> be some advanced task. Define <D> to be the decomposition of <t> into specific steps.
 
+Define <Crit> to be the action critique the choice of words resulting from an action <a> and outputting another set of words for the same purpose as <a>
+
+Let <s> be some string. Define <Latin> to be detecting ancient latinate words for sentence <s>.
+
 Define <IDAnalysis> to be the application of <D> to <ID>.
 
 Define <OAnalysis> to be the application of <D> to <O>.
