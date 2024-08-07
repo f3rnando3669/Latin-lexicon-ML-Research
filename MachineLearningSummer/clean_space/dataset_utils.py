@@ -14,6 +14,8 @@ def get_labels_and_articles(path):
     df = pd.read_csv(path)
     labels = df['label'].loc[::-1]
     articles = df['article'].loc[::-1]
+    print(labels.__len__())
+    print(articles.__len__())
     return zip(labels, articles)
 
 def get_limited_labels_and_articles(tags, labels_and_articles, limit=1):

@@ -1,6 +1,7 @@
 import pandas as pd
 from dataset_utils import get_labels_and_articles
 from random import shuffle
+from collections import Counter
 
 def get_fraction_of_dataset(fraction:float, original_set_path:str, target_dir:str, target_name='') -> None:
     """
@@ -65,12 +66,14 @@ def get_new_data(path: str, example_count:int, indexes={}, forbidden={}, selecte
     if example_count == 0:
         return {}, {}
     labels_and_articles = list(get_labels_and_articles(path=path))
-
+    print(Counter([x for x,y in labels_and_articles]))
     new_data = {}
     updated = set()
-    
+    count = 0
     for i, entry in enumerate(labels_and_articles):
         label, article = entry
+        if label == '<DEP>':
+            count += 1
         if label not in selected:
             continue
         if article in forbidden[label]:
@@ -88,5 +91,5 @@ def get_new_data(path: str, example_count:int, indexes={}, forbidden={}, selecte
             new_data[label].append(article)
         else:
             new_data[label] = [article]
-    
+    print(count)
     return new_data, indexes
