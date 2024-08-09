@@ -27,7 +27,7 @@ class TextDataset(Dataset):
     
     def text_to_vector(self, text):
         words = list(text)
-        vectors = [self.word2vec_model[word] for word in words if word in self.word2vec_model]
+        vectors = [self.word2vec_model.wv[word] for word in words if word in self.word2vec_model.wv]
         if len(vectors) == 0:
             return np.zeros(self.vector_dim)
         vectors = np.mean(vectors, axis=0)
@@ -38,10 +38,10 @@ def create_dataloader(data, labels, word2vec_model, batch_size, shuffle=True):
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
     return dataloader
 
-def load_data_from_csv(file_path, text_size=0.3, random_state=37):
+def load_data_from_csv(file_path, text_size=0.3, random_state=13):
     df = pd.read_csv(file_path)
-    data = df['Sequence'].values
-    labels = df['Label'].values
+    data = df[' Sequence'].values
+    labels = df[' Label'].values
     train_data, test_data, train_labels, test_labels = train_test_split(
         data, labels, test_size=text_size, random_state=random_state
     )
