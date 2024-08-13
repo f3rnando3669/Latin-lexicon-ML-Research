@@ -50,7 +50,7 @@ def classify(article_to_label_map: dict, preprompt: str, batch_dir: str) -> list
     
     return response_paths
 
-def prepare_summary(response_paths, batch_dir, summary_name, rulebook)->str:
+def prepare_summary(response_paths, batch_dir, summary_name, rulebook='')->str:
     category_details = {}
     incorrect_list = []
     count = 0
@@ -80,6 +80,22 @@ def prepare_summary(response_paths, batch_dir, summary_name, rulebook)->str:
     summary += "\n\nPaths for Incorrect Files:\n"+"\n".join(incorrect_list)
     write_to_file_in_dir(batch_dir, summary_name, summary, text_analyzed=rulebook)
     return summary
+
+def prepare_summary_for_bert(category_details, batch_dir, dataset_path, summary_name='distilbert_summary'):
+    sub = ''
+    summary_total = 0
+    summary_correct = 0
+    for category in category_details:
+        correct = category_details[category]['Correct']
+        summary_correct += correct
+        total = category_details[category]['Total']
+        summary_total += total
+        sub += f'\n{category}:\nCorrect: {correct}\nTotal: {total}\nPercentage: {correct/total*100}\n'
+        sub += "=" * 30
+    summary = f'\nGeneral:\nCorrectly Indentified: {summary_correct}\nTotal: {summary_total}\nPercentage: {round(summary_correct/summary_total*100, 2)}\n\nBreakdown:'
+    summary += sub
+    write_to_file_in_dir(batch_dir, summary_name, summary, text_analyzed=dataset_path)
+    return summary_name
 
 def build_portfolio(rbk_path: str, article_to_label_map: dict, portfolio_dir: str, portfolio_name: str) -> str:
     params = readfile(rbk_path)

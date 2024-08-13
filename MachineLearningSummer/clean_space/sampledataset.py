@@ -94,7 +94,7 @@ def get_new_data(path: str, example_count:int, indexes={}, forbidden={}, selecte
     return new_data, indexes
 
 
-def get_new_random_data(path: str, example_count:int, selected={}):
+def get_new_random_data(path: str, example_count:int, selected={}, seed_value=25):
     """
     get new data from a dataset path\n
     you may specify the indexes to start from per label\n
@@ -104,8 +104,8 @@ def get_new_random_data(path: str, example_count:int, selected={}):
     if example_count == 0:
         return {}, {}
     labels_and_articles = list(get_labels_and_articles(path=path))
-    rn.seed(a=25)
-    sampled_indexes = rn.sample(range(0, len(labels_and_articles)), k=50)
+    rn.seed(a=seed_value)
+    sampled_indexes = rn.sample(range(0, len(labels_and_articles)), k=example_count)
     
     new_data = {}
     for index in sampled_indexes:

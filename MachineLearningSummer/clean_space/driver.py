@@ -3,6 +3,7 @@ from sampledataset import get_new_data, get_new_random_data
 from classification import batch_classify, build_portfolio, batch_classify_with_portfolio
 from driver_utilities import update_data, generate_batch_directory, write_experiment_info, build_article_label_map, get_rulebook_bank_path, get_clean_space_dir
 from Clients.Utilities.FileUtilities import readjson
+from dataset_utils import get_labels_and_articles
 
 def experiment(train_n:int, test_n:int, dataset_path, rbk_path, create_new_rbk=False, portfolio=False, portfolio_path="", forbidden_examples={}, train_data={}, test_data={}, indexes={}, select_labels={}) -> str:
     """
@@ -15,7 +16,6 @@ def experiment(train_n:int, test_n:int, dataset_path, rbk_path, create_new_rbk=F
     # extra_train_data, updated_indexes = get_new_data(dataset_path, train_n, indexes, forbidden_examples, select_labels)
     # train_data = update_data(data_dict=train_data, new_data=extra_train_data)
     extra_test_data, updated_indexes = get_new_random_data(dataset_path, test_n, selected=select_labels)
-    # print(indexes)
     indexes.update(updated_indexes)
     test_data = update_data(data_dict=test_data, new_data=extra_test_data)
 
@@ -54,9 +54,11 @@ def create_portfolio(portfolio_dir:str, portfolio_name:str, dataset_path:str, rb
     return portfolio_path
 
 train_n = 0
-test_n = 50
+test_n = 2156
 clean_space_dir = get_clean_space_dir()
-dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/30%_of_dataset.csv'
+# dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/30%_of_dataset.csv'
+dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/final_filter.csv'
+# print(len(list(get_labels_and_articles(dataset_path))))
 forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/examples.json')
 # train_data: dict = readjson(clean_space_dir+r'/response_bank/batch4/train_data.json')
 # test_data: dict = readjson(clean_space_dir+r'response_bank/batch4/test_data.json')
@@ -64,6 +66,6 @@ forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/exa
 select_labels = {'<IR>', '<FE>', '<RR>', '<G>', '<DEP>', '<FU>', '<WCB>'}
 indexes = {label:0 for label in select_labels}
 rule_book_bank_path = get_rulebook_bank_path()
-rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_50.txt'
+rbk_path = f'{rule_book_bank_path}/RAW_RuleBooks_48.txt'
 
 experiment(train_n=train_n, test_n=test_n, dataset_path=dataset_path, rbk_path=rbk_path, forbidden_examples=forbidden_examples, indexes=indexes, select_labels=select_labels)
