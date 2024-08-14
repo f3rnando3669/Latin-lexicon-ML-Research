@@ -59,7 +59,8 @@ clean_space_dir = get_clean_space_dir()
 # dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/30%_of_dataset.csv'
 dataset_path = r'MachineLearningSummer/fallacy_dataset/datasets/final_filter.csv'
 # print(len(list(get_labels_and_articles(dataset_path))))
-forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/examples.json')
+# forbidden_examples = readjson(r'MachineLearningSummer/rulebook_intermediates/examples.json')
+forbidden_examples = {}
 # train_data: dict = readjson(clean_space_dir+r'/response_bank/batch4/train_data.json')
 # test_data: dict = readjson(clean_space_dir+r'response_bank/batch4/test_data.json')
 # indexes: dict = readjson(clean_space_dir+r'/response_bank/batch4/indexes.json')

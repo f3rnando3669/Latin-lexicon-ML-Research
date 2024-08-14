@@ -1,0 +1,59 @@
+New response iteration made at 2024-08-13 02:10:31.454215
+For 
+To apply **IDAA** to the conversation between Ken and Rob, we need to:
+1. **Decompose** the task of classifying the argument(s) presented in the text into specific steps.
+2. **Identify and Analyze** each assertion and reasoning presented by Ken and Rob using the defective argument types.
+
+### Decomposition of Task (D)
+
+1. **Identify statements by each speaker** to recognize each part of the argument.
+2. **Categorize each statement** as <P>, <R>, or <PR> where possible.
+3. **Evaluate each reasoning** to determine if it exhibits one of the defective argument types (G, FE, IR, RR, WCB, FU, DEP).
+
+### Identification and Analysis (IDA)
+
+1. **Ken: There has to be an objective morality because otherwise terms like “right” and “wrong” would be meaningless since they have no foundation for comparison.**
+   - Proposition (P): There has to be an objective morality.
+   - Reason (R): Terms like "right" and "wrong" would be meaningless without objective morality.
+   - **Defective Argument**: This could be explored for <IR> (Inconclusive Reason) since the connection between objective morality and meaningful language may not conclusively demonstrate the claim.
+
+2. **Rob: The terms “right” and “wrong” are based on cultural norms, which do have a subjective foundation -- one that changes as the moral sphere of the culture changes. The term “heavy” does not have an objective standard, yet we have no problem using that term in a meaningful way. In fact, very few relational terms have any kind of objective foundation.**
+   - Proposition (P): Terms like “right” and “wrong” are based on cultural norms.
+   - Reason (R): Cultural norms provide a subjective foundation; relational terms can be meaningful without objective standard.
+   - **Defective Argument**: No apparent defective argument here as it reasons with analogy and explanation.
+
+3. **Ken: But without an objective morality, we would all be lost morally as a race.**
+   - Proposition (P): Without an objective morality, we would all be lost morally as a race.
+   - Reason (R): It is implied but not explicitly given.
+   - **Defective Argument**: This could be <IR> (Inconclusive Reason) or <WCB> (Insufficient Causal Basis) where the reason for why we’d be lost is not sufficiently robust or compellingly explained.
+
+4. **Rob: Many would say that we are.**
+   - This is a response rather than a complete argument.
+   - **Defective Argument**: Could be <FU> (Presumptuous Consensus) because it refers to what many would say, assuming agreement without proving it.
+
+5. **Ken: But how can you say that torturing children for fun is morally acceptable in any situation?**
+   - Proposition (P): Torturing children for fun is not morally acceptable in any situation.
+   - Reason (R): Implied as a form of objective moral claim.
+   - **Defective Argument**: This may not fall under any clear defect unless we consider the implied reason for it being acceptable given the context.
+
+6. **Rob: Personally, I wouldn’t, but you are implying that anything that is not objective must necessarily be seen in all possible ways. A feather may not be seen as “heavy” to anyone, but that doesn’t mean its “lightness” is still not relative to other objects.**
+   - Proposition (P): Not everything that is not objective must be viewed in all possible ways; relativity can exist.
+   - Reason (R): Example of feather and relativity.
+   - **Defective Argument**: No apparent defective argument; using analogy to support reasoning.
+
+7. **Ken: But God is the standard of objective morality. Prove that wrong!**
+   - Proposition (P): God is the standard of objective morality.
+   - Reason (R): Implies divine authority.
+   - **Defective Argument**: Could be <FU> (Presumptuous Consensus) assuming universal agreement on God being the standard without proving it, or <WCB> (Insufficient Causal Basis) if the basis for God as the standard is not robustly established.
+
+8. **Rob: That I cannot do.**
+   - Acknowledgement rather than a complete argument.
+
+### Summary
+
+The classification of each segment of the dialogue:
+- **IR (Inconclusive Reason)**: Ken's premise that objective morality must exist for "right" and "wrong" to be meaningful.
+- **WCB (Insufficient Causal Basis)**: Ken's assertions lacking robust reasons, like "Without objective morality, we would be lost morally."
+- **FU (Presumptuous Consensus)**: Rob's appeal to "many would say" and Ken’s assumption about God being universally accepted as the standard.
+
+By following this structured decomposition and analysis, we classify and examine the robustness and potential defects in the arguments presented.
