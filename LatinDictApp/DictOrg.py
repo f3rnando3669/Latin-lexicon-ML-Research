@@ -35,9 +35,9 @@ def DictOrg():
                 usr = ET.SubElement(usrconfig, "type")
                 usr.text = str(matches[user])
                 
-                for i in range(len(matches2)):
-                    usr2 = ET.SubElement(usrconfig, "type")
-                    usr2.text = str(matches2[i])
+        for i in range(len(matches2)):
+                usr2 = ET.SubElement(usrconfig, "type")
+                usr2.text = str(matches2[i])
         for i in range(len(matches3)):
             usr3 = ET.SubElement(usrconfig, "type")
             usr3.text = str(matches3[i])
