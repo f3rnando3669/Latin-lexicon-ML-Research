@@ -6,10 +6,14 @@ def DictOrg():
     title = r'/([\w\s]+):'
     Def = r':(.*?)►'
     rest = r'►(.*?).\/'
+    Latin = r'►\s*([\w\(\)]+(?:\s*\w+)*)'
+    sources = r'¶(.*?).\s*(.*?)\.'
     #sepereated the given data best i can
     matches = re.findall(title, text, flags=re.IGNORECASE)
     matches2 = re.findall(Def, text, flags=re.IGNORECASE)
     matches3 = re.findall(rest, text, flags=re.IGNORECASE)
+    matches4 = re.findall(Latin, text, flags=re.IGNORECASE)
+    matches5 = re.findall(sources, text, flags=re.IGNORECASE)
    # Create XML root
     #root = etree.Element('root')
 
@@ -32,15 +36,20 @@ def DictOrg():
  
         # insert list element into sub elements
         for user in range(len( matches)):
-                usr = ET.SubElement(usrconfig, "type")
-                usr.text = str(matches[user])
-                
+            usr = ET.SubElement(usrconfig, "type")
+            usr.text = str(matches[user])       
         for i in range(len(matches2)):
-                usr2 = ET.SubElement(usrconfig, "type")
-                usr2.text = str(matches2[i])
+            usr2 = ET.SubElement(usrconfig, "type")
+            usr2.text = str(matches2[i])
         for i in range(len(matches3)):
             usr3 = ET.SubElement(usrconfig, "type")
             usr3.text = str(matches3[i])
+        for i in range(len(matches4)):
+            usr4 = ET.SubElement(usrconfig, "type")
+            usr4.text = str(matches4[i])
+        for i in range(len(matches5)):
+            usr5 = ET.SubElement(usrconfig, "type")
+            usr5.text = str(matches5[i])
  
         tree = ET.ElementTree(usrconfig)
  
