@@ -4,17 +4,15 @@ import xml.etree.ElementTree as ET
 def DictOrg():
     text = "//    GEOGRAPHICAL NAMES // /general city: King's Mountain, Königsberg, Monterrey, Montréal  ► Regi(o)montium, i n.// /general city: Newcastle, Neuchâtel, Châteauneuf  ► Novum Castellum  ¶ 1771 WAY dedication page (of the county in Delaware).// /general city: Newport, Nieuwpoort  ► Neoportus, ûs m.  ¶ Graesse.  ► Neoportum, i n.  ¶ 1674 MILTON XIII. 28, of Belgian town."
     title = r'/([\w\s]+):'
-    Def = r':(.*?)►'
-    rest = r'►(.*?).\/'
+    definition = r':(.*?)►'
     Latin = r'►\s*([\w\(\)]+(?:\s*\w+)*)'
-    sources = r'¶(.*?).\s*(.*?)\.'
+    source = r'¶(.*?).\s*(.*?)\.'
     #sepereated the given data best i can
-    matches = re.findall(title, text, flags=re.IGNORECASE)
-    matches2 = re.findall(Def, text, flags=re.IGNORECASE)
-    matches3 = re.findall(rest, text, flags=re.IGNORECASE)
-    matches4 = re.findall(Latin, text, flags=re.IGNORECASE)
-    matches5 = re.findall(sources, text, flags=re.IGNORECASE)
-   # Create XML root
+    subject = re.findall(title, text, flags=re.IGNORECASE)
+    Def = re.findall(definition, text, flags=re.IGNORECASE)
+    Latin_list = re.findall(Latin, text, flags=re.IGNORECASE)
+    sources = re.findall(source, text, flags=re.IGNORECASE)
+   #Create XML root
     #root = etree.Element('root')
 
     # Iterate through the matches and add to XML
@@ -27,32 +25,25 @@ def DictOrg():
     out = etree.tostring(root, pretty_print=True, encoding='unicode')
     print(out)
     '''
-    for i in matches:
+    for i in range(len(Def)):
      # we make root element
-        usrconfig = ET.Element("root")
- 
-        # create sub element
-        usrconfig = ET.SubElement(usrconfig, "div")
+        root = ET.Element("root")
  
         # insert list element into sub elements
-        for user in range(len( matches)):
-            usr = ET.SubElement(usrconfig, "type")
-            usr.text = str(matches[user])       
-        for i in range(len(matches2)):
-            usr2 = ET.SubElement(usrconfig, "type")
-            usr2.text = str(matches2[i])
-        for i in range(len(matches3)):
-            usr3 = ET.SubElement(usrconfig, "type")
-            usr3.text = str(matches3[i])
-        for i in range(len(matches4)):
-            usr4 = ET.SubElement(usrconfig, "type")
-            usr4.text = str(matches4[i])
-        for i in range(len(matches5)):
-            usr5 = ET.SubElement(usrconfig, "type")
-            usr5.text = str(matches5[i])
- 
-        tree = ET.ElementTree(usrconfig)
- 
+        for i in range(len(Def)):
+            # create sub element
+            English_words = ET.SubElement(root, "word")
+            Latin_word = ET.SubElement(English_words,"Latin")
+            Subject_word = ET.SubElement(English_words,"Subject")
+            Sources_word = ET.SubElement(English_words,"source")
+            
+            
+            English_words.text = str(Def[i]) 
+            Latin_word.text = str(Latin_list[i])
+            Subject_word.text = str(subject[i])
+            Sources_word.text = str(sources[i])
+      
+        tree = ET.ElementTree(root)
         # write the tree into an XML file
         tree.write("Output.xml", encoding ='utf-8', xml_declaration = True)
         
@@ -61,3 +52,17 @@ def DictOrg():
 DictOrg()
 #rescources: https://stackoverflow.com/questions/39029570/saving-list-of-tuples-in-xml
 #https://regex101.com/r/nI18g9/1
+'''           
+        for i in range(len(Def)):
+            usr2 = ET.SubElement(usrconfig, "type")
+            usr2.text = str(Def[i])
+        for i in range(len(matches3)):
+            usr3 = ET.SubElement(usrconfig, "type")
+            usr3.text = str(matches3[i])
+        for i in range(len(Latin_list)):
+            usr4 = ET.SubElement(usrconfig, "type")
+            usr4.text = str(Latin_list[i])
+        for i in range(len(scources)):
+            usr5 = ET.SubElement(usrconfig, "type")
+            usr5.text = str(scources[i])
+        '''
