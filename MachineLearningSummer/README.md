@@ -1,8 +1,8 @@
-This is the repository for the Machine Learning for the Rhetoruc Machine
+This is the repository for the Machine Learning for the Rhetoric Machine
 
 The Various Sentence Structures will be defined as follows:
 
-<S> is a simple sentence that is comprised of one independent clause.
+\<S> is a simple sentence that is comprised of one independent clause.
 <C> is a compound sentence that is comprised of two independent clauses and no dependpent clauses.
 <CC> is a complex sentence that is comprised of only one independent clause and at least one dependent clause.
 <CXC> is a complex compound sentence that is comprised of at least two independent clauses and at least one dependent clause.
@@ -30,7 +30,7 @@ A Note to those reading, no strict classifier was found for the following defini
 <CV> is a rythmic and euphony where the setence is "Complex and varied" defined by intricate arrangements of clauses and phrases, incorporating a mix of different rhythmic patterns and varying sentence lengths. This type of sentence often includes multiple dependent and independent clauses, creating a rich and layered effect.
 <JA> is a rythmic and euphony where the setence is "Jerky or abrupt" defined by irregular, choppy rhythms and abrupt shifts in thought or structure. This type of sentence often uses short, disjointed clauses or phrases that disrupt the flow and create a sense of unease or urgency.
 
-<S> is a statement.
+\<S> is a statement.
 <Q> is a question.
 <C> is a command.
 <E> is an exclamation.
