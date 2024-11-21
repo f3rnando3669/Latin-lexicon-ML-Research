@@ -1,0 +1,2 @@
+*.json filter=lfs diff=lfs merge=lfs -text
+la.nolorem.tok.latalphabetonly.v2.json filter=lfs diff=lfs merge=lfs -text
