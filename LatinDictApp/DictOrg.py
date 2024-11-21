@@ -6,9 +6,9 @@ from xml.dom import minidom
 import sys
 
 #Add the path to the folder `test.py`
-sys.path.insert(0, '/Users/fernandovargas/Desktop/latinDict/Computer-Science-Research-Summer-master')
+sys.path.insert(0, '/Users/fernandovargas/Desktop/latinDict/Computer-Science-Research-Summer-master/MachineLearningSummer/clean_space')
 #Importing the `generate_response function from test.py
-from test1 import generate_response # type: ignore
+from testold import generate_response # type: ignore
 def DictOrg(text):
     subj = r'(?<=\/)[\w".\s]+'
     definition = r':(.*?)►'
