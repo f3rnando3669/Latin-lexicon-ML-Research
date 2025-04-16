@@ -1,0 +1,347 @@
+<?xml version="1.0" ?>
+<root>
+  <word>
+    King's Mountain, Königsberg, Monterrey, Montréal
+    <adj>None</adj>
+    <Subject>'general city'</Subject>
+    <Latin>'Regi o montium'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Newcastle, Neuchâtel, Châteauneuf
+    <adj>None</adj>
+    <Subject>'general city'</Subject>
+    <Latin> Novum Castellum  </Latin>
+    <source>1771 WAY dedication page (of the county in Delaware).</source>
+  </word>
+  <word>
+    Newport, Nieuwpoort
+    <adj>None</adj>
+    <Subject>'general city'</Subject>
+    <Latin> Neoportus</Latin>
+    <source>Graesse.</source>
+    <Latin> Neoportum</Latin>
+    <source>1674 MILTON XIII. 28, of Belgian town.</source>
+  </word>
+  <word>
+    Saint-Laurent
+    <adj>None</adj>
+    <Subject>'town names in &quot;St.&quot;'</Subject>
+    <Latin>'ad', 'fanum', 'Divi', 'Laurentii'</Latin>
+    <source>1652 TURS. 371</source>
+    <Latin>'fano', 'Divi'</Latin>
+    <source>1652TURS. 372</source>
+  </word>
+  <word>
+    language
+    <adj>None</adj>
+    <Subject>'Language'</Subject>
+    <Latin>' lingua Bengalica'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    arctôus
+    <adj>None</adj>
+    <Subject>'Region'</Subject>
+    <Latin>'arctôus'</Latin>
+    <source>'Hyg.; DANTE Aqua 477; EGGER S.L. 7', 'SEN. in tragedies; MART. '</source>
+  </word>
+  <word>
+    Mare
+    <adj>None</adj>
+    <Subject>'Ocean'</Subject>
+    <Latin>'Mare Glaciale'</Latin>
+    <source>'1811 PALLAS vi', '1595 MERCATOR II &quot;Polus Arcticus&quot; map; 1811 PALLAS xi'</source>
+  </word>
+  <word>
+    zona
+    <adj>None</adj>
+    <Subject>'Region'</Subject>
+    <Latin>'zona', 'arctica'</Latin>
+    <source>'1811 PALLAS 52'</source>
+  </word>
+  <word>
+    antarcticus
+    <adj>None</adj>
+    <Subject>'Polar'</Subject>
+    <Latin>'Antarctic', 'antarcticus'</Latin>
+    <source>'EGGER D.L. 25'</source>
+  </word>
+  <word>
+    terra
+    <adj>None</adj>
+    <Subject>'Continent'</Subject>
+    <Latin>antarctica</Latin>
+    <source>EGGER D.L. 25</source>
+  </word>
+  <word>
+    North Pole
+    <adj>None</adj>
+    <Subject>'Pole'</Subject>
+    <Latin> polus arcticus  </Latin>
+    <source>DANTE Aqua 477.  1315 MARCO POLO B 3, 16.</source>
+    <Latin> polus septentrionalis  </Latin>
+    <source>EGGER S.L. 44.</source>
+    <Latin> axis septentrionalis  </Latin>
+    <source>EGGER S.L. 44.</source>
+    <Latin>polus glacialis  </Latin>
+    <source>OV. M. 2, 173.</source>
+    <Latin> polus gelidus  </Latin>
+    <source>OV. H. 18, 152.</source>
+  </word>
+  <word>
+    South Pole  polus antarcticus (APUL.; DANTE Aqua 477)
+    <adj>None</adj>
+    <Subject>'Pole'</Subject>
+    <Latin>'polus austrâlis polus austrînus'</Latin>
+    <source>'APUL.; DANTE Aqua 477', 'OV. M. 2, 131', 'PLIN. 5, 56'</source>
+  </word>
+  <word>
+    Azores
+    <adj>None</adj>
+    <Subject>'Islands'</Subject>
+    <Latin>Tertiariae Insulae</Latin>
+    <source>1652 TURS. 263</source>
+  </word>
+  <word>
+    Canary Islands
+    <adj>None</adj>
+    <Subject>'Islands'</Subject>
+    <Latin>'Insulae Fortûnâtae Insulae Canariae'</Latin>
+    <source>'f. pl.', 'PLIN.  1595 MERCATOR II &quot;Europa.&quot;  1794 RUIZ viii.  ', 'f. pl.', 'Arn.  1595 MERCATOR II&quot;Europa.&quot;'</source>
+  </word>
+  <word>
+    Canary Islands: Tenerife
+    <adj>None</adj>
+    <Subject>'Insulae'</Subject>
+    <Latin> Teneriffa</Latin>
+    <source>1794 RUIZ viii.</source>
+    <Latin> Ninguâria</Latin>
+    <source>Plin. 6, 204.  Egger N.L.</source>
+    <Latin> Nivâria</Latin>
+    <source>Plin. 6, 204 (variant reading). Egger N.L.</source>
+  </word>
+  <word>
+    Materia
+    <adj>None</adj>
+    <Subject>'Island'</Subject>
+    <Latin>'Madeira', 'Materia', 'ae'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Ocean
+    <adj>None</adj>
+    <Subject>'Ocean'</Subject>
+    <Latin>(' Oceanus Atlanticus (EGGER S', '')</Latin>
+    <source>CIC.; 1595 MERCATOR II &quot;Africa.&quot;  ► Oceanus Atlanticus (EGGER S.L. 34</source>
+  </word>
+  <word>
+    Eurasia
+    <adj>None</adj>
+    <Subject>'Continent'</Subject>
+    <Latin>'Eurasia', 'ae'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Mare
+    <adj>None</adj>
+    <Subject>'Ocean'</Subject>
+    <Latin>'Ocean', 'Mare', 'Pacificum'</Latin>
+    <source>'1784 DUCRUE 221'</source>
+  </word>
+  <word>
+    Eurôpa
+    <adj>None</adj>
+    <Subject>'Europe  Eurôpa'</Subject>
+    <Latin>f</Latin>
+    <source>Oros. 1, 2</source>
+  </word>
+  <word>
+    Eurôpa
+    <adj>None</adj>
+    <Subject>'Europe  Eurôpa'</Subject>
+    <Latin>'PLIN', 'MERCATOR', 'II', 'Orbis'], </Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Austria
+    <adj>None</adj>
+    <Subject>'Country'</Subject>
+    <Latin> Austria</Latin>
+    <source>1595 MERCATOR I, &quot;Germaniae.&quot; 1674 MILTON XIII. 28.  1652 TURS. 206 et passim.  1784 DUCRUE 265.  EGGER S.L. 26.</source>
+  </word>
+  <word>
+    Innsbruck  Aenipons, ontis m. (EGGER D.L. 12)
+    <adj>None</adj>
+    <Subject>'Cities'</Subject>
+    <Latin>' Oenipons'</Latin>
+    <source>'EGGER D.L. 12', 'PERUGINI, Concordata 26'</source>
+  </word>
+  <word>
+    Salzburg
+    <adj>None</adj>
+    <Subject>'City'</Subject>
+    <Latin>'Austria', 'cities', 'Salzburg', 'Salzburgensis', 'e'</Latin>
+    <source>'1595 MERCATOR I, &quot;Germaniae&quot;'</source>
+  </word>
+  <word>
+    Vienna
+    <adj>None</adj>
+    <Subject>'Austria'</Subject>
+    <Latin>'Vienna is slightly more common than Vindobona in printed books'</Latin>
+    <source>'1595 MERCATOR I, &quot;Germaniae.&quot;  1652 TURS. 252 et passim.  1843 TRAPPEN 26.  EGGER S.L. 58, quoting Latin inscription of 16th-century coin.  ', '1891 VELENOVSKÝ vi.  EGGER S.L. 57.  |  adj.  ', '1595 MERCATOR I, &quot;Germaniae.&quot;  1652 TURS. 332.  ', 'WC'</source>
+  </word>
+  <word>
+    Carinthia
+    <adj>None</adj>
+    <Subject>'Austria'</Subject>
+    <Latin>'Austria', 'regions', 'Carinthia', 'ae', 'f'</Latin>
+    <source>'1595 MERCATOR I, &quot;Salzburg&quot; map'</source>
+  </word>
+  <word>
+    Stiria
+    <adj>None</adj>
+    <Subject>'region'</Subject>
+    <Latin>'Austria', 'regions', 'Styria', 'ae', 'f'</Latin>
+    <source>'1595 MERCATOR I, &quot;Stiria&quot;'</source>
+  </word>
+  <word>
+    Austriacus
+    <adj>None</adj>
+    <Subject>'One-word hypernym: Nationality'</Subject>
+    <Latin> Austriacus</Latin>
+    <source>1652 TURS. 314; 1784 DUCRUE 265; 1843 TRAPPEN 51; PERUGINI, Concordata 42</source>
+    <Latin> Austriacus</Latin>
+    <source>1595 MERCATOR I, &quot;Austria&quot;;1652 TURS. 249 et passim; PERUGINI, Concordata 33; EGGER S.L. 57</source>
+  </word>
+  <word>
+    Alexander Suerman, Specimen historico-medicum de cholerae Asiaticae itinere per Belgium septentrionale, annis 1832-1834 (Utrecht, 1835).
+    <adj>None</adj>
+    <Subject>'Country'</Subject>
+    <Latin>' Belgium', ' Belgium Meridiânum  ', ' The term Belgium'</Latin>
+    <source>'EGGER S.L. 78.  ', 'Cf. the use of Belgium Septentrionale of the Netherlands:  Alexander Suerman, Specimen historico-medicum de cholerae Asiaticae itinere per Belgium septentrionale, annis 1832-1834 (Utrecht, 1835).    '</source>
+  </word>
+  <word>
+    Antverpia
+    <adj>None</adj>
+    <Subject>'Belgium'</Subject>
+    <Latin>'Antwerp', 'Antverpia', 'ae', 'f'</Latin>
+    <source>1595 MERCATOR I, &quot;Brabantia&quot;; 1652 TURS. 263</source>
+    <Latin>'Antverpiensis', 'e'</Latin>
+    <source>1652 TURS. 367</source>
+  </word>
+  <word>
+    Bruges  Bruga, ae f. (1652 TURS. 386)
+    <adj>None</adj>
+    <Subject>'cities'</Subject>
+    <Latin>' Brugae'</Latin>
+    <source>'1652 TURS. 386', 'WC'</source>
+  </word>
+  <word>
+    Brussels
+    <adj>None</adj>
+    <Subject>'city'</Subject>
+    <Latin>'Bruxellae is much more common than Bruxella in printed books'</Latin>
+    <source>'1674 MILTON XIII. 30.  1652 TURS. 382.  ', '1595 MERCATOR I, &quot;Brabantia.&quot;  1652 TURS. 348.  |  adj.  ', '1540 VIVES Exer. 327.  ', 'WC'</source>
+  </word>
+  <word>
+    Charleroa
+    <adj>None</adj>
+    <Subject>'City'</Subject>
+    <Latin>'cities', 'Charleroi'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Gandavum
+    <adj>None</adj>
+    <Subject>'city'</Subject>
+    <Latin>'Ghent', 'Gandavum', 'i', 'n'</Latin>
+    <source>1595 MERCATOR I, &quot;Flandria&quot;; 1652 TURS. 401</source>
+    <Latin>'Gandavensis', 'e'</Latin>
+    <source>1652 TURS. 367, 401</source>
+  </word>
+  <word>
+    Lovanium
+    <adj>None</adj>
+    <Subject>'city'</Subject>
+    <Latin>'cities', 'Leuven', 'Louvain', 'Lovanium', 'i', 'n'</Latin>
+    <source>'1540 VIVES Exer. 363; 1595 MERCATOR I, &quot;Brabantia&quot;; 1652 TURS. 263, 348'</source>
+  </word>
+  <word>
+    Leodium
+    <adj>None</adj>
+    <Subject>'city'</Subject>
+  </word>
+  <word>
+    Namurcum
+    <adj>None</adj>
+    <Subject>'cities'</Subject>
+    <Latin>'cities', 'Namur', 'Namurcum', 'i', 'n'</Latin>
+    <source>1595 MERCATOR I, &quot;Hannonia,&quot; map</source>
+    <Latin>'Namurcensis', 'e'</Latin>
+    <source>1595 MERCATOR I, &quot;Hannonia&quot;</source>
+  </word>
+  <word>
+    Ostend, Oostende
+    <adj>None</adj>
+    <Subject>'City'</Subject>
+    <Latin> Ostenda</Latin>
+    <source>1674 MILTON XIII. 28.  1652 TURS. 281.</source>
+  </word>
+  <word>
+    Branbantia
+    <adj>None</adj>
+    <Subject>'region'</Subject>
+    <Latin>'regions', 'Brabant', 'ae', 'f'</Latin>
+    <source>'1595 MERCATOR I, &quot;Branbantia&quot;; 1652 TURS. 333, 348'</source>
+  </word>
+  <word>
+    Flanders
+    <adj>None</adj>
+    <Subject>'region'</Subject>
+    <Latin> Flandria</Latin>
+    <source>1595 MERCATOR I, &quot;Flandria.&quot;  1674 MILTON XIII. 28.  1652 TURS. 345 et passim.</source>
+  </word>
+  <word>
+    Flander
+    <adj>None</adj>
+    <Subject>'Belgium'</Subject>
+    <Latin>'regions', 'Fleming', 'Flander', 'dri', 'm'</Latin>
+    <source>'1652 TURS. 369'</source>
+  </word>
+  <word>
+    Flemish  Flandricus, a, um (EGGER S.L. 92)
+    <adj>None</adj>
+    <Subject>'Belgium'</Subject>
+    <Latin>' Flandrensis'</Latin>
+    <source>'EGGER S.L. 92', '1540 VIVES Exer. 332'</source>
+  </word>
+  <word>
+    Hannonia
+    <adj>None</adj>
+    <Subject>'region'</Subject>
+    <Latin>'regions', 'Hainault', 'ae', 'f'</Latin>
+    <source>'1595 MERCATOR I, &quot;Hannonia&quot;'</source>
+  </word>
+  <word>
+    Low Countries (historical region of Europe, corresponding roughly to contemporary Netherlands, Belgium and Luxemburg)
+    <adj>None</adj>
+    <Subject>'Belgium'</Subject>
+    <Latin>' Belgium', ' Belgica', ' Belgium Inferius  '</Latin>
+    <source>'historical region of Europe, corresponding roughly to contemporary Netherlands, Belgium and Luxemburg', '1674MILTON XIII. 12; 28.  1652 TURS. 272 et passim.  1784 THUNBERG xiii.  ', ' ', '1595 MERCATOR I, &quot;Belgii Inferioris Tabula.&quot;'</source>
+  </word>
+  <word>
+    Brittania
+    <adj>None</adj>
+    <Subject>'continent'</Subject>
+    <Latin>'Britain', 'Brittania', 'ae', 'British', 'subst', 'Britannus', 'm', 'Anglobritannus', 'i', 'TRAPPEN'], ['Britannicus'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Cantabrigia
+    <adj>None</adj>
+    <Subject>'City'</Subject>
+    <Latin>'Cambridge', 'Cantabrigia', 'ae'</Latin>
+    <source>None</source>
+  </word>
+</root>

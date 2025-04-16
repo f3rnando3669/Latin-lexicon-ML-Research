@@ -6,7 +6,7 @@ from xml.dom import minidom
 import sys
 
 #Add the path to the folder `test.py`
-sys.path.insert(0, '/Users/fernandovargas/Desktop/latinDict/Computer-Science-Research-Summer-master/MachineLearningSummer/clean_space')
+sys.path.insert(0, '/Users/fernandovargas/Desktop/Desktop/latinDict/Computer-Science-Research-Summer-master/MachineLearningSummer/clean_space')
 #Importing the `generate_response function from test.py
 from test import generate_response # type: ignore
 def DictOrg(text):
@@ -87,8 +87,6 @@ def DictOrg(text):
             #             Latin_list = ["".join(word)]
 
             print("latin list as is without extractor function:", Latin_list)
-
-
             #print("latin wirds found using regex: ",Latin_list)
             if Latin_list == []:
                 sourcenew = re.findall(r'\b[a-zA-Z]+(?:[a-zA-Z]+)?\b', str(sources))
@@ -170,10 +168,10 @@ def DictOrg(text):
 
         # Use minidom to pretty print the XML string
         pretty_xml = minidom.parseString(xml_string).toprettyxml(indent="  ")
-        print(checkxml(pretty_xml,chunk))
+        #pretty_xml = checkxml(pretty_xml,chunk)
         # Write the pretty printed XML to a file
         
-        with open("Output.xml", "w", encoding='utf-8') as f:
+        with open("Latin_Database.xml", "w", encoding='utf-8') as f:
             f.write(pretty_xml)
 
 
@@ -195,12 +193,12 @@ text4 = '''//1 Austria cities: Vienna  ► Vienna, ae f.  ¶ 1595 MERCATOR I, "G
 //1 Belgium  ► Belgium, i n.  ¶ EGGER S.L. 78.  ► Belgium Meridiânum  ¶ Cf. the use of Belgium Septentrionale of the Netherlands:  Alexander Suerman, Specimen historico-medicum de cholerae Asiaticae itinere per Belgium septentrionale, annis 1832-1834 (Utrecht, 1835).    ►► The term Belgium, at least through the 18th century, refers in Latin to the Low Countries generally.'''
 alltext = text1+text2+text3+text4
 def checkxml(xml,text):
-    check = generate_response(f'check if the xml format {xml} correctly matches {text}, if it does print yes, else fix the xml and only print that')
+    check = generate_response(f"Check if the xml format:{xml} I created matches this content: {text}. If it matches, return yes. Otherwise, fix only the incorrect parts and return the corrected XML.")
     for word in check:
         if "yes" in word:
-            continue
+            return xml
         else:
-            print(check)
+            return check
 
 
 def LatinwordExtractor(words):
@@ -228,6 +226,6 @@ ex = '// Arctic Ocean  Glacialis Oceanus (1811 PALLAS vi)  ► Mare Glaciale (15
 ex2 = "//21 Black Sea: Aegean Sea  ► mare Aegaeum  ¶  ► Aegaeopelagus, i m.  ¶ OED s.v. archipelago in etymological note, citing medieval sources.  ► Archipelagus, i m.  ¶ OED s.v.archipelago in etymological note, citing 13th c. treaty.  Bondelmontius 53: \"mare Archipelagi.\"  Linné Species 2, 794: \"Habitat ad Archipelagum.\"  Bentley 2, 603-04 (on Manil. 4, 617): \"Propontis illud est mare quod Archipelagum inter et Pontum Euxinum iacet.\"  C. G. Heyne, Variae lectiones et observationes in Iliadem (Leipzig, 1802), v. 2, pt. 3, p.180, discussing  βορέης  in the Iliad: \"Sub illud tempus per totum Archipelagum aquilones spirant.\"  1807 Sprengel 1, 377: \"Per tres annos Graeciam, Archipelagum, Asian Minorem, Syriam et Aegyptum perquisivit."
 # DictOrg(text1)
 
-with open('/Users/fernandovargas/Desktop/latinDict/LatinDictApp/Geo_input.txt', 'r') as file:
+with open('/Users/fernandovargas/Desktop/Desktop/latinDict/LatinDictApp/Geo_input.txt', 'r') as file:
     content = file.read()
 DictOrg(content)
