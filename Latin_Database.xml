@@ -24,7 +24,7 @@
     <source>1674 MILTON XIII. 28, of Belgian town.</source>
   </word>
   <word>
-    Saint-Laurent
+    Saint
     <adj>None</adj>
     <Subject>'town names in &quot;St.&quot;'</Subject>
     <Latin>'ad', 'fanum', 'Divi', 'Laurentii'</Latin>
@@ -33,42 +33,42 @@
     <source>1652TURS. 372</source>
   </word>
   <word>
-    language
+    Bengali
     <adj>None</adj>
     <Subject>'Language'</Subject>
     <Latin>' lingua Bengalica'</Latin>
     <source>None</source>
   </word>
   <word>
-    arctôus
+    arcticus
     <adj>None</adj>
     <Subject>'Region'</Subject>
     <Latin>'arctôus'</Latin>
     <source>'Hyg.; DANTE Aqua 477; EGGER S.L. 7', 'SEN. in tragedies; MART. '</source>
   </word>
   <word>
-    Mare
+    Ocean
     <adj>None</adj>
-    <Subject>'Ocean'</Subject>
+    <Subject>'Sea'</Subject>
     <Latin>'Mare Glaciale'</Latin>
     <source>'1811 PALLAS vi', '1595 MERCATOR II &quot;Polus Arcticus&quot; map; 1811 PALLAS xi'</source>
   </word>
   <word>
-    zona
+    arctica
     <adj>None</adj>
     <Subject>'Region'</Subject>
     <Latin>'zona', 'arctica'</Latin>
     <source>'1811 PALLAS 52'</source>
   </word>
   <word>
-    antarcticus
+    Antarctic
     <adj>None</adj>
     <Subject>'Polar'</Subject>
     <Latin>'Antarctic', 'antarcticus'</Latin>
     <source>'EGGER D.L. 25'</source>
   </word>
   <word>
-    terra
+    Antarctica
     <adj>None</adj>
     <Subject>'Continent'</Subject>
     <Latin>antarctica</Latin>
@@ -106,14 +106,14 @@
   <word>
     Canary Islands
     <adj>None</adj>
-    <Subject>'Islands'</Subject>
+    <Subject>'Archipelago'</Subject>
     <Latin>'Insulae Fortûnâtae Insulae Canariae'</Latin>
     <source>'f. pl.', 'PLIN.  1595 MERCATOR II &quot;Europa.&quot;  1794 RUIZ viii.  ', 'f. pl.', 'Arn.  1595 MERCATOR II&quot;Europa.&quot;'</source>
   </word>
   <word>
     Canary Islands: Tenerife
     <adj>None</adj>
-    <Subject>'Insulae'</Subject>
+    <Subject>'Island'</Subject>
     <Latin> Teneriffa</Latin>
     <source>1794 RUIZ viii.</source>
     <Latin> Ninguâria</Latin>
@@ -122,21 +122,21 @@
     <source>Plin. 6, 204 (variant reading). Egger N.L.</source>
   </word>
   <word>
-    Materia
+    Madeira
     <adj>None</adj>
     <Subject>'Island'</Subject>
     <Latin>'Madeira', 'Materia', 'ae'</Latin>
     <source>None</source>
   </word>
   <word>
-    Ocean
+    Oceanus
     <adj>None</adj>
     <Subject>'Ocean'</Subject>
     <Latin>(' Oceanus Atlanticus (EGGER S', '')</Latin>
     <source>CIC.; 1595 MERCATOR II &quot;Africa.&quot;  ► Oceanus Atlanticus (EGGER S.L. 34</source>
   </word>
   <word>
-    Eurasia
+    Eurôpâsia
     <adj>None</adj>
     <Subject>'Continent'</Subject>
     <Latin>'Eurasia', 'ae'</Latin>
@@ -166,7 +166,7 @@
   <word>
     Austria
     <adj>None</adj>
-    <Subject>'Country'</Subject>
+    <Subject>'Europe'</Subject>
     <Latin> Austria</Latin>
     <source>1595 MERCATOR I, &quot;Germaniae.&quot; 1674 MILTON XIII. 28.  1652 TURS. 206 et passim.  1784 DUCRUE 265.  EGGER S.L. 26.</source>
   </word>
@@ -180,35 +180,35 @@
   <word>
     Salzburg
     <adj>None</adj>
-    <Subject>'City'</Subject>
+    <Subject>'Austria'</Subject>
     <Latin>'Austria', 'cities', 'Salzburg', 'Salzburgensis', 'e'</Latin>
     <source>'1595 MERCATOR I, &quot;Germaniae&quot;'</source>
   </word>
   <word>
     Vienna
     <adj>None</adj>
-    <Subject>'Austria'</Subject>
+    <Subject>'City'</Subject>
     <Latin>'Vienna is slightly more common than Vindobona in printed books'</Latin>
     <source>'1595 MERCATOR I, &quot;Germaniae.&quot;  1652 TURS. 252 et passim.  1843 TRAPPEN 26.  EGGER S.L. 58, quoting Latin inscription of 16th-century coin.  ', '1891 VELENOVSKÝ vi.  EGGER S.L. 57.  |  adj.  ', '1595 MERCATOR I, &quot;Germaniae.&quot;  1652 TURS. 332.  ', 'WC'</source>
   </word>
   <word>
     Carinthia
     <adj>None</adj>
-    <Subject>'Austria'</Subject>
+    <Subject>'Regions'</Subject>
     <Latin>'Austria', 'regions', 'Carinthia', 'ae', 'f'</Latin>
     <source>'1595 MERCATOR I, &quot;Salzburg&quot; map'</source>
   </word>
   <word>
     Stiria
     <adj>None</adj>
-    <Subject>'region'</Subject>
+    <Subject>'Region'</Subject>
     <Latin>'Austria', 'regions', 'Styria', 'ae', 'f'</Latin>
     <source>'1595 MERCATOR I, &quot;Stiria&quot;'</source>
   </word>
   <word>
     Austriacus
     <adj>None</adj>
-    <Subject>'One-word hypernym: Nationality'</Subject>
+    <Subject>'One-word hypernym'</Subject>
     <Latin> Austriacus</Latin>
     <source>1652 TURS. 314; 1784 DUCRUE 265; 1843 TRAPPEN 51; PERUGINI, Concordata 42</source>
     <Latin> Austriacus</Latin>
@@ -224,7 +224,7 @@
   <word>
     Antverpia
     <adj>None</adj>
-    <Subject>'Belgium'</Subject>
+    <Subject>'City'</Subject>
     <Latin>'Antwerp', 'Antverpia', 'ae', 'f'</Latin>
     <source>1595 MERCATOR I, &quot;Brabantia&quot;; 1652 TURS. 263</source>
     <Latin>'Antverpiensis', 'e'</Latin>
@@ -233,28 +233,28 @@
   <word>
     Bruges  Bruga, ae f. (1652 TURS. 386)
     <adj>None</adj>
-    <Subject>'cities'</Subject>
+    <Subject>'city'</Subject>
     <Latin>' Brugae'</Latin>
     <source>'1652 TURS. 386', 'WC'</source>
   </word>
   <word>
     Brussels
     <adj>None</adj>
-    <Subject>'city'</Subject>
+    <Subject>'cities'</Subject>
     <Latin>'Bruxellae is much more common than Bruxella in printed books'</Latin>
     <source>'1674 MILTON XIII. 30.  1652 TURS. 382.  ', '1595 MERCATOR I, &quot;Brabantia.&quot;  1652 TURS. 348.  |  adj.  ', '1540 VIVES Exer. 327.  ', 'WC'</source>
   </word>
   <word>
     Charleroa
     <adj>None</adj>
-    <Subject>'City'</Subject>
+    <Subject>'cities'</Subject>
     <Latin>'cities', 'Charleroi'</Latin>
     <source>None</source>
   </word>
   <word>
     Gandavum
     <adj>None</adj>
-    <Subject>'city'</Subject>
+    <Subject>'Gandavum'</Subject>
     <Latin>'Ghent', 'Gandavum', 'i', 'n'</Latin>
     <source>1595 MERCATOR I, &quot;Flandria&quot;; 1652 TURS. 401</source>
     <Latin>'Gandavensis', 'e'</Latin>
@@ -270,12 +270,12 @@
   <word>
     Leodium
     <adj>None</adj>
-    <Subject>'city'</Subject>
+    <Subject>'City'</Subject>
   </word>
   <word>
     Namurcum
     <adj>None</adj>
-    <Subject>'cities'</Subject>
+    <Subject>'Cities'</Subject>
     <Latin>'cities', 'Namur', 'Namurcum', 'i', 'n'</Latin>
     <source>1595 MERCATOR I, &quot;Hannonia,&quot; map</source>
     <Latin>'Namurcensis', 'e'</Latin>
@@ -284,7 +284,7 @@
   <word>
     Ostend, Oostende
     <adj>None</adj>
-    <Subject>'City'</Subject>
+    <Subject>'city'</Subject>
     <Latin> Ostenda</Latin>
     <source>1674 MILTON XIII. 28.  1652 TURS. 281.</source>
   </word>
@@ -305,35 +305,35 @@
   <word>
     Flander
     <adj>None</adj>
-    <Subject>'Belgium'</Subject>
+    <Subject>'Flandrian'</Subject>
     <Latin>'regions', 'Fleming', 'Flander', 'dri', 'm'</Latin>
     <source>'1652 TURS. 369'</source>
   </word>
   <word>
     Flemish  Flandricus, a, um (EGGER S.L. 92)
     <adj>None</adj>
-    <Subject>'Belgium'</Subject>
+    <Subject>'Flandricus'</Subject>
     <Latin>' Flandrensis'</Latin>
     <source>'EGGER S.L. 92', '1540 VIVES Exer. 332'</source>
   </word>
   <word>
     Hannonia
     <adj>None</adj>
-    <Subject>'region'</Subject>
+    <Subject>'Belgium'</Subject>
     <Latin>'regions', 'Hainault', 'ae', 'f'</Latin>
     <source>'1595 MERCATOR I, &quot;Hannonia&quot;'</source>
   </word>
   <word>
     Low Countries (historical region of Europe, corresponding roughly to contemporary Netherlands, Belgium and Luxemburg)
     <adj>None</adj>
-    <Subject>'Belgium'</Subject>
+    <Subject>'Low Countries'</Subject>
     <Latin>' Belgium', ' Belgica', ' Belgium Inferius  '</Latin>
     <source>'historical region of Europe, corresponding roughly to contemporary Netherlands, Belgium and Luxemburg', '1674MILTON XIII. 12; 28.  1652 TURS. 272 et passim.  1784 THUNBERG xiii.  ', ' ', '1595 MERCATOR I, &quot;Belgii Inferioris Tabula.&quot;'</source>
   </word>
   <word>
     Brittania
     <adj>None</adj>
-    <Subject>'continent'</Subject>
+    <Subject>'Brittania'</Subject>
     <Latin>'Britain', 'Brittania', 'ae', 'British', 'subst', 'Britannus', 'm', 'Anglobritannus', 'i', 'TRAPPEN'], ['Britannicus'</Latin>
     <source>None</source>
   </word>
@@ -343,5 +343,302 @@
     <Subject>'City'</Subject>
     <Latin>'Cambridge', 'Cantabrigia', 'ae'</Latin>
     <source>None</source>
+  </word>
+  <word>
+    Cantuaria
+    <adj>None</adj>
+    <Subject>'Cantuaria'</Subject>
+    <Latin>'cities', 'Canterbury', 'Cantuaria', 'ae', 'f'</Latin>
+    <source>EGGER S.L. 10</source>
+    <Latin>'Cantuarensis', 'e'</Latin>
+    <source>1652 TURS. 367; EGGER S.L. 10</source>
+  </word>
+  <word>
+    Dover  Dubrae, arum f. pl. (EGGER citing ancient source)
+    <adj>None</adj>
+    <Subject>'Britain'</Subject>
+    <Latin>' Dovertium'</Latin>
+    <source>'EGGER citing ancient source', '1652 TURS. 389'</source>
+  </word>
+  <word>
+    Edinburg  Edinburgum, i n.;  adj.  Edinburgensis, e
+    <adj>None</adj>
+    <Subject>'Edinburgum'</Subject>
+    <Latin>'Edimburgensis Edimburgum'</Latin>
+    <source>'EGGER S.L. 10', 'EGGER S.L. 11'</source>
+  </word>
+  <word>
+    Glasgua
+    <adj>None</adj>
+    <Subject>'cities'</Subject>
+    <Latin>'Glasgow', 'Glasgua', 'ae', 'f'</Latin>
+    <source>'EGGER S.L. 11'</source>
+  </word>
+  <word>
+    Greenwich
+    <adj>None</adj>
+    <Subject>'Grenovicum'</Subject>
+    <Latin> Grenovîcum</Latin>
+    <source>1674 MILTON XIII. 28.</source>
+  </word>
+  <word>
+    Liverpulensis
+    <adj>None</adj>
+    <Subject>'The question asks for a one-word hypernym for Liverpool, rather than a description from a text or definition. A hypernym is a word with a broad meaning that more specific words fall under; it’s a &quot;superordinate.&quot; A possible one-word hypernym for &quot;Liverpool&quot; (a city) could be &quot;City.&quot;'</Subject>
+    <Latin>'Liverpool', 'Liverpulensis', 'e'</Latin>
+    <source>'EGGER S.L. 11'</source>
+  </word>
+  <word>
+    London
+    <adj>None</adj>
+    <Subject>'Britain'</Subject>
+    <Latin> Londînium</Latin>
+    <source>TAC.; Amm.</source>
+    <Latin> Londînum</Latin>
+    <source>1652 TURS. 276, 323.  1826 LÜDERS v.  1843 TRAPPEN 25. |  adj.  Londîniensis, e  ¶ EGGER S.L. 10.</source>
+    <Latin> Londînensis</Latin>
+    <source>1826 LÜDERS 2.  1843 TRAPPEN 111.</source>
+    <Latin> In the title pages of printed books</Latin>
+    <source>WC</source>
+  </word>
+  <word>
+    London: Palace of Westminster, Houses of Parliament
+    <adj>None</adj>
+    <Subject>'1'</Subject>
+    <Latin> aula Vistminsterii  </Latin>
+    <source>1652 TURS. 411.</source>
+  </word>
+  <word>
+    London: Tower of London  Turris Londînensis (1652 TURS. 410)
+    <adj>None</adj>
+    <Subject>'Tower'</Subject>
+    <Latin>'Turris Londîni'</Latin>
+    <source>'1652 TURS. 410', '1652 TURS. 413'</source>
+  </word>
+  <word>
+    London: Westminster (area of central London)
+    <adj>None</adj>
+    <Subject>'London'</Subject>
+    <Latin>' Vestmonasterium'</Latin>
+    <source>'area of central London', '1674 MILTON XIII. 8 et passim: &quot;Westmonasterio,&quot; at end of official government letters).'</source>
+  </word>
+  <word>
+    Oxonia
+    <adj>None</adj>
+    <Subject>'Oxonia'</Subject>
+    <Latin>'Oxford', 'Oxonia', 'ae', 'f'</Latin>
+    <source>'VIVES Stud. pueril. 256'</source>
+  </word>
+  <word>
+    Eboracum
+    <adj>None</adj>
+    <Subject>'Eboracum'</Subject>
+    <Latin>'York', 'Eboracum', 'i'</Latin>
+    <source>Eutr.</source>
+    <Latin>'Eboracensis', 'e'</Latin>
+    <source>1652 TURS. 347</source>
+  </word>
+  <word>
+    Cheshire
+    <adj>None</adj>
+    <Subject>'counties'</Subject>
+    <Latin>'    ', ' Chestria'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Devon
+    <adj>None</adj>
+    <Subject>'Chestria'</Subject>
+    <Latin>' Devonia'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Dorset
+    <adj>None</adj>
+    <Subject>'county'</Subject>
+    <Latin>' Dorsetia'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Gloucestershire
+    <adj>None</adj>
+    <Subject>'county'</Subject>
+    <Latin>' Glocestria'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Hampshire
+    <adj>None</adj>
+    <Subject>'county'</Subject>
+    <Latin>' Hampia'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Kent
+    <adj>None</adj>
+    <Subject>'&quot;county&quot;'</Subject>
+    <Latin> Cantium</Latin>
+    <source>1771 WAY dedication page (of the county in Delaware)</source>
+  </word>
+  <word>
+    Lancashire
+    <adj>None</adj>
+    <Subject>'county'</Subject>
+    <Latin>' Lancastria'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Leicestershire
+    <adj>None</adj>
+    <Subject>'county'</Subject>
+    <Latin>' Leicestria'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Lincolnshire
+    <adj>None</adj>
+    <Subject>'county'</Subject>
+    <Latin>' Lincolnia'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Somerset
+    <adj>None</adj>
+    <Subject>'county'</Subject>
+    <Latin>' Somersetia'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Sussex
+    <adj>None</adj>
+    <Subject>'Britain'</Subject>
+    <Latin> Sussexia</Latin>
+    <source>1771 WAY dedication page (of the county in Delaware)</source>
+  </word>
+  <word>
+    York
+    <adj>None</adj>
+    <Subject>'county'</Subject>
+    <Latin>'    ', ' Yorkia'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Hebrides  Haebudes, um f. pl. (PLIN. 4, 103)
+    <adj>None</adj>
+    <Subject>'islands'</Subject>
+    <Latin>' Hebrides'</Latin>
+    <source>'PLIN. 4, 103', '1595 MERCATOR II &quot;Europa&quot;'</source>
+  </word>
+  <word>
+    Mona
+    <adj>None</adj>
+    <Subject>'islands'</Subject>
+    <Latin>'Mona', 'ae'</Latin>
+    <source>'CAES.; 1595 MERCATOR II &quot;Britannicae Insulae&quot;'</source>
+  </word>
+  <word>
+    Vectis
+    <adj>None</adj>
+    <Subject>'Vectis'</Subject>
+    <Latin>'Wight', 'Vectis'</Latin>
+    <source>'PLIN.; SUET.'</source>
+  </word>
+  <word>
+    Caesarea
+    <adj>None</adj>
+    <Subject>'Caesarea'</Subject>
+    <Latin>'Jersey', 'Caesarea', 'ae', 'f', 'Barsa'</Latin>
+    <source>'cf. Berry'</source>
+  </word>
+  <word>
+    Guernesia
+    <adj>None</adj>
+    <Subject>'Guernesia'</Subject>
+    <Latin>'Guernsey', 'Caesarea', 'ae'</Latin>
+    <source>'cf. Berry'</source>
+  </word>
+  <word>
+    Orcades
+    <adj>None</adj>
+    <Subject>'Orcades'</Subject>
+    <Latin>'Orcades', 'pl', 'PLIN', 'MERCATOR', 'II', 'Britannicae'</Latin>
+    <source>None</source>
+  </word>
+  <word>
+    Shetlandia
+    <adj>None</adj>
+    <Subject>'Islands'</Subject>
+    <Latin>'Islands', 'Aemodae', 'Insulae', 'arum', 'pl', 'Shetlandia', 'ae'</Latin>
+    <source>'Mela 182'</source>
+  </word>
+  <word>
+    England
+    <adj>None</adj>
+    <Subject>'Anglia'</Subject>
+    <Latin> Anglia</Latin>
+    <source>DANTE Vulg. El. 325.  1595 MERCATOR II &quot;Europa.&quot;  1652 TURS. 328 et passim.  EGGER S.L. 10.</source>
+  </word>
+  <word>
+    English  adj.
+    <adj>None</adj>
+    <Subject>'Anglia'</Subject>
+    <Latin> Anglicus</Latin>
+    <source>DANTE Vulg. El. 325.  1674 MILTON XIII. 48 et passim.</source>
+    <Latin> Anglicânus</Latin>
+    <source>1674 MILTON XIII. 4: &quot;Senatus populusque Anglicanus.&quot;  1674 MILTON XIII. 32: &quot;classem Anglicanam&quot;; et passim.</source>
+  </word>
+  <word>
+    Englishman  subst.
+    <adj>None</adj>
+    <Subject>'Britain'</Subject>
+    <Latin> Anglus</Latin>
+    <source>1674 MILTON XIII. 22 et passim.</source>
+  </word>
+  <word>
+    Scot(sman)  subst.
+    <adj>None</adj>
+    <Subject>'&quot;Scotus&quot;'</Subject>
+    <Latin>' Calêdo', ' Scotus'</Latin>
+    <source>'sman', 'Flor.   ', 'nbsp;1674 MILTON XIII. 12.  1652 TURS. 357, 436.  EGGER S.L. 7.'</source>
+  </word>
+  <word>
+    Scotch, Scottish  adj.  Calêdonius, a, um (PLIN.)
+    <adj>None</adj>
+    <Subject>'Scoticus'</Subject>
+    <Latin> Calêdonicus</Latin>
+    <source>PLIN.</source>
+    <Latin> Scoticus</Latin>
+    <source>Sol.</source>
+  </word>
+  <word>
+    Scotland  Calêdonia, ae f. (TAC.)
+    <adj>None</adj>
+    <Subject>'Calêdonia'</Subject>
+    <Latin>' Scotia'</Latin>
+    <source>'TAC.', '1595 MERCATOR II &quot;Europa&quot;; 1652 TURS. 274 et passim; EGGER S.L. 10'</source>
+  </word>
+  <word>
+    Wales
+    <adj>None</adj>
+    <Subject>'regions'</Subject>
+    <Latin> Vallia</Latin>
+    <source>1652 TURS. 436.  EGGER S.L. 10.</source>
+    <Latin> Cambria</Latin>
+    <source>EGGER S.L. 10.</source>
+  </word>
+  <word>
+    Welsh  subst.
+    <adj>None</adj>
+    <Subject>'Welsh'</Subject>
+    <Latin> Camber</Latin>
+    <source/>
+    <Latin> Cambrobritannus</Latin>
+    <source>1832 Alexandre 7A, 179.  |  adj.</source>
+    <Latin> Vallicus</Latin>
+    <source/>
+    <Latin> Cambricus</Latin>
+    <source/>
+    <Latin> Cambro</Latin>
+    <source>Ducange s.v. manganum in article.</source>
   </word>
 </root>
